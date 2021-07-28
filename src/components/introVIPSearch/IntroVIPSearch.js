@@ -47,9 +47,8 @@ const listValue = [
 		content: "Và còn nhiều điều nữa...",
 	},
 ];
-const IntroVIPSearch = (props) => {
+const IntroVIPSearch = () => {
 	const classes = useStyles();
-	const { hrefSearchVip } = props;
 
 	return (
 		<React.Fragment>
@@ -68,9 +67,9 @@ const IntroVIPSearch = (props) => {
 			<Button
 				variant='contained'
 				color='primary'
-				// type='submit'
+				type='submit'
 				className={classes.mtBtn}
-				href={hrefSearchVip}
+				href='/xem-online'
 			>
 				Tra Cứu VIP NGAY
 			</Button>

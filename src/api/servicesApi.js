@@ -17,6 +17,10 @@ const servicesApi = {
 		const url = "/api/searchVIP/get-vipSearch-user";
 		return axiosClient.get(url, params);
 	},
+	postUserBuyService: (id, params) => {
+		const url = `/api/users/buy-service/${id}`;
+		return axiosClient.post(url, params);
+	},
 };
 
 export default servicesApi;

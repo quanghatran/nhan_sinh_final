@@ -3,8 +3,9 @@ import "./MeaningNumerology.css";
 import TitleSection from "../../components/titleSection/TitleSection";
 import "./MeaningNumerology.css";
 import servicesApi from "../../api/servicesApi";
-import { Card, CardContent, Grid, Typography } from "@material-ui/core";
-
+import { Button, Card, CardContent, Grid, Typography } from "@material-ui/core";
+import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
+import ModalConfirm from "../../components/modalConfirm/ModalConfirm";
 const listContent = [
 	{
 		id: 1,
@@ -21,6 +22,12 @@ const listContent = [
 const MeaningNumerology = () => {
 	const [dataServices, setNotes] = useState([]);
 
+	const [onSuccess, setOnSuccess] = useState(false);
+	const [onError, setOnError] = useState(false);
+
+	const [clickedId, setClickedId] = useState("");
+	const [openDialog, setOpenDialog] = useState(false);
+
 	// get list services
 	useEffect(() => {
 		const fetchListServices = async () => {
@@ -34,6 +41,39 @@ const MeaningNumerology = () => {
 
 		fetchListServices();
 	}, []);
+
+	const handleCloseDialog = () => {
+		setOpenDialog(false);
+	};
+
+	// buy service after confirmed
+	const handleClickConfirm = (id) => {
+		const fetchBuyService = async () => {
+			try {
+				await servicesApi.postUserBuyService(id);
+
+				setOnSuccess(true);
+				setTimeout(() => {
+					setOpenDialog(false);
+					setOnSuccess(false);
+				}, 1200);
+			} catch (error) {
+				setOnError(true);
+				setTimeout(() => {
+					setOpenDialog(false);
+					setOnError(false);
+				}, 1200);
+			}
+		};
+
+		fetchBuyService();
+	};
+
+	// handle open dialog
+	const handleOpenDialog = (id) => {
+		setOpenDialog(true);
+		setClickedId(id);
+	};
 
 	return (
 		<div id='meaningNumerology' className='meaningNumerology'>
@@ -54,32 +94,61 @@ const MeaningNumerology = () => {
 											<Typography
 												variant='h6'
 												component='h2'
-												style={{ fontSize: "1.2rem" }}
+												style={{ fontSize: "1.2rem", textAlign: "center" }}
 											>
-												Tên dịch vụ: {data.title}
+												{data.title}
 											</Typography>
 											<Typography
-												style={{ marginBottom: "1rem", marginTop: "0.2rem" }}
+												style={{ marginBottom: "1rem", marginTop: "0.7rem" }}
 											>
-												Giá dịch vụ: {data.price}
+												Giá dịch vụ: <b>{data.price}</b>
 											</Typography>
 											<Typography
-												variant='body2'
-												component='p'
-												style={{ fontWeight: "bold" }}
+												style={{ marginBottom: "1rem", marginTop: "0.7rem" }}
 											>
-												Lượt tra VIP: {data.quantity}
+												Lượt tra VIP: <b>{data.quantity}</b>
 											</Typography>
+
+											<Button
+												variant='contained'
+												color='secondary'
+												size='small'
+												endIcon={<AddShoppingCartIcon />}
+												style={{ marginTop: "0.7rem" }}
+												onClick={(e) => {
+													handleOpenDialog(data._id);
+												}}
+											>
+												Mua dịch vụ
+											</Button>
 										</CardContent>
 									</Card>
+
+									{clickedId === data._id ? (
+										<ModalConfirm
+											isOpen={openDialog}
+											onClose={handleCloseDialog}
+											contentDialog='Xác nhận mua dịch vụ này ?'
+											onClickConfirm={(e) => {
+												handleClickConfirm(data._id);
+											}}
+											id={data._id}
+											onSuccess={onSuccess}
+											onError={onError}
+										/>
+									) : (
+										""
+									)}
 								</Grid>
 							))}
 						</Grid>
 					</div>
+
 					<div
 						className='contentMeaningNumerology'
-						style={{ marginTop: "2rem" }}
+						style={{ marginTop: "3rem" }}
 					>
+						<TitleSection titleHeader='Lời ngỏ' />
 						<div>
 							{listContent.map((content) => (
 								<div

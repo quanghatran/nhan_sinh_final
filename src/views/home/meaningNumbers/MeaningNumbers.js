@@ -147,7 +147,7 @@ const MeaningNumbers = () => {
 												id={meaning.id}
 												fullWidth
 												variant={
-													meaning.id === clickedID ? "contained" : "outlined"
+													meaning.id === clickedID ? "contained" : "text"
 												}
 												size='large'
 												color='secondary'

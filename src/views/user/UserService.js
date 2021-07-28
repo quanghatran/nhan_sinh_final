@@ -1,16 +1,15 @@
+import { Typography } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import SearchIcon from "@material-ui/icons/Search";
+import Alert from "@material-ui/lab/Alert";
 import React, { useEffect, useState } from "react";
+import demoServiceApi from "../../api/demoServiceApi";
+import userAPI from "../../api/userAPI";
 import DatePicker from "../../components/controls/DatePicker";
 import TitleSection from "../../components/titleSection/TitleSection";
-import { useHistory } from "react-router-dom";
-import demoServiceApi from "../../api/demoServiceApi";
-import { withStyles } from "@material-ui/styles";
-import clsx from "clsx";
-import userAPI from "../../api/userAPI";
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -44,7 +43,7 @@ const UserService = () => {
 
 	const [userInfo, setUserInfo] = useState([]);
 
-	// const href = "tra-cuu";
+	const [isLogin, setIsLogin] = useState(false);
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -61,8 +60,6 @@ const UserService = () => {
 			try {
 				const request = await demoServiceApi.postDemoService(dataFormCheck);
 				console.log("request: ", request);
-				// const href = "./tra-cuu";
-				// return href;
 			} catch (error) {
 				console.log("failed to fetch product list: ", error);
 			}
@@ -76,9 +73,12 @@ const UserService = () => {
 		const fetchGetUserProfile = async () => {
 			try {
 				const response = await userAPI.getUserProfile();
+				console.log(response);
 				setUserInfo(response.data);
+				setIsLogin(true);
 			} catch (error) {
 				console.log("failed to fetch product list: ", error);
+				setIsLogin(false);
 			}
 		};
 
@@ -96,20 +96,30 @@ const UserService = () => {
 					transform: "translateX(-15%)",
 				}}
 			>
-				<TitleSection
-					titleHeader='dịch vụ của chúng tôi'
-					style={{ color: "white" }}
-				/>
-				<div
-					className='VipCountLabel'
-					style={{ textAlign: "center", color: "white", fontSize: "1.2rem" }}
-				>
-					Bạn có <b style={{ color: "#ff5656" }}>{userInfo.slotVip}</b> lượt tra
-					vip.
-					<Button color='default' href='#meaningNumerology'>
-						Mua thêm lượt tra VIP
-					</Button>
-				</div>
+				<TitleSection titleHeader='Tra cứu VIP' style={{ color: "white" }} />
+
+				{isLogin ? (
+					<Typography
+						className='VipCountLabel'
+						variant='h4'
+						component='h5'
+						style={{ textAlign: "center", color: "white", fontSize: "1.2rem" }}
+					>
+						Bạn có <b style={{ color: "#ff5656" }}>{userInfo.slotVip}</b> lượt
+						tra vip
+						<Button size='large' color='primary' href='#meaningNumerology'>
+							Mua thêm lượt tra VIP
+						</Button>
+					</Typography>
+				) : (
+					<Alert
+						variant='filled'
+						severity='error'
+						style={{ marginBottom: "1rem" }}
+					>
+						Bạn cần đăng nhập để thực hiện dịch vụ này
+					</Alert>
+				)}
 				<div className='userServiceContent'>
 					<Grid container spacing={3}>
 						<Grid item container>
@@ -203,9 +213,9 @@ const UserService = () => {
 									type='submit'
 									endIcon={<SearchIcon />}
 									className={classes.mtBtn}
-									// href={href ? href : ""}
+									// disabled={isLogin ? true : false}
 								>
-									Tra Cứu Trả Phí
+									Tra Cứu VIP
 								</Button>
 							</form>
 						</Grid>

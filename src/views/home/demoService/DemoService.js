@@ -1,17 +1,15 @@
+import { Typography } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import NearMeOutlinedIcon from "@material-ui/icons/NearMeOutlined";
-import React, { useEffect, useState } from "react";
-import DatePicker from "../../../components/controls/DatePicker";
-import TitleSection from "../../../components/titleSection/TitleSection";
-import { useHistory } from "react-router-dom";
-import "./DemoService.scss";
+import React, { useState } from "react";
 import demoServiceApi from "../../../api/demoServiceApi";
+import DatePicker from "../../../components/controls/DatePicker";
 import IntroVIPSearch from "../../../components/introVIPSearch/IntroVIPSearch";
-import { Typography } from "@material-ui/core";
-import userAPI from "../../../api/userAPI";
+import TitleSection from "../../../components/titleSection/TitleSection";
+import "./DemoService.scss";
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -28,8 +26,6 @@ const useStyles = makeStyles((theme) => ({
 const DemoService = () => {
 	const classes = useStyles();
 
-	// const history = useHistory();
-
 	const formatYmd = (date) => date.toISOString().slice(0, 10);
 
 	const date = new Date();
@@ -40,7 +36,6 @@ const DemoService = () => {
 	const [phoneNumber, setPhoneNumber] = useState("");
 	const [address, setAddress] = useState("");
 	const [href, setHref] = useState("");
-	const [hrefSearchVip, setHrefSearchVip] = useState("");
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -79,20 +74,6 @@ const DemoService = () => {
 
 		fetchDemoService();
 	};
-
-	// get user info
-	useEffect(() => {
-		const fetchGetUserProfile = async () => {
-			try {
-				// const response = await userAPI.getUserProfile();
-				setHrefSearchVip("/xem-online");
-			} catch (error) {
-				console.log("failed to fetch product list: ", error);
-			}
-		};
-
-		fetchGetUserProfile();
-	}, []);
 
 	return (
 		<div id='demoServiceBlock' className='block demoServiceBlock'>
@@ -194,10 +175,9 @@ const DemoService = () => {
 								</Button>
 							</form>
 						</Grid>
-						{/* <Grid container item xs={12} sm={1}></Grid> */}
 
 						<Grid container item xs={12} sm={6} style={{ width: "100%" }}>
-							<IntroVIPSearch hrefSearchVip={hrefSearchVip} />
+							<IntroVIPSearch />
 						</Grid>
 					</Grid>
 				</div>

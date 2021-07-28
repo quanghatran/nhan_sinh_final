@@ -1,4 +1,5 @@
 import {
+	Button,
 	IconButton,
 	Table,
 	TableBody,
@@ -12,6 +13,8 @@ import Paper from "@material-ui/core/Paper";
 import { makeStyles } from "@material-ui/core/styles";
 import TableRow from "@material-ui/core/TableRow";
 import FileCopyOutlinedIcon from "@material-ui/icons/FileCopyOutlined";
+import SearchIcon from "@material-ui/icons/Search";
+import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
 import Alert from "@material-ui/lab/Alert";
 import moment from "moment";
 import React, { useEffect, useState } from "react";
@@ -42,15 +45,11 @@ const UserSearchHistory = () => {
 	const [freeSearch, setFreeSearch] = useState([]);
 	const [vipSearch, setVipSearch] = useState([]);
 
-	const [count, setCount] = useState("1");
-	// const formatYmd = (date) => date.toISOString().slice(0, 10);
-
 	useEffect(() => {
 		const fetchGetFreeSearch = async () => {
 			try {
 				const response = await servicesApi.getFreeSearchUser();
 				setFreeSearch(response.data);
-				console.log(response.data);
 			} catch (error) {
 				console.log("failed to fetch product list: ", error);
 			}
@@ -72,6 +71,11 @@ const UserSearchHistory = () => {
 		fetchGetVipSearch();
 	}, []);
 
+	//get id of free service, and move to free service, fetch data based id by api: /api/searchFree/${id}
+	const handleClickWatchDetail = (id) => {
+		console.log(id);
+	};
+
 	return (
 		<div className='UserSearchHistory'>
 			<HeaderLogin />
@@ -82,10 +86,23 @@ const UserSearchHistory = () => {
 				<div className='container-fluid'>
 					<TitleSection titleHeader='Lịch sử tra cứu' />
 					<div className='UserSearchHistory__content'>
-						{!freeSearch && !vipSearch ? (
-							<Alert severity='info' style={{ textAlign: "center" }}>
-								Bạn chưa thực hiện tra dịch vụ tra cứu nào
-							</Alert>
+						{freeSearch.length <= 0 && vipSearch <= 0 ? (
+							<div>
+								<Alert severity='info' style={{ textAlign: "center" }}>
+									Bạn chưa thực hiện tra dịch vụ tra cứu nào
+								</Alert>
+								<div style={{ textAlign: "center", margin: "1rem" }}>
+									<Button
+										variant='contained'
+										color='secondary'
+										href='/xem-online'
+										size='medium'
+										endIcon={<SearchIcon />}
+									>
+										Tra cứu
+									</Button>
+								</div>
+							</div>
 						) : (
 							<TableContainer component={Paper}>
 								<Table className={classes.table} aria-label='simple table'>
@@ -96,9 +113,6 @@ const UserSearchHistory = () => {
 										}}
 									>
 										<TableRow>
-											<TableCell style={{ width: "5%", color: "#fff" }}>
-												ID
-											</TableCell>
 											<TableCell style={{ color: "#fff" }}>
 												Thông tin tra cứu
 											</TableCell>
@@ -116,7 +130,6 @@ const UserSearchHistory = () => {
 									<TableBody>
 										{vipSearch.map((data) => (
 											<TableRow key={data._id}>
-												<TableCell>{count}</TableCell>
 												<TableCell>
 													<Typography>
 														<span
@@ -124,53 +137,14 @@ const UserSearchHistory = () => {
 																textTransform: "upperCase",
 																fontWeight: "bold",
 																marginRight: "0.5rem",
+																marginBottom: "0.3rem",
 															}}
 														>
 															{data.name}
 														</span>
-														<span style={{ fontSize: "0.8rem" }}>
+														<div style={{ fontSize: "0.9rem" }}>
 															{moment(data.birthDay).format("MM/DD/YYYY")}
-														</span>
-													</Typography>
-													{/* <Typography>{data.name}</Typography> */}
-												</TableCell>
-												<TableCell>
-													{moment(data.createdAt).format("MM/DD/YYYY")}
-												</TableCell>
-												<TableCell
-													style={{ color: "#f50057", fontWeight: "bold" }}
-												>
-													Free
-												</TableCell>
-												<TableCell>
-													<Tooltip title='Xem chi tiết'>
-														<IconButton
-															color='primary'
-															aria-label='add an alarm'
-														>
-															<FileCopyOutlinedIcon />
-														</IconButton>
-													</Tooltip>
-												</TableCell>
-											</TableRow>
-										))}
-										{freeSearch.map((data) => (
-											<TableRow key={data._id}>
-												<TableCell>{count}</TableCell>
-												<TableCell>
-													<Typography>
-														<span
-															style={{
-																textTransform: "upperCase",
-																fontWeight: "bold",
-																marginRight: "0.5rem",
-															}}
-														>
-															{data.name}
-														</span>
-														<span style={{ fontSize: "0.9rem" }}>
-															{data.birthDay}
-														</span>
+														</div>
 													</Typography>
 													{/* <Typography>{data.name}</Typography> */}
 												</TableCell>
@@ -180,9 +154,57 @@ const UserSearchHistory = () => {
 												<TableCell
 													style={{ color: "#3f51b5", fontWeight: "bold" }}
 												>
+													Free
+												</TableCell>
+												<TableCell>
+													<Tooltip title='Xem chi tiết'>
+														<IconButton
+															aria-label='add an alarm'
+															color='primary'
+															onClick={(e) => {
+																handleClickWatchDetail(data._id);
+															}}
+														>
+															<FileCopyOutlinedIcon />
+														</IconButton>
+													</Tooltip>
+												</TableCell>
+											</TableRow>
+										))}
+										{freeSearch.map((data) => (
+											<TableRow key={data._id}>
+												<TableCell>
+													<Typography>
+														<span
+															style={{
+																textTransform: "upperCase",
+																fontWeight: "bold",
+																marginRight: "0.5rem",
+																marginBottom: "0.3rem",
+															}}
+														>
+															{data.name}
+														</span>
+														<div style={{ fontSize: "0.9rem" }}>
+															{moment(data.birthDay).format("MM/DD/YYYY")}
+														</div>
+													</Typography>
+												</TableCell>
+												<TableCell>
+													{moment(data.createdAt).format("MM/DD/YYYY")}
+												</TableCell>
+												<TableCell
+													style={{ color: "#f50057", fontWeight: "bold" }}
+												>
 													VIP
 												</TableCell>
-												<TableCell>Kết quả được gửi về email</TableCell>
+												<TableCell>
+													<Tooltip title='Kết quả được gửi về email'>
+														<IconButton>
+															<VisibilityOffIcon color='disabled' />
+														</IconButton>
+													</Tooltip>
+												</TableCell>
 											</TableRow>
 										))}
 									</TableBody>

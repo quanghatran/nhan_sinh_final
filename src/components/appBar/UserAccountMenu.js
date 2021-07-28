@@ -101,7 +101,7 @@ export default function UserAccountMenu(props) {
 						<ShopIcon fontSize='small' />
 					</ListItemIcon>
 					<Link to='/xem-online/purchased'>
-						<ListItemText primary='Đã mua' />
+						<ListItemText primary='Dịch vụ đã mua' />
 					</Link>
 				</StyledMenuItem>
 
