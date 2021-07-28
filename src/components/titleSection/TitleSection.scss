@@ -1,0 +1,44 @@
+.titleHolder {
+    text-align: center;
+    position: relative;
+    padding: 0 0 10px;
+    margin: 0 0 40px;
+    
+    &:after {
+        transform: translateX(-50%);
+        content: '';
+        background: #303952;
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        height: 3px;
+        width: 100px;
+    }
+    
+    h1 {
+        font-size: 2rem;
+        margin: 0;
+        text-transform: uppercase;
+        color: #303952;
+        font-weight: 500;
+    }
+
+    p {
+        color: #596275;
+        font-size: 1rem;
+    }
+
+}  
+
+
+@media only screen and (max-width: 959px) {
+    .titleHolder {
+        h1 {
+            font-size: 1.6rem;
+        }
+
+        p {
+            font-size: 0.9rem;
+        }
+    }
+}

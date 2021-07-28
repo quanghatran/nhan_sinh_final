@@ -1,0 +1,47 @@
+{
+  "checks": [
+    {
+      "id": 1,
+      "name": "test name",
+      "email": "test email",
+      "dayBirth": "test day",
+      "monthBirth": "test month",
+      "yearBirth": "test year",
+      "phoneNumber": "test phone number",
+      "address": "test address"
+    }
+  ],
+  "signIn": [
+    {
+      "id": 1,
+      "name": "quangha",
+      "email": "q@gmail.com",
+      "password": "123456",
+      "phone": "123456"
+    },
+    {
+      "name": "qung ha",
+      "email": "d@f",
+      "phone": "248214",
+      "password": "242704",
+      "id": 2
+    }
+  ],
+  "login": [
+    {
+      "id": 1,
+      "email": "q@gmail.com",
+      "password": "123456"
+    },
+    {
+      "phone": "QUANG HA",
+      "password": "1223",
+      "id": 2
+    },
+    {
+      "phone": "4284",
+      "password": "1212",
+      "id": 3
+    }
+  ]
+}

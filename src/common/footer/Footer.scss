@@ -1,0 +1,72 @@
+.footerWrapper {
+    width: 100vw;
+    background-image: url(../../images/image2.jpg);
+    background-position: bottom center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    
+    .footerCover {
+        background-color: rgba(0, 0, 0, 0.65);
+        width: 100%;
+        color: #fff;
+
+       .logo {
+           img {
+               width: 110px;
+               height:auto;
+           }
+       }
+
+       .sloganTitle {
+           color: #fff;
+           font-style: italic;
+           font-size: 1.3rem;
+           font-weight: 500;
+       }
+
+       .listContact {
+           list-style: none;
+           font-size: 1rem;
+           font-weight:lighter;
+
+           li {
+               line-height: 2.3;
+
+               i {
+                   margin-right: 1rem;
+               }
+           }
+       }
+
+       a {
+        color: #969696;
+        text-decoration: none;
+        transition: .1s ease-in;
+        transition-delay: .1s;
+        
+            &:hover {
+                cursor: pointer;
+                color: #fff;
+            }
+        }
+
+        .copyright {
+            text-align:center;
+            padding-bottom: 0.6rem;
+            font-size: 0.9rem;
+            font-weight: lighter;
+        }
+    }
+
+}
+
+@media only screen and (max-width: 959px) {
+    .logoFooter {
+        text-align: center;
+    }
+
+    .listContactWrapper {
+        display: flex;
+        justify-content: center;
+    }
+}

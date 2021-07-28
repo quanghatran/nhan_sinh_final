@@ -1,0 +1,98 @@
+.swiper-container {
+    width: 100%;
+    height: 100%;
+}
+
+.bannerWrapper {
+    width: 100vw;
+    height: 100vh;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    .introduceWrapper {
+        background-color: rgba(0, 0, 0, 0.65);
+        width: 100%;
+        height: 100%;
+        position: relative;
+        z-index: 1;
+
+        .introduceBanner {
+            color: #fff;
+            position: absolute;
+            z-index: 3;
+            top: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            
+            .title {
+                text-transform: uppercase;
+                font-size: 2.5rem;
+            }
+
+            .contentWrapper {
+                .content {
+                    font-size: 1.2rem;
+                    line-height: 2;
+                    font-style: italic;
+                }
+            }
+        }
+    }
+
+}
+
+.swiper-pagination-bullet {
+    background-color: #fff !important;
+    width: 9px!important;
+    height: 9px!important;
+
+}
+
+@media only screen and (max-width: 959px) {
+    .bannerWrapper {
+        .introduceBanner {
+            width: 90%!important;
+
+            .title {
+                font-size: 1.8rem!important;
+            }
+
+            .contentWrapper {
+                .content {
+                    font-size: 1rem!important;
+                    line-height: 1.7!important;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 559px) {
+    .bannerWrapper {
+        .introduceBanner {
+            .title {
+                font-size: 1.3rem!important;
+            }
+
+            .contentWrapper {
+                .content {
+                    font-size: 0.9rem!important;
+                    line-height: 1.6!important;
+                }
+            }
+        }
+    }
+}   
+
+@media only screen and (max-width: 320px) {
+    .bannerWrapper {
+        .introduceBanner {
+            margin-top: 1rem;
+            .title {
+                display:none;
+            }
+        }
+    }
+}

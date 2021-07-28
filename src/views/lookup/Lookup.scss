@@ -1,0 +1,43 @@
+.lookup-wrapper {
+    width: 100vw;
+    height: 100vh;
+    color: #fff;
+    
+    background-image: url(../../images/image1.jpg);
+    background-position: center;
+    background-size: cover;
+    
+    .lookupCover {
+        background: rgba(0, 0, 0, 0.75);
+        width: 100vw;
+        height: 100vh;
+        position: relative;
+
+        .contentLookup {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+            .header_lookUp {
+                text-align: center;
+                display: block;
+
+                & img {
+                    width: 200px;
+                    height: 200px;
+                    object-fit: cover;
+                    text-align: center;
+                    margin: 0 auto;
+
+                    border-radius: 50%;
+                    box-shadow: 0 1rem 3rem rgba(216, 216, 216, 0.5)!important;
+                }
+            }
+        }
+
+      
+    }
+
+
+}

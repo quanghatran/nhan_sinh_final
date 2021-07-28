@@ -1,0 +1,13 @@
+.titleVIP {
+    margin: 0 auto;
+    text-transform: uppercase;
+}
+
+.listValue {
+    flex-direction: row;
+    text-align: justify;
+
+    li {
+        margin-bottom: 10px;
+    }
+}
