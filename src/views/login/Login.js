@@ -83,6 +83,7 @@ const Login = () => {
 
 				localStorage.setItem("user", JSON.stringify(request.data));
 				localStorage.setItem("userToken", request.data.token);
+				localStorage.setItem("userName", request.data.name);
 
 				setTimeout(() => {
 					const action = addUser(request.data);
@@ -140,8 +141,8 @@ const Login = () => {
 											variant='outlined'
 											value={phone}
 											onChange={(e) => setPhone(e.target.value)}
-											// id='custom-css-outlined-input'
 											color='secondary'
+											autoComplete='off'
 										/>
 									</Grid>
 
@@ -161,6 +162,7 @@ const Login = () => {
 												value={password}
 												onChange={(e) => setPassword(e.target.value)}
 												required
+												autoComplete='off'
 												endAdornment={
 													<InputAdornment position='end'>
 														<IconButton

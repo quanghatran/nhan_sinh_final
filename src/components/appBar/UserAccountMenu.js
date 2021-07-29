@@ -1,17 +1,17 @@
-import React from "react";
-import { withStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
-import Menu from "@material-ui/core/Menu";
-import MenuItem from "@material-ui/core/MenuItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
+import Menu from "@material-ui/core/Menu";
+import MenuItem from "@material-ui/core/MenuItem";
+import { withStyles } from "@material-ui/core/styles";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
-import "./UserAccountMenu.css";
-import { Link, useHistory } from "react-router-dom";
-import PowerSettingsNewIcon from "@material-ui/icons/PowerSettingsNew";
 import HistoryIcon from "@material-ui/icons/History";
-import ShopIcon from "@material-ui/icons/Shop";
+import PowerSettingsNewIcon from "@material-ui/icons/PowerSettingsNew";
 import SettingsIcon from "@material-ui/icons/Settings";
+import ShopIcon from "@material-ui/icons/Shop";
+import React from "react";
+import { Link, useHistory } from "react-router-dom";
+import "./UserAccountMenu.css";
 const StyledMenu = withStyles({
 	paper: {
 		border: "1px solid #d3d4d5",
@@ -44,7 +44,7 @@ const StyledMenuItem = withStyles((theme) => ({
 }))(MenuItem);
 
 export default function UserAccountMenu(props) {
-	const { userName } = props;
+	const userName = localStorage.getItem("userName");
 	const [anchorEl, setAnchorEl] = React.useState(null);
 
 	const history = useHistory();

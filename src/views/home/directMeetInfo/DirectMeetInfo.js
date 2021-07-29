@@ -1,8 +1,8 @@
-import { Grid, Typography } from "@material-ui/core";
+import { Typography } from "@material-ui/core";
+import CheckIcon from "@material-ui/icons/Check";
 import React from "react";
 import TitleSection from "../../../components/titleSection/TitleSection";
 import "./DirectMeetInfo.scss";
-
 const listValueDirectMeet = [
 	{
 		id: 1,
@@ -15,7 +15,7 @@ const listValueDirectMeet = [
 	{
 		id: 3,
 		content:
-			"Luận giải chi tiết những chỉ số quan trọng nhất: ngày sinh, thái độ, đường đời, tài năng sứ mệnh, động lực thỏa mãn, động lực viên mãn, nhân cách.",
+			"Luận giải chi tiết những chỉ số quan trọng nhất: ngày sinh, thái độ, đường đời, tài năng sứ mệnh, động lực thỏa mãn, động lực, nhân cách.",
 	},
 	{
 		id: 4,
@@ -46,6 +46,13 @@ const DirectMeetInfo = () => {
 							{listValueDirectMeet.map((value) => (
 								<li key={value.id}>
 									<Typography variant='body1' component='p'>
+										<CheckIcon
+											style={{
+												paddingTop: "5px",
+												marginRight: "10px",
+												color: "#f50057",
+											}}
+										/>{" "}
 										{value.content}
 									</Typography>
 								</li>
@@ -53,7 +60,7 @@ const DirectMeetInfo = () => {
 						</ul>
 					</div>
 					<div className='infoTransfer'>
-						<Typography variant='h6' component='h3' className=''>
+						<Typography variant='h5' component='h3' className=''>
 							THÔNG TIN CHUYỂN KHOẢN THANH TOÁN
 						</Typography>
 						<div className='infoAccount'>

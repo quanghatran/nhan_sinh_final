@@ -107,7 +107,7 @@ const AppBarLogin = (props) => {
 		>
 			<List>
 				<div className='logo'>
-					<Button onClick={toggleDrawer(anchor, false)} href='#'>
+					<Button onClick={toggleDrawer(anchor, false)} href='/'>
 						<img src={logo} alt='logo_navbar' />
 					</Button>
 				</div>
@@ -117,6 +117,7 @@ const AppBarLogin = (props) => {
 					</IconButton>
 				</div>
 				<Divider />
+
 				{listNav.map((navItem) => (
 					<ListItem button key={navItem.id}>
 						<Button
@@ -129,6 +130,18 @@ const AppBarLogin = (props) => {
 						</Button>
 					</ListItem>
 				))}
+				<ListItem button>
+					{localStorage.getItem("user") &&
+						(user.name ? (
+							<li key={listNav.length}>
+								<UserAccountMenu userName={user.name} />
+							</li>
+						) : (
+							<li key={listNav.length}>
+								<UserAccountMenu userName={userLogIn.name} />
+							</li>
+						))}
+				</ListItem>
 			</List>
 		</div>
 	);
@@ -145,7 +158,7 @@ const AppBarLogin = (props) => {
 									<div className='container-fluid'>
 										<ul>
 											<Button href='/'>
-												<img src={logo} alt='logoSatsi' />
+												<img src={logo} alt='logoSa	tsi' />
 											</Button>
 											{listNav.map((navItem) => (
 												<li key={navItem.id}>
@@ -181,12 +194,12 @@ const AppBarLogin = (props) => {
 								<Toolbar>
 									<ul>
 										<li>
-											<Button href='#'>
+											<Button href='/'>
 												<img src={logo} alt='logo' />
 											</Button>
 										</li>
 										<li>
-											{["right"].map((anchor) => (
+											{["left"].map((anchor) => (
 												<React.Fragment key={anchor}>
 													<Button onClick={toggleDrawer(anchor, true)}>
 														<MenuOutlinedIcon fontSize='large' />
@@ -195,6 +208,7 @@ const AppBarLogin = (props) => {
 														anchor={anchor}
 														open={state[anchor]}
 														onClose={toggleDrawer(anchor, false)}
+														style={{ width: "250px" }}
 													>
 														{list(anchor)}
 													</Drawer>

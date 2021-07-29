@@ -3,14 +3,13 @@ import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
-import NearMeOutlinedIcon from "@material-ui/icons/NearMeOutlined";
+import SearchIcon from "@material-ui/icons/Search";
 import React, { useState } from "react";
 import demoServiceApi from "../../../api/demoServiceApi";
 import DatePicker from "../../../components/controls/DatePicker";
 import IntroVIPSearch from "../../../components/introVIPSearch/IntroVIPSearch";
 import TitleSection from "../../../components/titleSection/TitleSection";
 import "./DemoService.scss";
-
 const useStyles = makeStyles((theme) => ({
 	root: {
 		"& .MuiTextField-root": {
@@ -19,6 +18,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 
 	mtBtn: {
+		margin: "0 auto",
 		marginTop: "8px",
 	},
 }));
@@ -91,7 +91,7 @@ const DemoService = () => {
 										<TextField
 											label='Họ tên'
 											variant='outlined'
-											color='secondary'
+											color='primary'
 											name='fullName'
 											type='text'
 											required={true}
@@ -106,7 +106,7 @@ const DemoService = () => {
 										<TextField
 											label='Email'
 											variant='outlined'
-											color='secondary'
+											color='primary'
 											name='email'
 											type='email'
 											required={true}
@@ -117,11 +117,11 @@ const DemoService = () => {
 											autoComplete='off'
 										/>
 									</Grid>
-									<Grid item xs={6}>
+									<Grid item xs={12} sm={6}>
 										<DatePicker
 											label='Ngày sinh'
 											variant='outlined'
-											color='secondary'
+											color='primary'
 											name='birthDay'
 											size='medium'
 											value={birthDay}
@@ -129,11 +129,11 @@ const DemoService = () => {
 											fullWidth
 										/>
 									</Grid>
-									<Grid item xs={6}>
+									<Grid item xs={12} sm={6}>
 										<TextField
 											label='Số điện thoại'
 											variant='outlined'
-											color='secondary'
+											color='primary'
 											name='phoneNumber'
 											type='text'
 											required={true}
@@ -148,7 +148,7 @@ const DemoService = () => {
 										<TextField
 											label='Địa chỉ'
 											variant='outlined'
-											color='secondary'
+											color='primary'
 											name='address'
 											type='text'
 											required={true}
@@ -161,18 +161,19 @@ const DemoService = () => {
 									</Grid>
 								</Grid>
 
-								<Button
-									variant='contained'
-									color='secondary'
-									fullWidth
-									size='large'
-									type='submit'
-									endIcon={<NearMeOutlinedIcon />}
-									className={classes.mtBtn}
-									href={href ? href : ""}
-								>
-									Tra Cứu Miễn Phí
-								</Button>
+								<div style={{ textAlign: "center" }}>
+									{" "}
+									<Button
+										variant='contained'
+										color='primary'
+										type='submit'
+										endIcon={<SearchIcon />}
+										className={classes.mtBtn}
+										href={href ? href : ""}
+									>
+										Tra Cứu Miễn Phí
+									</Button>
+								</div>
 							</form>
 						</Grid>
 

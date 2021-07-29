@@ -1,32 +1,27 @@
-import React, { useEffect, useState } from "react";
-import Footer from "../../common/footer/Footer";
-import "./UserInformation.css";
-import TitleSection from "../../components/titleSection/TitleSection";
-import Grid from "@material-ui/core/Grid";
-import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
-import InfoIcon from "@material-ui/icons/Info";
-import LockIcon from "@material-ui/icons/Lock";
-import TextField from "@material-ui/core/TextField";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
-import userAPI from "../../api/userAPI";
-import { useDispatch } from "react-redux";
-import {
-	getUserProfile,
-	updateName,
-	updatePassword,
-} from "../../app/userSlice";
-import { updateUser } from "../../views/login/loginSlice";
-import { useSelector } from "react-redux";
-import HeaderLogin from "../home/headerLogin/HeaderLogin";
-import ModalDepositMoney from "../../components/modalDepositMoney/ModalDepositMoney";
+import Grid from "@material-ui/core/Grid";
+import TextField from "@material-ui/core/TextField";
+import Typography from "@material-ui/core/Typography";
+import InfoIcon from "@material-ui/icons/Info";
+import LockIcon from "@material-ui/icons/Lock";
 import Alert from "@material-ui/lab/Alert";
+import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import userAPI from "../../api/userAPI";
+import { getUserProfile, updateName } from "../../app/userSlice";
+import Footer from "../../common/footer/Footer";
+import ModalDepositMoney from "../../components/modalDepositMoney/ModalDepositMoney";
+import TitleSection from "../../components/titleSection/TitleSection";
+import { updateUser } from "../../views/login/loginSlice";
+import HeaderLogin from "../home/headerLogin/HeaderLogin";
+import "./UserInformation.css";
 
 const UserInformation = () => {
-	const user = useSelector((state) => state.user);
+	// const user = useSelector((state) => state.user);
 
 	const dispatch = useDispatch();
 	const [isOpenInfo, setIsOpenInfo] = useState(false);
@@ -37,6 +32,10 @@ const UserInformation = () => {
 
 	const [isSuccess, setIsSuccess] = useState(false);
 	const [isError, setIsError] = useState(false);
+
+	const [password, setPassword] = useState("");
+	const [newPassword, setNewPassword] = useState("");
+	const [confirmPassword, setConfirmPassword] = useState("");
 
 	const fetchUserProfilers = React.useCallback(async () => {
 		const request = await userAPI.getUserProfile();
@@ -67,6 +66,7 @@ const UserInformation = () => {
 		dispatch(updateUser(document.getElementById("name").value));
 	};
 
+	// handle update new name
 	const handleUpdateName = (e) => {
 		e.preventDefault();
 		const data = {
@@ -79,30 +79,45 @@ const UserInformation = () => {
 			setTimeout(() => {
 				setIsSuccess(false);
 				setIsOpenInfo(false);
-			}, 1200);
+			}, 1500);
 		} catch (err) {
 			setIsError(true);
 
 			setTimeout(() => {
 				setIsError(false);
 				setIsOpenInfo(false);
-			}, 1200);
+			}, 1500);
 			console.log("failed to update name", err);
 		}
 	};
 
-	// const updatePassword = () => {
-	// 	const data = {
-	// 		newPassword: document.getElementById("newPassword"),
-	// 		oldPassword: document.getElementById("oldPassword"),
-	// 	};
-	// 	try {
-	// 		const request = userAPI.updatePassword(data);
-	// 	} catch (err) {
-	// 		console.log("failed to update password", err);
-	// 	}
-	// };
-	const handleSubmitPassword = () => {};
+	// handle change password
+	const handleSubmitPassword = (e) => {
+		e.preventDefault();
+
+		if (newPassword.length >= 6 && confirmPassword === newPassword) {
+			const dataChangePassWord = {
+				password,
+				newPassword,
+				confirmPassword,
+			};
+			setIsSuccess(true);
+
+			setTimeout(() => {
+				setIsSuccess(false);
+				setIsOpenInfo(false);
+			}, 1200);
+
+			console.log(dataChangePassWord);
+		} else {
+			setIsError(true);
+
+			setTimeout(() => {
+				setIsError(false);
+				setIsOpenInfo(false);
+			}, 1200);
+		}
+	};
 
 	// get user info
 	useEffect(() => {
@@ -124,6 +139,10 @@ const UserInformation = () => {
 
 	const handleClose = () => {
 		setOpenDialog(false);
+	};
+
+	const handleCloseInfoChangePassword = (e) => {
+		setIsOpenPassword(false);
 	};
 
 	return (
@@ -205,7 +224,7 @@ const UserInformation = () => {
 									variant='contained'
 									color='primary'
 									startIcon={<InfoIcon />}
-									style={{ margin: "0 5px" }}
+									style={{ margin: "5px" }}
 									onClick={handleClickOpenInfo}
 								>
 									Thay đổi thông tin
@@ -217,6 +236,7 @@ const UserInformation = () => {
 									color='secondary'
 									startIcon={<LockIcon />}
 									onClick={handleClickOpenPassword}
+									style={{ margin: "5px" }}
 								>
 									Thay đổi mật khẩu
 								</Button>
@@ -285,6 +305,7 @@ const UserInformation = () => {
 						</DialogActions>
 					</form>
 				</Dialog>
+
 				{/* Password Dialog */}
 				<Dialog
 					open={isOpenPassword}
@@ -308,6 +329,11 @@ const UserInformation = () => {
 								label='Mật khẩu cũ'
 								type='text'
 								fullWidth
+								required
+								value={password}
+								onChange={(e) => {
+									setPassword(e.target.value);
+								}}
 							/>
 							<TextField
 								margin='dense'
@@ -315,6 +341,11 @@ const UserInformation = () => {
 								label='Mật khẩu mới'
 								type='text'
 								fullWidth
+								required
+								value={newPassword}
+								onChange={(e) => {
+									setNewPassword(e.target.value);
+								}}
 							/>
 							<TextField
 								margin='dense'
@@ -322,32 +353,38 @@ const UserInformation = () => {
 								label='Nhập lại mật khẩu'
 								type='text'
 								fullWidth
+								required
+								value={confirmPassword}
+								onChange={(e) => {
+									setConfirmPassword(e.target.value);
+								}}
 							/>
-							{/* {isError && ( */}
-							<Alert
-								variant='filled'
-								severity='error'
-								style={{ marginTop: "1rem", justifyContent: "center" }}
-							>
-								Thay đổi mật khẩu không thành công
-							</Alert>
-							{/* )} */}
+							{isError && (
+								<Alert
+									variant='filled'
+									severity='error'
+									style={{ marginTop: "1rem", justifyContent: "center" }}
+								>
+									Thay đổi mật khẩu không thành công, độ dài phải lớn hơn hoặc
+									bằng 6 ký tự
+								</Alert>
+							)}
 
-							{/* {isSuccess && ( */}
-							<Alert
-								variant='filled'
-								severity='success'
-								style={{ marginTop: "1rem", justifyContent: "center" }}
-							>
-								Thay đổi mật khẩu thành công
-							</Alert>
-							{/* )} */}
+							{isSuccess && (
+								<Alert
+									variant='filled'
+									severity='success'
+									style={{ marginTop: "1rem", justifyContent: "center" }}
+								>
+									Thay đổi mật khẩu thành công
+								</Alert>
+							)}
 						</DialogContent>
 						<DialogActions>
-							<Button onClick={handleCloseInfo} color='secondary'>
+							<Button onClick={handleCloseInfoChangePassword} color='secondary'>
 								Hủy
 							</Button>
-							<Button type='submit' onClick={handleUpdateName} color='primary'>
+							<Button type='submit' color='primary'>
 								Xác nhận
 							</Button>
 						</DialogActions>

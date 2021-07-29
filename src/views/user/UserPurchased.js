@@ -55,6 +55,7 @@ const UserPurchased = () => {
 		const fetchListServiceUserBought = async () => {
 			try {
 				const response = await servicesApi.getAllServiceBought();
+				console.log(typeof response.data);
 				setUserPurchased(response.data);
 			} catch (error) {
 				console.log("failed to fetch product list: ", error);
@@ -150,38 +151,63 @@ const UserPurchased = () => {
 																		marginRight: "0.5rem",
 																	}}
 																>
-																	{data.service.title}
+																	{data.service == null ? (
+																		<div>NULL</div>
+																	) : (
+																		data.service.title
+																	)}
 																</span>
 															</Typography>
-															{/* <Typography>{data.name}</Typography> */}
 														</TableCell>
 														<TableCell>
 															{moment(data.createdAt).format("MM/DD/YYYY")}
 														</TableCell>
-														<TableCell>{data.service.price}</TableCell>
+														<TableCell>
+															{" "}
+															{data.service == null ? (
+																<div>NULL</div>
+															) : (
+																data.service.price
+															)}
+														</TableCell>
 														<TableCell style={{ fontWeight: "bold" }}>
-															{data.service.quantity}
+															{data.service == null ? (
+																<div>NULL</div>
+															) : (
+																data.service.quantity
+															)}
 														</TableCell>
 
 														<TableCell>
 															<Tooltip title='Mua lại dịch vụ này'>
-																<IconButton
-																	color='secondary'
-																	aria-label='add an alarm'
-																	onClick={(e) => {
-																		handleOpenDialog(
-																			data._id,
-																			data.service._id
-																		);
-																	}}
-																>
-																	<AddShoppingCartIcon />
-																</IconButton>
+																{data.service == null ? (
+																	<IconButton
+																		color='secondary'
+																		aria-label='add an alarm'
+																		disabled
+																	>
+																		<AddShoppingCartIcon />
+																	</IconButton>
+																) : (
+																	<IconButton
+																		color='secondary'
+																		aria-label='add an alarm'
+																		onClick={(e) => {
+																			handleOpenDialog(
+																				data._id,
+																				data.service._id
+																			);
+																		}}
+																	>
+																		<AddShoppingCartIcon />
+																	</IconButton>
+																)}
 															</Tooltip>
 														</TableCell>
-
-														{clickedIdService === data.service._id &&
-														clickedIdBought === data._id ? (
+														{data.service == null ? (
+															""
+														) : clickedIdService === data.service._id &&
+														  clickedIdBought === data._id ? (
 															<ModalConfirm
 																isOpen={openDialog}
 																onClose={handleCloseDialog}

@@ -16,10 +16,10 @@ import MenuOutlinedIcon from "@material-ui/icons/MenuOutlined";
 import clsx from "clsx";
 import PropTypes from "prop-types";
 import { default as React } from "react";
+import { useSelector } from "react-redux";
 import logo from "../../images/logo_satsi.png";
 import "./AppBar.scss";
 import UserAccountMenu from "./UserAccountMenu";
-import { useSelector } from "react-redux";
 
 const useStyles = makeStyles({
 	list: {
@@ -111,10 +111,12 @@ const AppBarComponent = (props) => {
 				[classes.fullList]: anchor === "top" || anchor === "bottom",
 			})}
 			role='presentation'
+			onClick={toggleDrawer(anchor, false)}
+			onKeyDown={toggleDrawer(anchor, false)}
 		>
 			<List>
 				<div className='logo'>
-					<Button onClick={toggleDrawer(anchor, false)} href='#'>
+					<Button onClick={toggleDrawer(anchor, false)} href='/'>
 						<img src={logo} alt='logo_navbar' />
 					</Button>
 				</div>
@@ -188,12 +190,12 @@ const AppBarComponent = (props) => {
 								<Toolbar>
 									<ul>
 										<li>
-											<Button href='#'>
+											<Button href='/'>
 												<img src={logo} alt='logo' />
 											</Button>
 										</li>
 										<li>
-											{["right"].map((anchor) => (
+											{["left"].map((anchor) => (
 												<React.Fragment key={anchor}>
 													<Button onClick={toggleDrawer(anchor, true)}>
 														<MenuOutlinedIcon fontSize='large' />
@@ -202,6 +204,7 @@ const AppBarComponent = (props) => {
 														anchor={anchor}
 														open={state[anchor]}
 														onClose={toggleDrawer(anchor, false)}
+														style={{ width: "250px" }}
 													>
 														{list(anchor)}
 													</Drawer>

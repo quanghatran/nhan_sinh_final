@@ -1,7 +1,7 @@
-import React from "react";
 import Grid from "@material-ui/core/Grid";
-import "./Footer.scss";
+import React from "react";
 import logo from "./../../images/logo_footer.png";
+import "./Footer.scss";
 
 const listContact = [
 	{

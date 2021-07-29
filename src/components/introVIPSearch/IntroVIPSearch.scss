@@ -6,7 +6,10 @@
 .listValue {
     flex-direction: row;
     text-align: justify;
-
+    margin: 0;
+    padding: 0;
+    text-align: justify;
+    list-style: none;
     li {
         margin-bottom: 10px;
     }

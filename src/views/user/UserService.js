@@ -10,6 +10,7 @@ import demoServiceApi from "../../api/demoServiceApi";
 import userAPI from "../../api/userAPI";
 import DatePicker from "../../components/controls/DatePicker";
 import TitleSection from "../../components/titleSection/TitleSection";
+import "./UserService.scss";
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -17,12 +18,6 @@ const useStyles = makeStyles((theme) => ({
 			margin: "8px 0",
 			borderRadius: "5px",
 		},
-	},
-	textField: {
-		backgroundColor: theme.palette.common.white,
-	},
-	datePicker: {
-		backgroundColor: theme.palette.common.white,
 	},
 	mtBtn: {
 		marginTop: "8px",
@@ -86,46 +81,43 @@ const UserService = () => {
 	}, []);
 
 	return (
-		<div id='userServiceBlock' className='block userServiceBlock'>
-			<div
-				className='container-fluid'
-				style={{
-					position: "absolute",
-					top: "25%",
-					left: "25%",
-					transform: "translateX(-15%)",
-				}}
-			>
-				<TitleSection titleHeader='Tra cứu VIP' style={{ color: "white" }} />
+		<div id='userServiceBlock' className='userServiceBlock'>
+			<div className='block userServiceBlockWrapper'>
+				<div className='container-fluid'>
+					<TitleSection titleHeader='Tra cứu VIP' style={{ color: "white" }} />
 
-				{isLogin ? (
-					<Typography
-						className='VipCountLabel'
-						variant='h4'
-						component='h5'
-						style={{ textAlign: "center", color: "white", fontSize: "1.2rem" }}
-					>
-						Bạn có <b style={{ color: "#ff5656" }}>{userInfo.slotVip}</b> lượt
-						tra vip
-						<Button size='large' color='primary' href='#meaningNumerology'>
-							Mua thêm lượt tra VIP
-						</Button>
-					</Typography>
-				) : (
-					<Alert
-						variant='filled'
-						severity='error'
-						style={{ marginBottom: "1rem" }}
-					>
-						Bạn cần đăng nhập để thực hiện dịch vụ này
-					</Alert>
-				)}
-				<div className='userServiceContent'>
-					<Grid container spacing={3}>
-						<Grid item container>
+					{isLogin ? (
+						<Typography
+							className='VipCountLabel'
+							variant='h4'
+							component='h5'
+							style={{
+								textAlign: "center",
+								color: "white",
+								fontSize: "1.2rem",
+							}}
+						>
+							Bạn có <b style={{ color: "#ff5656" }}>{userInfo.slotVip}</b> lượt
+							tra vip
+							<Button size='large' color='secondary' href='#meaningNumerology'>
+								Mua thêm lượt tra VIP
+							</Button>
+						</Typography>
+					) : (
+						<Alert
+							variant='filled'
+							severity='error'
+							style={{ marginBottom: "1rem" }}
+						>
+							Bạn cần đăng nhập để thực hiện dịch vụ này
+						</Alert>
+					)}
+
+					<div className='userServiceContent'>
+						<div className='serviceFiled'>
 							<form className={classes.root} onSubmit={handleSubmit}>
 								<Grid container item spacing={2}>
-									<Grid item xs={6}>
+									<Grid item xs={12} sm={6}>
 										<TextField
 											label='Họ tên'
 											variant='outlined'
@@ -133,16 +125,14 @@ const UserService = () => {
 											name='fullName'
 											type='text'
 											required={true}
-											size='medium'
 											value={name}
 											onChange={(e) => setName(e.target.value)}
 											fullWidth
-											className={classes.textField}
 											autoComplete='off'
 										/>
 									</Grid>
 
-									<Grid item xs={6}>
+									<Grid item xs={12} sm={6}>
 										<TextField
 											label='Email'
 											variant='outlined'
@@ -150,10 +140,8 @@ const UserService = () => {
 											name='email'
 											type='email'
 											required={true}
-											size='medium'
 											value={email}
 											onChange={(e) => setEmail(e.target.value)}
-											className={classes.textField}
 											fullWidth
 											autoComplete='off'
 										/>
@@ -164,14 +152,12 @@ const UserService = () => {
 											variant='outlined'
 											color='primary'
 											name='birthDay'
-											size='medium'
 											value={birthDay}
 											onChange={(e) => setBirthDay(e.target.value)}
 											fullWidth
-											className={classes.datePicker}
 										/>
 									</Grid>
-									<Grid item xs={6}>
+									<Grid item xs={12} sm={6}>
 										<TextField
 											label='Số điện thoại'
 											variant='outlined'
@@ -179,15 +165,13 @@ const UserService = () => {
 											name='phoneNumber'
 											type='text'
 											required={true}
-											size='medium'
-											className={classes.textField}
 											value={phoneNumber}
 											onChange={(e) => setPhoneNumber(e.target.value)}
 											fullWidth
 											autoComplete='off'
 										/>
 									</Grid>
-									<Grid item xs={6}>
+									<Grid item xs={12} sm={6}>
 										<TextField
 											label='Địa chỉ'
 											variant='outlined'
@@ -195,8 +179,6 @@ const UserService = () => {
 											name='address'
 											type='text'
 											required={true}
-											size='medium'
-											className={classes.textField}
 											value={address}
 											onChange={(e) => setAddress(e.target.value)}
 											fullWidth
@@ -207,19 +189,18 @@ const UserService = () => {
 
 								<Button
 									variant='contained'
-									color='secondary'
+									color='primary'
 									fullWidth
 									size='large'
 									type='submit'
 									endIcon={<SearchIcon />}
 									className={classes.mtBtn}
-									// disabled={isLogin ? true : false}
 								>
 									Tra Cứu VIP
 								</Button>
 							</form>
-						</Grid>
-					</Grid>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

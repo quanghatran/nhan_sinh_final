@@ -1,6 +1,8 @@
 import { Button, Typography } from "@material-ui/core";
-import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
+import CheckIcon from "@material-ui/icons/Check";
+import NearMeOutlinedIcon from "@material-ui/icons/NearMeOutlined";
+import React from "react";
 import "./IntroVIPSearch.scss";
 
 const useStyles = makeStyles((theme) => ({
@@ -59,6 +61,13 @@ const IntroVIPSearch = () => {
 				{listValue.map((value) => (
 					<li key={value.id}>
 						<Typography variant='body1' component='p'>
+							<CheckIcon
+								style={{
+									paddingTop: "5px",
+									marginRight: "10px",
+									color: "#f50057",
+								}}
+							/>{" "}
 							{value.content}
 						</Typography>
 					</li>
@@ -66,10 +75,11 @@ const IntroVIPSearch = () => {
 			</ul>
 			<Button
 				variant='contained'
-				color='primary'
+				color='secondary'
 				type='submit'
 				className={classes.mtBtn}
 				href='/xem-online'
+				endIcon={<NearMeOutlinedIcon />}
 			>
 				Tra Cứu VIP NGAY
 			</Button>

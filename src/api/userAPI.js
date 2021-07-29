@@ -1,13 +1,5 @@
 import axiosClient from "./axiosClient";
 
-// const accessToken = localStorage.getItem("user")
-// 	? JSON.parse(localStorage.getItem("user")).token
-// 	: "";
-// axiosClient.interceptors.request.use(async (config) => {
-// 	// TODO: handle token here
-// 	config.headers.authorization = `Bearer ${accessToken}`;
-// 	return config;
-// });
 const userAPI = {
 	getUserProfile: (params) => {
 		const url = "/api/users/profile";
