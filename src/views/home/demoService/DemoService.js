@@ -10,6 +10,8 @@ import demoServiceApi from "../../../api/demoServiceApi";
 import DatePicker from "../../../components/controls/DatePicker";
 import IntroVIPSearch from "../../../components/introVIPSearch/IntroVIPSearch";
 import TitleSection from "../../../components/titleSection/TitleSection";
+import { useHistory } from "react-router-dom";
+
 import "./DemoService.scss";
 
 const useStyles = makeStyles((theme) => ({
@@ -27,6 +29,7 @@ const useStyles = makeStyles((theme) => ({
 
 const DemoService = () => {
 	const classes = useStyles();
+	const history = useHistory();
 
 	// const formatYmd = (date) => date.toISOString().slice(0, 10);
 
@@ -59,6 +62,7 @@ const DemoService = () => {
 						const idFreeSearch = response.data._id;
 
 						localStorage.setItem("idFreeSearch", idFreeSearch);
+						history.push("/tra-cuu");
 						// lay ket qua data._id -> dispatch len store, luu vao redux, qua trang /tra-cuu thi get data theo id da duoc luu
 					})
 					.catch(function (error) {
@@ -68,8 +72,6 @@ const DemoService = () => {
 						setPhoneNumber("");
 						setAddress("");
 					});
-
-				// return href;
 			} catch (error) {
 				console.log("failed to fetch product list: ", error);
 			}
@@ -172,7 +174,7 @@ const DemoService = () => {
 										type='submit'
 										endIcon={<SearchIcon />}
 										className={classes.mtBtn}
-										href='/tra-cuu'
+										// href='/tra-cuu'
 									>
 										Tra Cứu Miễn Phí
 									</Button>
