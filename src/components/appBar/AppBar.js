@@ -111,8 +111,6 @@ const AppBarComponent = (props) => {
 				[classes.fullList]: anchor === "top" || anchor === "bottom",
 			})}
 			role='presentation'
-			onClick={toggleDrawer(anchor, false)}
-			onKeyDown={toggleDrawer(anchor, false)}
 		>
 			<List>
 				<div className='logo'>
@@ -126,6 +124,7 @@ const AppBarComponent = (props) => {
 					</IconButton>
 				</div>
 				<Divider />
+
 				{listNav.map((navItem) => (
 					<ListItem button key={navItem.id}>
 						<Button
@@ -138,6 +137,18 @@ const AppBarComponent = (props) => {
 						</Button>
 					</ListItem>
 				))}
+				<ListItem button>
+					{localStorage.getItem("user") &&
+						(user.name ? (
+							<li key={listNav.length}>
+								<UserAccountMenu userName={user.name} />
+							</li>
+						) : (
+							<li key={listNav.length}>
+								<UserAccountMenu userName={userLogIn.name} />
+							</li>
+						))}
+				</ListItem>
 			</List>
 		</div>
 	);

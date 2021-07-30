@@ -1,14 +1,18 @@
 import { Typography } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
+import CircularProgress from "@material-ui/core/CircularProgress";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
+import CheckIcon from "@material-ui/icons/Check";
 import SearchIcon from "@material-ui/icons/Search";
 import Alert from "@material-ui/lab/Alert";
+import moment from "moment";
 import React, { useEffect, useState } from "react";
-import demoServiceApi from "../../api/demoServiceApi";
 import userAPI from "../../api/userAPI";
+import vipServiceApi from "../../api/vipServiceApi";
 import DatePicker from "../../components/controls/DatePicker";
+import ModalConfirm from "../../components/modalInform/ModalConfirm";
 import TitleSection from "../../components/titleSection/TitleSection";
 import "./UserService.scss";
 
@@ -26,7 +30,6 @@ const useStyles = makeStyles((theme) => ({
 
 const UserService = () => {
 	const classes = useStyles();
-	const formatYmd = (date) => date.toISOString().slice(0, 10);
 
 	const date = new Date();
 
@@ -40,23 +43,31 @@ const UserService = () => {
 
 	const [isLogin, setIsLogin] = useState(false);
 
+	const [isOpenSuccess, setIsOpenSuccess] = useState(false);
+	const [isOpenFailed, setIsOpenFailed] = useState(false);
+
+	const [pending, setPending] = useState(false);
+
 	const handleSubmit = (e) => {
 		e.preventDefault();
 
 		const dataFormCheck = {
 			name: name,
 			email: email,
-			birthDay: formatYmd(birthDay),
+			birthDay: moment(birthDay).format("YYYY-MM-DD"),
 			phoneNumber: phoneNumber,
 			address: address,
 		};
 
 		const fetchDemoService = async () => {
+			setPending(true);
 			try {
-				const request = await demoServiceApi.postDemoService(dataFormCheck);
-				console.log("request: ", request);
+				await vipServiceApi.postVipService(dataFormCheck);
+				setPending(false);
+				setIsOpenSuccess(true);
 			} catch (error) {
-				console.log("failed to fetch product list: ", error);
+				setPending(false);
+				setIsOpenFailed(true);
 			}
 		};
 
@@ -68,17 +79,65 @@ const UserService = () => {
 		const fetchGetUserProfile = async () => {
 			try {
 				const response = await userAPI.getUserProfile();
-				console.log(response);
 				setUserInfo(response.data);
 				setIsLogin(true);
 			} catch (error) {
-				console.log("failed to fetch product list: ", error);
 				setIsLogin(false);
 			}
 		};
 
 		fetchGetUserProfile();
 	}, []);
+
+	const handleOnClose = () => {
+		setIsOpenSuccess(false);
+	};
+
+	const handleOnCloseError = () => {
+		setIsOpenFailed(false);
+	};
+
+	// content of dialog success
+	function ContentDialogSuccess(props) {
+		const { email } = props;
+		return (
+			<React.Fragment>
+				<Typography component='h4' style={{ fontSize: "1.2rem" }}>
+					Cảm ơn bạn đã sử dụng dịch vụ của chúng tôi
+				</Typography>
+				<p>
+					Nội dung tra cứu VIP của bạn đã được gửi tới Email: <b>{email}</b>
+				</p>
+				<p>
+					Bạn vui lòng kiểm tra vào thư mục <b>SPAM </b> nếu như không thấy
+					trong thư mục chính.
+				</p>
+				<p>
+					Nếu có bất kỳ thắc mắc hoặc góp ý nào, vui lòng liên hệ:{" "}
+					<b>0977557868</b> để được hỗ trợ chi tiết.
+				</p>
+			</React.Fragment>
+		);
+	}
+
+	// content of dialog failed
+	function ContentDialogFailed() {
+		return (
+			<React.Fragment>
+				<Typography component='h4' style={{ fontSize: "1.2rem" }}>
+					Tra cứu không thành công
+				</Typography>
+				<p>
+					Bạn không đủ lượt tra cứu VIP, vui lòng mua thêm dịch vụ. Hoặc nhập
+					lại thông tin các trường nội dung chính xác theo form.
+				</p>
+				<p>
+					Nếu có bất kỳ thắc mắc hoặc góp ý nào, vui lòng liên hệ:{" "}
+					<b>0977557868</b> để được hỗ trợ chi tiết
+				</p>
+			</React.Fragment>
+		);
+	}
 
 	return (
 		<div id='userServiceBlock' className='userServiceBlock'>
@@ -115,6 +174,13 @@ const UserService = () => {
 
 					<div className='userServiceContent'>
 						<div className='serviceFiled'>
+							{pending && (
+								<div>
+									<CircularProgress color='secondary' />
+									<p>Vui lòng chờ trong chốc lát</p>
+								</div>
+							)}
+
 							<form className={classes.root} onSubmit={handleSubmit}>
 								<Grid container item spacing={2}>
 									<Grid item xs={12} sm={6}>
@@ -131,7 +197,6 @@ const UserService = () => {
 											autoComplete='off'
 										/>
 									</Grid>
-
 									<Grid item xs={12} sm={6}>
 										<TextField
 											label='Email'
@@ -186,7 +251,10 @@ const UserService = () => {
 										/>
 									</Grid>
 								</Grid>
-
+								<Typography style={{ margin: "10px 0" }}>
+									( Bạn cần nhập chính xác các thông tin phía trên, chúng tôi sẽ
+									gửi báo cáo về nội dung tra cứu vào Email mà bạn đã nhập)
+								</Typography>
 								<Button
 									variant='contained'
 									color='primary'
@@ -199,6 +267,36 @@ const UserService = () => {
 									Tra Cứu VIP
 								</Button>
 							</form>
+							<ModalConfirm
+								isOpen={isOpenSuccess}
+								onClose={handleOnClose}
+								contentDialog={<ContentDialogSuccess email={email} />}
+								modalTitle={
+									<Alert
+										icon={<CheckIcon fontSize='inherit' />}
+										variant='filled'
+										severity='success'
+										style={{ justifyContent: "center" }}
+									>
+										TRA CỨU DỊCH VỤ VIP THÀNH CÔNG
+									</Alert>
+								}
+							/>
+							<ModalConfirm
+								isOpen={isOpenFailed}
+								onClose={handleOnCloseError}
+								contentDialog={<ContentDialogFailed />}
+								modalTitle={
+									<Alert
+										icon={<CheckIcon fontSize='inherit' />}
+										variant='filled'
+										severity='error'
+										style={{ justifyContent: "center" }}
+									>
+										TRA CỨU DỊCH VỤ VIP KHÔNG THÀNH CÔNG
+									</Alert>
+								}
+							/>
 						</div>
 					</div>
 				</div>

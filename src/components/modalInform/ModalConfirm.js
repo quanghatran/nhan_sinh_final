@@ -5,7 +5,6 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import Paper from "@material-ui/core/Paper";
-import { Alert } from "@material-ui/lab";
 import React from "react";
 
 function PaperComponent(props) {
@@ -13,19 +12,7 @@ function PaperComponent(props) {
 }
 
 export default function ModalConfirm(props) {
-	const {
-		isOpen,
-		onClose,
-		onClickConfirm,
-		id,
-		contentDialog,
-		onSuccess,
-		onError,
-	} = props;
-
-	const handleClick = (id) => {
-		onClickConfirm(id);
-	};
+	const { isOpen, onClose, contentDialog, modalTitle } = props;
 
 	return (
 		<Dialog
@@ -34,37 +21,20 @@ export default function ModalConfirm(props) {
 			PaperComponent={PaperComponent}
 			aria-labelledby='draggable-dialog-title'
 		>
-			<DialogTitle style={{ cursor: "move" }} id='draggable-dialog-title'>
-				Xác nhận
+			<DialogTitle
+				style={{ cursor: "move" }}
+				id='draggable-dialog-title'
+				style={{ textAlign: "center" }}
+			>
+				{modalTitle}
 			</DialogTitle>
 			<DialogContent>
 				<DialogContentText>{contentDialog}</DialogContentText>
 			</DialogContent>
-			{onSuccess && (
-				<Alert severity='success'>
-					<strong>Mua dịch vụ thành công!</strong>
-				</Alert>
-			)}
-			{onError && (
-				<Alert severity='error'>
-					<strong>Mua dịch vụ không thành công!</strong>
-				</Alert>
-			)}
 
-			<DialogActions style={{ justifyContent: "space-around" }}>
+			<DialogActions style={{ justifyContent: "center" }}>
 				<Button onClick={onClose} color='secondary' variant='contained'>
-					Hủy
-				</Button>
-				<Button
-					onClick={(e) => {
-						handleClick(id);
-					}}
-					color='primary'
-					variant='contained'
-					type='button'
-					autoFocus
-				>
-					Xác nhận
+					Đóng
 				</Button>
 			</DialogActions>
 		</Dialog>

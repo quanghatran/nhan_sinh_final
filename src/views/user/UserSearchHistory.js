@@ -18,11 +18,13 @@ import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
 import Alert from "@material-ui/lab/Alert";
 import moment from "moment";
 import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import servicesApi from "../../api/servicesApi";
 import Footer from "../../common/footer/Footer";
 import TitleSection from "../../components/titleSection/TitleSection";
 import HeaderLogin from "../home/headerLogin/HeaderLogin";
 import "./UserSearchHistory.css";
+
 const useStyles = makeStyles((theme) => ({
 	modal: {
 		display: "flex",
@@ -41,6 +43,8 @@ const useStyles = makeStyles((theme) => ({
 
 const UserSearchHistory = () => {
 	const classes = useStyles();
+
+	const history = useHistory();
 
 	const [freeSearch, setFreeSearch] = useState([]);
 	const [vipSearch, setVipSearch] = useState([]);
@@ -73,7 +77,9 @@ const UserSearchHistory = () => {
 
 	//get id of free service, and move to free service, fetch data based id by api: /api/searchFree/${id}
 	const handleClickWatchDetail = (id) => {
+		localStorage.setItem("idFreeSearch", id);
 		console.log(id);
+		history.push("/tra-cuu");
 	};
 
 	return (
@@ -128,7 +134,7 @@ const UserSearchHistory = () => {
 										</TableRow>
 									</TableHead>
 									<TableBody>
-										{vipSearch.map((data) => (
+										{freeSearch.map((data) => (
 											<TableRow key={data._id}>
 												<TableCell>
 													<Typography>
@@ -171,7 +177,7 @@ const UserSearchHistory = () => {
 												</TableCell>
 											</TableRow>
 										))}
-										{freeSearch.map((data) => (
+										{vipSearch.map((data) => (
 											<TableRow key={data._id}>
 												<TableCell>
 													<Typography>

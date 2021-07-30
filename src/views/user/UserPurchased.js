@@ -55,7 +55,6 @@ const UserPurchased = () => {
 		const fetchListServiceUserBought = async () => {
 			try {
 				const response = await servicesApi.getAllServiceBought();
-				console.log(typeof response.data);
 				setUserPurchased(response.data);
 			} catch (error) {
 				console.log("failed to fetch product list: ", error);

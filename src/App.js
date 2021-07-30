@@ -25,30 +25,9 @@ function App() {
 		// component did mount
 		const unregisterAuthObserver = async (user) => {
 			// setIsSignedIn(!!user);
-			if (!user) {
-				// user logs out, handle something here
-				console.log("user is not logged in");
-
-				return;
-			}
-
-			// TODO: store state into redux store
-			// const token = await user.getIdToken();
-			console.log("logged in user token: ", user);
-
-			// get me when signed in
-			// try {
-			// 	const actionResult = await dispatch(getMe());
-
-			// 	const currentUser = unwrapResult(actionResult);
-			// 	console.log("logged in user: ", currentUser);
-			// } catch (error) {
-			// 	console.log("failed to login: ", error.message);
+			// if (!user) {
+			// 	return;
 			// }
-
-			// console.log("logged in user:", user.displayName);
-			// const token = await user.getIdToken();
-			// console.log("token of user:", token);
 		};
 
 		// component will unmount

@@ -4,12 +4,14 @@ import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import SearchIcon from "@material-ui/icons/Search";
+import moment from "moment";
 import React, { useState } from "react";
 import demoServiceApi from "../../../api/demoServiceApi";
 import DatePicker from "../../../components/controls/DatePicker";
 import IntroVIPSearch from "../../../components/introVIPSearch/IntroVIPSearch";
 import TitleSection from "../../../components/titleSection/TitleSection";
 import "./DemoService.scss";
+
 const useStyles = makeStyles((theme) => ({
 	root: {
 		"& .MuiTextField-root": {
@@ -26,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
 const DemoService = () => {
 	const classes = useStyles();
 
-	const formatYmd = (date) => date.toISOString().slice(0, 10);
+	// const formatYmd = (date) => date.toISOString().slice(0, 10);
 
 	const date = new Date();
 
@@ -35,7 +37,6 @@ const DemoService = () => {
 	const [birthDay, setBirthDay] = useState(date);
 	const [phoneNumber, setPhoneNumber] = useState("");
 	const [address, setAddress] = useState("");
-	const [href, setHref] = useState("");
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -43,7 +44,7 @@ const DemoService = () => {
 		const dataFormCheck = {
 			name: name,
 			email: email,
-			birthDay: formatYmd(birthDay),
+			birthDay: moment(birthDay).format("YYYY-MM-DD"),
 			phoneNumber: phoneNumber,
 			address: address,
 		};
@@ -53,9 +54,11 @@ const DemoService = () => {
 				demoServiceApi
 					.postDemoService(dataFormCheck)
 					.then(function (response) {
-						setHref("/tra-cuu");
-						console.log(JSON.stringify(response.data._id));
+						console.log(response.data._id);
 
+						const idFreeSearch = response.data._id;
+
+						localStorage.setItem("idFreeSearch", idFreeSearch);
 						// lay ket qua data._id -> dispatch len store, luu vao redux, qua trang /tra-cuu thi get data theo id da duoc luu
 					})
 					.catch(function (error) {
@@ -169,7 +172,7 @@ const DemoService = () => {
 										type='submit'
 										endIcon={<SearchIcon />}
 										className={classes.mtBtn}
-										href={href ? href : ""}
+										href='/tra-cuu'
 									>
 										Tra Cứu Miễn Phí
 									</Button>

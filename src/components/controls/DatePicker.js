@@ -21,7 +21,7 @@ export default function DatePicker(props) {
 				disableToolbar
 				inputVariant='outlined'
 				label={label}
-				format='yyyy-MM-dd'
+				format='dd/MM/yyyy'
 				name={name}
 				value={value}
 				onChange={(date) => onChange(convertToDefEventPara(name, date))}

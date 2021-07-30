@@ -158,7 +158,7 @@ const AppBarLogin = (props) => {
 									<div className='container-fluid'>
 										<ul>
 											<Button href='/'>
-												<img src={logo} alt='logoSa	tsi' />
+												<img src={logo} alt='logoSatsi' />
 											</Button>
 											{listNav.map((navItem) => (
 												<li key={navItem.id}>

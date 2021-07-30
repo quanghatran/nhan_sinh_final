@@ -17,6 +17,7 @@
     "axios": "^0.21.1",
     "clsx": "^1.1.1",
     "date-fns": "^2.22.1",
+    "framer-motion": "^4.1.17",
     "mdbreact": "^5.0.2",
     "moment": "^2.24.0",
     "node-sass": "^6.0.0",
@@ -32,7 +33,7 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "PORT=5566 react-scripts start",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

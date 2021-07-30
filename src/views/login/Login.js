@@ -93,11 +93,10 @@ const Login = () => {
 				}, 1000);
 			} catch (error) {
 				setError(true);
+				setPassword("");
 
 				setTimeout(() => {
 					setError(false);
-					setPhone("");
-					setPassword("");
 				}, 1500);
 			}
 		};

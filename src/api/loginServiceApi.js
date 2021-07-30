@@ -1,5 +1,4 @@
 import axiosClient from "./axiosClient";
-const { createSlice, createAsyncThunk } = require("@reduxjs/toolkit");
 
 const loginServiceApi = {
 	// post phone and password, received a token, save in local storage

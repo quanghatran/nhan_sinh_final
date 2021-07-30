@@ -97,25 +97,48 @@ const UserInformation = () => {
 
 		if (newPassword.length >= 6 && confirmPassword === newPassword) {
 			const dataChangePassWord = {
-				password,
-				newPassword,
-				confirmPassword,
+				password: password,
+				newPassword: newPassword,
 			};
-			setIsSuccess(true);
 
-			setTimeout(() => {
-				setIsSuccess(false);
-				setIsOpenInfo(false);
-			}, 1200);
+			try {
+				userAPI.patchPassword(dataChangePassWord);
+				setIsSuccess(true);
 
-			console.log(dataChangePassWord);
+				setTimeout(() => {
+					setIsSuccess(false);
+					setIsOpenInfo(false);
+					setIsOpenPassword(false);
+
+					setPassword("");
+					setNewPassword("");
+					setConfirmPassword("");
+				}, 1500);
+			} catch (err) {
+				setIsError(true);
+
+				setTimeout(() => {
+					setIsError(false);
+					setIsOpenInfo(false);
+					setIsOpenPassword(false);
+
+					setPassword("");
+					setNewPassword("");
+					setConfirmPassword("");
+				}, 1500);
+			}
 		} else {
 			setIsError(true);
 
 			setTimeout(() => {
 				setIsError(false);
 				setIsOpenInfo(false);
-			}, 1200);
+				setIsOpenPassword(false);
+
+				setPassword("");
+				setNewPassword("");
+				setConfirmPassword("");
+			}, 1500);
 		}
 	};
 
@@ -141,6 +164,7 @@ const UserInformation = () => {
 		setOpenDialog(false);
 	};
 
+	// handle change password
 	const handleCloseInfoChangePassword = (e) => {
 		setIsOpenPassword(false);
 	};
@@ -327,7 +351,7 @@ const UserInformation = () => {
 								margin='dense'
 								id='oldPassword'
 								label='Mật khẩu cũ'
-								type='text'
+								type='password'
 								fullWidth
 								required
 								value={password}
@@ -339,7 +363,7 @@ const UserInformation = () => {
 								margin='dense'
 								id='newPassword'
 								label='Mật khẩu mới'
-								type='text'
+								type='password'
 								fullWidth
 								required
 								value={newPassword}
@@ -351,7 +375,7 @@ const UserInformation = () => {
 								margin='dense'
 								id='newPasswordReType'
 								label='Nhập lại mật khẩu'
-								type='text'
+								type='password'
 								fullWidth
 								required
 								value={confirmPassword}

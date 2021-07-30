@@ -5,7 +5,7 @@ import Banners from "./banners/Banners";
 import DemoService from "./demoService/DemoService";
 import DirectMeetInfo from "./directMeetInfo/DirectMeetInfo";
 import MeaningNumbers from "./meaningNumbers/MeaningNumbers";
-import Testimonial from "./testimonials/Testimonial";
+// import Testimonial from "./testimonials/Testimonial";
 
 const AppHome = () => {
 	return (
