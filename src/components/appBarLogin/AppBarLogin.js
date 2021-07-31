@@ -16,10 +16,11 @@ import MenuOutlinedIcon from "@material-ui/icons/MenuOutlined";
 import clsx from "clsx";
 import PropTypes from "prop-types";
 import { default as React } from "react";
-import logo from "../../images/logo_satsi.png";
-import "./AppBarLogin.scss";
 import { useSelector } from "react-redux";
+import logo from "../../images/logo_satsi.png";
 import UserAccountMenu from "../appBar/UserAccountMenu";
+import "./AppBarLogin.scss";
+import logo_footer from "../../images/logo_footer.png";
 
 const useStyles = makeStyles({
 	list: {
@@ -108,7 +109,7 @@ const AppBarLogin = (props) => {
 			<List>
 				<div className='logo'>
 					<Button onClick={toggleDrawer(anchor, false)} href='/'>
-						<img src={logo} alt='logo_navbar' />
+						<img src={logo} alt='logo_navbar' style={{ width: "100px" }} />
 					</Button>
 				</div>
 				<div className='closeButton'>
@@ -158,7 +159,11 @@ const AppBarLogin = (props) => {
 									<div className='container-fluid'>
 										<ul>
 											<Button href='/'>
-												<img src={logo} alt='logoSatsi' />
+												<img
+													src={logo_footer}
+													alt='logoSatsi'
+													style={{ width: "60px" }}
+												/>
 											</Button>
 											{listNav.map((navItem) => (
 												<li key={navItem.id}>
@@ -194,11 +199,6 @@ const AppBarLogin = (props) => {
 								<Toolbar>
 									<ul>
 										<li>
-											<Button href='/'>
-												<img src={logo} alt='logo' />
-											</Button>
-										</li>
-										<li>
 											{["left"].map((anchor) => (
 												<React.Fragment key={anchor}>
 													<Button onClick={toggleDrawer(anchor, true)}>
@@ -214,6 +214,15 @@ const AppBarLogin = (props) => {
 													</Drawer>
 												</React.Fragment>
 											))}
+										</li>
+										<li>
+											<Button href='/'>
+												<img
+													src={logo_footer}
+													alt='logo'
+													style={{ width: "50px" }}
+												/>
+											</Button>
 										</li>
 									</ul>
 								</Toolbar>

@@ -17,6 +17,7 @@ import clsx from "clsx";
 import PropTypes from "prop-types";
 import { default as React } from "react";
 import { useSelector } from "react-redux";
+import logo_footer from "../../images/logo_footer.png";
 import logo from "../../images/logo_satsi.png";
 import "./AppBar.scss";
 import UserAccountMenu from "./UserAccountMenu";
@@ -115,7 +116,7 @@ const AppBarComponent = (props) => {
 			<List>
 				<div className='logo'>
 					<Button onClick={toggleDrawer(anchor, false)} href='/'>
-						<img src={logo} alt='logo_navbar' />
+						<img src={logo} alt='logo_navbar' style={{ width: "100px" }} />
 					</Button>
 				</div>
 				<div className='closeButton'>
@@ -165,7 +166,11 @@ const AppBarComponent = (props) => {
 									<div className='container-fluid'>
 										<ul>
 											<Button href='/'>
-												<img src={logo} alt='logoSatsi' />
+												<img
+													src={logo_footer}
+													alt='logoSatsi'
+													style={{ width: "60px" }}
+												/>
 											</Button>
 											{listNav.map((navItem) => (
 												<li key={navItem.id}>
@@ -201,11 +206,6 @@ const AppBarComponent = (props) => {
 								<Toolbar>
 									<ul>
 										<li>
-											<Button href='/'>
-												<img src={logo} alt='logo' />
-											</Button>
-										</li>
-										<li>
 											{["left"].map((anchor) => (
 												<React.Fragment key={anchor}>
 													<Button onClick={toggleDrawer(anchor, true)}>
@@ -221,6 +221,15 @@ const AppBarComponent = (props) => {
 													</Drawer>
 												</React.Fragment>
 											))}
+										</li>
+										<li>
+											<Button href='/'>
+												<img
+													src={logo_footer}
+													alt='logo'
+													style={{ width: "50px" }}
+												/>
+											</Button>
 										</li>
 									</ul>
 								</Toolbar>

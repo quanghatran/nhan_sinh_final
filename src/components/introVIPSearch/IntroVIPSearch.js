@@ -60,7 +60,7 @@ const IntroVIPSearch = () => {
 			<ul className='listValue'>
 				{listValue.map((value) => (
 					<li key={value.id}>
-						<Typography variant='body1' component='p'>
+						<p style={{ fontSize: "1.2rem", margin: "0px" }}>
 							<CheckIcon
 								style={{
 									paddingTop: "5px",
@@ -69,7 +69,7 @@ const IntroVIPSearch = () => {
 								}}
 							/>{" "}
 							{value.content}
-						</Typography>
+						</p>
 					</li>
 				))}
 			</ul>

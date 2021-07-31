@@ -45,7 +45,7 @@ const DirectMeetInfo = () => {
 						<ul className='listValueDirectMeet'>
 							{listValueDirectMeet.map((value) => (
 								<li key={value.id}>
-									<Typography variant='body1' component='p'>
+									<p style={{ fontSize: "1.2rem", margin: "0px" }}>
 										<CheckIcon
 											style={{
 												paddingTop: "5px",
@@ -54,7 +54,7 @@ const DirectMeetInfo = () => {
 											}}
 										/>{" "}
 										{value.content}
-									</Typography>
+									</p>
 								</li>
 							))}
 						</ul>
@@ -63,7 +63,7 @@ const DirectMeetInfo = () => {
 						<Typography variant='h5' component='h3' className=''>
 							THÔNG TIN CHUYỂN KHOẢN THANH TOÁN
 						</Typography>
-						<div className='infoAccount'>
+						<div className='infoAccount' style={{ fontSize: "1.2rem" }}>
 							<p>Ngân hàng VietcomBank</p>
 							<p>Số tài khoản: 1020603988</p>
 							<p>Chủ tài khoản: Nguyễn Văn Thanh</p>
