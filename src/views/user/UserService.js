@@ -189,7 +189,7 @@ const UserService = (props) => {
 							{pending && (
 								<div>
 									<CircularProgress color='secondary' />
-									<p>Vui lòng chờ trong chốc lát</p>
+									<p>Đang tra cứu - vui lòng chờ trong giây lát</p>
 								</div>
 							)}
 
