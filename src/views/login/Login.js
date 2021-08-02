@@ -110,10 +110,24 @@ const Login = () => {
 				<div className='container-fluid'>
 					<div className='contentLogin'>
 						<Typography variant='h4' component='h1' align='center'>
-							<Button href='/'>
-								<img src={logo} alt='logo' />
-							</Button>
-							MINH TRIẾT NHÂN SINH
+							<Grid container>
+								<Grid item xs={12}>
+									{" "}
+									<Button href='/'>
+										<img src={logo} alt='logo' />
+									</Button>
+								</Grid>
+								<Grid item xs={12}>
+									<Typography
+										variant='h5'
+										component='h1'
+										align='center'
+										style={{ margin: "1rem 0" }}
+									>
+										MINH TRIẾT NHÂN SINH
+									</Typography>
+								</Grid>
+							</Grid>
 						</Typography>
 
 						<div className='loginFiled'>

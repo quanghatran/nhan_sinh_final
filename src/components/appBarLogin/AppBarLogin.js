@@ -102,7 +102,11 @@ const AppBarLogin = (props) => {
 			<List>
 				<div className='logo'>
 					<Button onClick={toggleDrawer(anchor, false)} href='/'>
-						<img src={logo} alt='logo_navbar' style={{ width: "100px" }} />
+						<img
+							src={logo_footer}
+							alt='logo_navbar'
+							style={{ width: "100px" }}
+						/>
 					</Button>
 				</div>
 				<div className='closeButton'>
