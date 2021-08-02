@@ -133,7 +133,7 @@ const Login = () => {
 											size='medium'
 											variant='outlined'
 											margin='normal'
-											type='text'
+											type='number'
 											label='Số điện thoại đăng nhập'
 											className={clsx(classes.textField)}
 											required
@@ -182,13 +182,13 @@ const Login = () => {
 											/>
 										</FormControl>
 									</Grid>
-									<Grid item>
+									{/* <Grid item>
 										<div className='navigateBlock'>
 											<a className=' forgotPassword' href='#'>
 												Quên mật khẩu?
 											</a>
 										</div>
-									</Grid>
+									</Grid> */}
 								</Grid>
 
 								<Button
@@ -196,6 +196,7 @@ const Login = () => {
 									type='submit'
 									color='secondary'
 									variant='contained'
+									style={{ marginTop: "2rem" }}
 								>
 									đăng nhập
 								</Button>

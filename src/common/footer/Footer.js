@@ -45,13 +45,13 @@ const Footer = () => {
 				<div className=' container-fluid'>
 					<div className='block'>
 						<Grid container spacing={3}>
-							<Grid item xs={12} md={4} className='logoFooter'>
+							<Grid item xs={12} sm={4} md={4} className='logoFooter'>
 								<div className='logo'>
 									<img src={logo} alt='logo_footer' />
 								</div>
 								<h3 className='sloganTitle'>LỰA CHỌN VÌ TƯƠNG LAI</h3>
 							</Grid>
-							<Grid item xs={12} md={4} className='listContactWrapper'>
+							<Grid item xs={12} sm={4} md={4} className='listContactWrapper'>
 								<ul className='listContact'>
 									{listContact.map((contact) => (
 										<li key={contact.id}>
@@ -64,7 +64,7 @@ const Footer = () => {
 									))}
 								</ul>
 							</Grid>
-							<Grid item xs={12} md={4}>
+							<Grid item xs={12} sm={4} md={4}>
 								<div>
 									<iframe
 										title='Satsi location'

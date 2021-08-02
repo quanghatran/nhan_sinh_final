@@ -63,14 +63,13 @@ const DemoService = () => {
 
 						localStorage.setItem("idFreeSearch", idFreeSearch);
 						history.push("/tra-cuu");
-						// lay ket qua data._id -> dispatch len store, luu vao redux, qua trang /tra-cuu thi get data theo id da duoc luu
 					})
 					.catch(function (error) {
-						setName("");
-						setEmail("");
-						setBirthDay("");
-						setPhoneNumber("");
-						setAddress("");
+						// setName("");
+						// setEmail("");
+						// setBirthDay("");
+						// setPhoneNumber("");
+						// setAddress("");
 					});
 			} catch (error) {
 				console.log("failed to fetch product list: ", error);
@@ -140,7 +139,7 @@ const DemoService = () => {
 											variant='outlined'
 											color='primary'
 											name='phoneNumber'
-											type='text'
+											type='number'
 											required={true}
 											size='medium'
 											value={phoneNumber}
@@ -174,7 +173,6 @@ const DemoService = () => {
 										type='submit'
 										endIcon={<SearchIcon />}
 										className={classes.mtBtn}
-										// href='/tra-cuu'
 									>
 										Tra Cứu Miễn Phí
 									</Button>

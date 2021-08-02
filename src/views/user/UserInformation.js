@@ -37,6 +37,8 @@ const UserInformation = () => {
 	const [newPassword, setNewPassword] = useState("");
 	const [confirmPassword, setConfirmPassword] = useState("");
 
+	const [userNameChanged, setUserNameChanged] = useState(false);
+
 	const fetchUserProfilers = React.useCallback(async () => {
 		const request = await userAPI.getUserProfile();
 		const action = getUserProfile(request.data);
@@ -75,10 +77,11 @@ const UserInformation = () => {
 		try {
 			userAPI.patchUserName(data);
 			setIsSuccess(true);
-
+			setUserNameChanged(true);
 			setTimeout(() => {
 				setIsSuccess(false);
 				setIsOpenInfo(false);
+				setUserNameChanged(false);
 			}, 1500);
 		} catch (err) {
 			setIsError(true);
@@ -154,7 +157,7 @@ const UserInformation = () => {
 		};
 
 		fetchGetUserProfile();
-	}, []);
+	}, [userNameChanged]);
 
 	const handleOpenDepositInfo = () => {
 		setOpenDialog(true);

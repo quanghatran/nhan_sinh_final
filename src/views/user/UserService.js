@@ -28,8 +28,10 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-const UserService = () => {
+const UserService = (props) => {
 	const classes = useStyles();
+
+	const { isSlotVipChanged, onSlotVipChange } = props;
 
 	const date = new Date();
 
@@ -48,6 +50,8 @@ const UserService = () => {
 
 	const [pending, setPending] = useState(false);
 
+	var slotVipChanged = isSlotVipChanged;
+
 	const handleSubmit = (e) => {
 		e.preventDefault();
 
@@ -63,8 +67,16 @@ const UserService = () => {
 			setPending(true);
 			try {
 				await vipServiceApi.postVipService(dataFormCheck);
+
+				onSlotVipChange();
+
 				setPending(false);
 				setIsOpenSuccess(true);
+				setName("");
+				setEmail("");
+				setBirthDay("");
+				setPhoneNumber("");
+				setAddress("");
 			} catch (error) {
 				setPending(false);
 				setIsOpenFailed(true);
@@ -87,7 +99,7 @@ const UserService = () => {
 		};
 
 		fetchGetUserProfile();
-	}, []);
+	}, [isSlotVipChanged]);
 
 	const handleOnClose = () => {
 		setIsOpenSuccess(false);
@@ -228,7 +240,7 @@ const UserService = () => {
 											variant='outlined'
 											color='primary'
 											name='phoneNumber'
-											type='text'
+											type='number'
 											required={true}
 											value={phoneNumber}
 											onChange={(e) => setPhoneNumber(e.target.value)}

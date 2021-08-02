@@ -18,7 +18,9 @@ const listContent = [
 	},
 ];
 
-const MeaningNumerology = () => {
+const MeaningNumerology = (props) => {
+	const { isSlotVipChanged, onSlotVipChange } = props;
+
 	const [dataServices, setNotes] = useState([]);
 
 	const [onSuccess, setOnSuccess] = useState(false);
@@ -26,6 +28,10 @@ const MeaningNumerology = () => {
 
 	const [clickedId, setClickedId] = useState("");
 	const [openDialog, setOpenDialog] = useState(false);
+
+	// const [slotVipChanged, setSlotVipChanged] = useState(isSlotVipChanged);
+
+	var slotVipChanged = isSlotVipChanged;
 
 	// get list services
 	useEffect(() => {
@@ -50,8 +56,8 @@ const MeaningNumerology = () => {
 		const fetchBuyService = async () => {
 			try {
 				await servicesApi.postUserBuyService(id);
-
 				setOnSuccess(true);
+				onSlotVipChange();
 				setTimeout(() => {
 					setOpenDialog(false);
 					setOnSuccess(false);

@@ -131,6 +131,18 @@ const MeaningNumbers = () => {
 		setExpanded(newExpanded ? panel : false);
 	};
 
+	// const handleKeyPress = (event) => {
+	// 	if (event.key === "Enter") {
+	// 		console.log("enter press here! ");
+	// 	}
+	// };
+
+	const handleKeyPress = (event) => {
+		if (event.key === "KeyDown") {
+			console.log("enter press here! ");
+		}
+	};
+
 	return (
 		<div id='meaningsBlock' className='meaningsBlock'>
 			<div className='block meaningsBlockWrapper'>
@@ -155,6 +167,7 @@ const MeaningNumbers = () => {
 												onClick={() =>
 													handleClick(meaning.id, meaning.contentRendered)
 												}
+												onKeyPress={handleKeyPress}
 											>
 												<Typography variant='body1' style={{ color: "#fff" }}>
 													{meaning.nameBtn}

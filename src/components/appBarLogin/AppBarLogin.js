@@ -47,13 +47,6 @@ const listNav = [
 		variant: "text",
 	},
 	{
-		id: 3,
-		href: "#meaningNumerology",
-		name: "Dịch vụ",
-		color: "default",
-		variant: "text",
-	},
-	{
 		id: 4,
 		href: "#contact",
 		name: "liên hệ",

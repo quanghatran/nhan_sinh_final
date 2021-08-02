@@ -55,10 +55,13 @@ const SignIn = () => {
 	const [email, setEmail] = useState("");
 	const [phone, setPhone] = useState("");
 	const [password, setPassword] = useState("");
+	const [passwordAgain, setPasswordAgain] = useState("");
 	const [showPassword, setShowPassword] = useState(false);
+	const [showPasswordAgain, setShowPasswordAgain] = useState(false);
 
 	const [success, setSuccess] = useState(false);
 	const [error, setError] = useState(false);
+	const [errorPasswordAgain, setErrorPasswordAgain] = useState(false);
 
 	const history = useHistory();
 
@@ -66,7 +69,15 @@ const SignIn = () => {
 		setShowPassword(!showPassword);
 	};
 
+	const handleClickShowPasswordAgain = () => {
+		setShowPasswordAgain(!showPasswordAgain);
+	};
+
 	const handleMouseDownPassword = (event) => {
+		event.preventDefault();
+	};
+
+	const handleMouseDownPasswordAgain = (event) => {
 		event.preventDefault();
 	};
 
@@ -80,35 +91,36 @@ const SignIn = () => {
 			password: password,
 		};
 
-		const fetchSignIn = () => {
-			try {
-				signInServiceApi
-					.postSignIn(dataSignIn)
-					.then(function (response) {
-						setSuccess(true);
+		if (password === passwordAgain) {
+			const fetchSignIn = () => {
+				try {
+					signInServiceApi
+						.postSignIn(dataSignIn)
+						.then(function (response) {
+							setSuccess(true);
+							setTimeout(() => {
+								setSuccess(false);
+								history.push("/dang-nhap");
+							}, 1500);
+						})
+						.catch(function (error) {
+							setError(true);
+							setTimeout(() => {
+								setError(false);
+							}, 1500);
+						});
+				} catch (error) {
+					console.log("failed to fetch product list: ", error);
+				}
+			};
+			fetchSignIn();
+		} else {
+			setErrorPasswordAgain(true);
 
-						setTimeout(() => {
-							setSuccess(false);
-						}, 1500);
-						history.push("/dang-nhap");
-					})
-					.catch(function (error) {
-						setError(true);
-
-						setTimeout(() => {
-							setError(false);
-							setName("");
-							setEmail("");
-							setPhone("");
-							setPassword("");
-						}, 1500);
-					});
-			} catch (error) {
-				console.log("failed to fetch product list: ", error);
-			}
-		};
-
-		fetchSignIn();
+			setTimeout(() => {
+				setErrorPasswordAgain(false);
+			}, 1500);
+		}
 	};
 
 	return (
@@ -141,6 +153,15 @@ const SignIn = () => {
 										style={{ marginTop: "1rem", justifyContent: "center" }}
 									>
 										Đăng ký không thành công
+									</Alert>
+								)}
+								{errorPasswordAgain && (
+									<Alert
+										variant='filled'
+										severity='error'
+										style={{ marginTop: "1rem", justifyContent: "center" }}
+									>
+										Nhập lại mật khẩu không chính xác
 									</Alert>
 								)}
 								<Grid container direction='column'>
@@ -183,14 +204,13 @@ const SignIn = () => {
 											size='medium'
 											variant='outlined'
 											margin='normal'
-											type='text'
+											type='number'
 											label='Số điện thoại đăng nhập'
 											className={clsx(classes.textField)}
 											required
 											variant='outlined'
 											value={phone}
 											onChange={(e) => setPhone(e.target.value)}
-											// id='custom-css-outlined-input'
 											color='secondary'
 										/>
 									</Grid>
@@ -220,6 +240,43 @@ const SignIn = () => {
 															edge='end'
 														>
 															{showPassword ? (
+																<Visibility />
+															) : (
+																<VisibilityOff />
+															)}
+														</IconButton>
+													</InputAdornment>
+												}
+												labelWidth={70}
+											/>
+										</FormControl>
+									</Grid>
+
+									<Grid item>
+										<FormControl
+											className={clsx(classes.textField, classes.spaceTop)}
+											variant='outlined'
+											size='medium'
+											color='secondary'
+										>
+											<InputLabel htmlFor='outlined-adornment-password'>
+												Nhập lại mật khẩu
+											</InputLabel>
+											<OutlinedInput
+												id='outlined-adornment-password'
+												type={showPasswordAgain ? "text" : "password"}
+												value={passwordAgain}
+												onChange={(e) => setPasswordAgain(e.target.value)}
+												required
+												endAdornment={
+													<InputAdornment position='end'>
+														<IconButton
+															aria-label='toggle password visibility'
+															onClick={handleClickShowPasswordAgain}
+															onMouseDown={handleMouseDownPasswordAgain}
+															edge='end'
+														>
+															{showPasswordAgain ? (
 																<Visibility />
 															) : (
 																<VisibilityOff />
