@@ -12,7 +12,7 @@ function PaperComponent(props) {
 }
 
 export default function ModalConfirm(props) {
-	const { isOpen, onClose, contentDialog, modalTitle } = props;
+	const { linkreport, succsess, isOpen, onClose, contentDialog, modalTitle } = props;
 
 	return (
 		<Dialog
@@ -33,6 +33,16 @@ export default function ModalConfirm(props) {
 			</DialogContent>
 
 			<DialogActions style={{ justifyContent: "center" }}>
+				{succsess && 
+					<Button 
+						color="primary" 
+						variant='contained'
+						href={linkreport}
+						target='_blank'
+					>
+						Xem chi tiết
+					</Button>
+				}
 				<Button onClick={onClose} color='secondary' variant='contained'>
 					Đóng
 				</Button>

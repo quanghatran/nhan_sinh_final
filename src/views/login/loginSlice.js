@@ -12,6 +12,7 @@ const login = createSlice({
 		},
 	},
 });
+
 const { reducer, actions } = login;
 export const { addUser, updateUser } = actions;
 export default reducer;
