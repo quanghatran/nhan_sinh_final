@@ -1,16 +1,40 @@
 import React from "react";
+import { makeStyles } from '@material-ui/core/styles';
 import "swiper/components/effect-fade/effect-fade.min.css";
 import "swiper/components/navigation/navigation.min.css";
 import "swiper/components/pagination/pagination.min.css";
 import SwiperCore, { EffectFade, Navigation, Pagination } from "swiper/core";
 import { Swiper, SwiperSlide } from "swiper/react";
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import "swiper/swiper.min.css";
 import banner1 from "../../../images/banner1nhap.png";
 import banner2 from "../../../images/image7.jpg";
 import "./Banners.scss";
 
 SwiperCore.use([EffectFade, Navigation, Pagination]);
+
+const useStyles = makeStyles((theme) => ({
+	iconControl: {
+		fontSize:"28px",
+        color:"#fff",
+		zIndex:10
+	},
+	[theme.breakpoints.down('760')]: {
+		iconControl:{
+			fontSize:"22px"
+		}
+	},
+    [theme.breakpoints.down('600')]: {
+		iconControl:{
+			fontSize:"18px"
+		}
+	},
+}));
+
 const Banners = () => {
+	const classes = useStyles();
+	
 	const listBanner = [
 		{
 			id: 1,
@@ -37,9 +61,12 @@ const Banners = () => {
 				}}
 				className='mySwiper'
 				loop={true}
+				navigation={{
+					nextEl: '.next',
+				}}
 			>
 				{listBanner.map((banner) => (
-					<SwiperSlide key={banner.id}>
+					<SwiperSlide className="next" key={banner.id}>
 						<div
 							id={banner.name}
 							className='bannerWrapper'
@@ -56,6 +83,8 @@ const Banners = () => {
 									</div>
 								</div>
 							</div>
+							<div className="btn_prev" ><ChevronLeftIcon className={classes.iconControl}/></div>
+                			<div className="btn_next" ><ChevronRightIcon className={classes.iconControl}/></div>
 						</div>
 					</SwiperSlide>
 				))}

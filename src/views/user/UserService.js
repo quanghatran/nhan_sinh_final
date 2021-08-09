@@ -35,6 +35,8 @@ const UserService = (props) => {
 
 	const date = new Date();
 
+	const [linkReport, setLinkReport] = useState('');
+
 	const [name, setName] = useState("");
 	const [email, setEmail] = useState("");
 	const [birthDay, setBirthDay] = useState(date);
@@ -66,8 +68,8 @@ const UserService = (props) => {
 		const fetchDemoService = async () => {
 			setPending(true);
 			try {
-				await vipServiceApi.postVipService(dataFormCheck);
-
+				const res =  await vipServiceApi.postVipService(dataFormCheck);
+				setLinkReport(res.data.linkReportFull)
 				onSlotVipChange();
 
 				setPending(false);
@@ -280,7 +282,9 @@ const UserService = (props) => {
 								</Button>
 							</form>
 							<ModalConfirm
+								linkreport = {linkReport}
 								isOpen={isOpenSuccess}
+								succsess = {true}
 								onClose={handleOnClose}
 								contentDialog={<ContentDialogSuccess email={email} />}
 								modalTitle={

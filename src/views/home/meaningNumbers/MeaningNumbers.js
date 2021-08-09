@@ -1,24 +1,38 @@
+import React, { useState } from "react";
 import { Button, Grid, Hidden, Typography } from "@material-ui/core";
 import Accordion from "@material-ui/core/Accordion";
 import AccordionDetails from "@material-ui/core/AccordionDetails";
 import AccordionSummary from "@material-ui/core/AccordionSummary";
 import { makeStyles } from "@material-ui/core/styles";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import React, { useState } from "react";
+import PropTypes from "prop-types";
+import Box from "@material-ui/core/Box";
+import Tabs from "@material-ui/core/Tabs";
+import Tab from "@material-ui/core/Tab";
+import parse from 'html-react-parser';
+
 import TitleSection from "../../../components/titleSection/TitleSection";
 import "./MeaningNumbers.scss";
 
 const useStyles = makeStyles((theme) => ({
 	root: {
+		width:"100%",
 		"& .MuiGrid-root": {
 			margin: "8px 0",
 		},
 	},
-
 	heading: {
 		fontSize: theme.typography.pxToRem(15),
 		fontWeight: theme.typography.fontWeightRegular,
 	},
+	tabs: {
+		width:"100%"
+	},
+	tab:{
+		maxWidth:"100%",
+		backgroundColor:"#f50057",
+		color:"#fff"
+	}
 }));
 
 const listMeaning = [
@@ -112,35 +126,50 @@ const listMeaning = [
 	},
 ];
 
+function TabPanel(props) {
+	const { children, value, index, ...other } = props;
+
+	return (
+		<div
+		role="tabpanel"
+		hidden={value !== index}
+		id={`vertical-tabpanel-${index}`}
+		aria-labelledby={`vertical-tab-${index}`}
+		{...other}
+		>
+		{value === index && (
+			<Box p={3}>
+			<Typography>{children}</Typography>
+			</Box>
+		)}
+		</div>
+	);
+}
+
+TabPanel.propTypes = {
+	children: PropTypes.node,
+	index: PropTypes.any.isRequired,
+	value: PropTypes.any.isRequired
+};
+  
+function a11yProps(index) {
+	return {
+		id: `vertical-tab-${index}`,
+		"aria-controls": `vertical-tabpanel-${index}`
+	};
+}
+
 const MeaningNumbers = () => {
 	const classes = useStyles();
-
-	const [contentRight, setContentRight] = useState(
-		"<p>Độc lập, mạnh mẽ, tự tin, quyết t&acirc;m chiến thắng mọi &ldquo;cuộc chơi&rdquo; l&agrave; những t&iacute;nh từ d&agrave;nh cho bạn. Người kh&aacute;c nh&igrave;n bạn với sự ngưỡng mộ về &yacute; ch&iacute; ki&ecirc;n định, ki&ecirc;n nhẫn đ&aacute;ng nể khi bạn đ&atilde; bắt tay thực hiện mục ti&ecirc;u. T&agrave;i thao lược lẫn sắp xếp, tổ chức chu to&agrave;n lu&ocirc;n l&agrave; nguy&ecirc;n liệu khiến cho bức tranh cuộc đời bạn nổi bật. Bạn l&agrave; ứng cử vi&ecirc;n s&aacute;ng gi&aacute; trong m&ocirc;i trường tập thể v&igrave; kh&iacute; chất ti&ecirc;n phong, liều lĩnh, can đảm. Bản năng ưa l&atilde;nh đạo n&ecirc;n biến ước mơ th&agrave;nh hiện thực h&oacute;a ở mọi độ tuổi hay ho&agrave;n cảnh. Bạn v&ocirc; thức hay hữu &yacute; mang d&ograve;ng năng lượng truyền cảm hứng v&agrave; g&acirc;y ảnh hưởng l&ecirc;n những người xung quanh bạn. Với những đặc điểm nổi trội bạn n&ecirc;n lắng nghe nhiều hơn, đ&ocirc;i khi quyết đo&aacute;n v&agrave; độc lập, giảm bớt &aacute;p lực l&ecirc;n những người xung quanh bạn bạn sẽ l&agrave; người l&atilde;nh đạo đủ t&acirc;m v&agrave; tầm m&agrave; mọi người nể phục v&agrave; ngưỡng mộ.</p> <p>Bạn sẽ ph&aacute;t huy hết nội lực v&agrave; sức mạnh b&ecirc;n trong khi bạn được trở th&agrave;nh người vượt l&ecirc;n ph&iacute;a trước &ldquo;cầm l&aacute;i&rdquo; cho đội ngũ của m&igrave;nh.</p>"
-	);
-	const [clickedID, setClickedID] = useState(1);
-
-	function handleClick(id, contentRendered) {
-		setContentRight(contentRendered);
-		setClickedID(id);
-	}
-
+	const [value, setValue] = useState(0);
 	const [expanded, setExpanded] = React.useState("panel1");
-
-	const handleChange = (panel) => (event, newExpanded) => {
-		setExpanded(newExpanded ? panel : false);
+	
+	const handleChange = (event, newValue) => {
+		setValue(newValue);
 	};
 
-	// const handleKeyPress = (event) => {
-	// 	if (event.key === "Enter") {
-	// 		console.log("enter press here! ");
-	// 	}
-	// };
-
-	const handleKeyPress = (event) => {
-		if (event.key === "KeyDown") {
-			console.log("enter press here! ");
-		}
+	const handleChangeMobile = (panel) => (event, newExpanded) => {
+		setExpanded(newExpanded ? panel : false);
 	};
 
 	return (
@@ -153,34 +182,38 @@ const MeaningNumbers = () => {
 						<Hidden smDown>
 							<Grid container spacing={3}>
 								<Grid container item xs={6} className={classes.root}>
-									{listMeaning.map((meaning) => (
-										<Grid item xs={12} key={meaning.id}>
-											<Button
-												id={meaning.id}
-												fullWidth
-												variant={
-													meaning.id === clickedID ? "contained" : "text"
-												}
-												size='large'
-												color='secondary'
-												className='buttonMeaning'
-												onClick={() =>
-													handleClick(meaning.id, meaning.contentRendered)
-												}
-												onKeyPress={handleKeyPress}
-											>
-												<Typography variant='body1' style={{ color: "#fff" }}>
-													{meaning.nameBtn}
-												</Typography>
-											</Button>
-										</Grid>
-									))}
+									<Tabs
+										orientation="vertical"
+										variant="scrollable"
+										value={value}
+										onChange={handleChange}
+										aria-label="Vertical tabs example"
+										className={classes.tabs}
+									>
+										{listMeaning.map((meaning, index) => {
+											if(value === index){
+												return (
+													<Tab
+														key={index} 
+														label={meaning.nameBtn} 
+														{...a11yProps(index)} 
+														className={classes.tab}
+													/>
+												)
+											}
+											return (
+												<Tab
+													key={index} 
+													label={meaning.nameBtn} 
+													{...a11yProps(index)} 
+													style={{maxWidth:"100%"}}
+												/>
+											)
+										})}
+      								</Tabs>
 								</Grid>
 								<Grid item xs={6} style={{ marginTop: "8px" }}>
-									<div
-										className='meaningRight'
-										dangerouslySetInnerHTML={{ __html: contentRight }}
-									></div>
+									<div className="meaningRight">{parse(listMeaning[value].contentRendered)}</div>
 								</Grid>
 							</Grid>
 						</Hidden>
@@ -188,7 +221,7 @@ const MeaningNumbers = () => {
 							{listMeaning.map((meaning, index) => (
 								<Accordion
 									expanded={expanded === meaning.panel}
-									onChange={handleChange(`${meaning.panel}`)}
+									onChange={handleChangeMobile(`${meaning.panel}`)}
 									key={index}
 								>
 									<AccordionSummary

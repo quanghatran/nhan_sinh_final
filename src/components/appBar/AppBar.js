@@ -39,13 +39,13 @@ const listNav = [
 		color: "default",
 		variant: "text",
 	},
-	{
-		id: 2,
-		href: "/xem-online",
-		name: "Tra cứu",
-		color: "default",
-		variant: "text",
-	},
+	// {
+	// 	id: 2,
+	// 	href: "/xem-online",
+	// 	name: "Tra cứu",
+	// 	color: "default",
+	// 	variant: "text",
+	// },
 	{
 		id: 3,
 		href: "#meaningsBlock",
@@ -56,7 +56,7 @@ const listNav = [
 	{
 		id: 4,
 		href: "#demoServiceBlock",
-		name: "dịch vụ",
+		name: "dịch vụ tra cứu",
 		color: "default",
 		variant: "text",
 	},

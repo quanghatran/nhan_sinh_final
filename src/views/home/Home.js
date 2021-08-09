@@ -5,7 +5,6 @@ import Banners from "./banners/Banners";
 import DemoService from "./demoService/DemoService";
 import DirectMeetInfo from "./directMeetInfo/DirectMeetInfo";
 import MeaningNumbers from "./meaningNumbers/MeaningNumbers";
-// import Testimonial from "./testimonials/Testimonial";
 
 const AppHome = () => {
 	return (
@@ -13,7 +12,6 @@ const AppHome = () => {
 			<Header />
 			<Banners />
 			<DemoService />
-			{/* <Testimonial /> */}
 			<MeaningNumbers />
 			<DirectMeetInfo />
 			<Footer />
