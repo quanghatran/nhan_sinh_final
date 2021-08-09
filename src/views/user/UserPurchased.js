@@ -104,8 +104,7 @@ const UserPurchased = () => {
 			<HeaderLogin />
 			<div
 				className='UserSearchHistory__container'
-				style={{ marginBottom: "3rem" }}
-			>
+				style={{ marginBottom: "3rem" }}>
 				<div className='container-fluid'>
 					<TitleSection titleHeader='dịch vụ đã mua' />
 					<div className='UserPurchased__content'>
@@ -118,8 +117,7 @@ const UserPurchased = () => {
 												style={{
 													backgroundColor: "#3f51b5",
 													textTransform: "upperCase",
-												}}
-											>
+												}}>
 												<TableRow>
 													<TableCell style={{ color: "#fff" }}>
 														Tên dịch vụ
@@ -139,90 +137,89 @@ const UserPurchased = () => {
 												</TableRow>
 											</TableHead>
 											<TableBody>
-												{userPurchased.map((data) => (
-													<TableRow key={data._id}>
-														<TableCell>
-															<Typography>
-																<span
-																	style={{
-																		textTransform: "upperCase",
-																		fontWeight: "bold",
-																		marginRight: "0.5rem",
-																	}}
-																>
-																	{data.service == null ? (
-																		<div>NULL</div>
-																	) : (
-																		data.service.title
-																	)}
-																</span>
-															</Typography>
-														</TableCell>
-														<TableCell>
-															{moment(data.createdAt).format("MM/DD/YYYY")}
-														</TableCell>
-														<TableCell>
-															{" "}
-															{data.service == null ? (
-																<div>NULL</div>
-															) : (
-																data.service.price
-															)}
-														</TableCell>
-														<TableCell style={{ fontWeight: "bold" }}>
-															{data.service == null ? (
-																<div>NULL</div>
-															) : (
-																data.service.quantity
-															)}
-														</TableCell>
-
-														<TableCell>
-															<Tooltip title='Mua lại dịch vụ này'>
+												{userPurchased
+													.filter((data) => data.service !== null)
+													.map((data) => (
+														<TableRow key={data._id}>
+															<TableCell>
+																<Typography>
+																	<span
+																		style={{
+																			textTransform: "upperCase",
+																			fontWeight: "bold",
+																			marginRight: "0.5rem",
+																		}}>
+																		{data.service == null ? (
+																			<div>NULL</div>
+																		) : (
+																			data.service.title
+																		)}
+																	</span>
+																</Typography>
+															</TableCell>
+															<TableCell>
+																{moment(data.createdAt).format("MM/DD/YYYY")}
+															</TableCell>
+															<TableCell>
+																{" "}
 																{data.service == null ? (
-																	<IconButton
-																		color='secondary'
-																		aria-label='add an alarm'
-																		disabled
-																	>
-																		<AddShoppingCartIcon />
-																	</IconButton>
+																	<div>NULL</div>
 																) : (
-																	<IconButton
-																		color='secondary'
-																		aria-label='add an alarm'
-																		onClick={(e) => {
-																			handleOpenDialog(
-																				data._id,
-																				data.service._id
-																			);
-																		}}
-																	>
-																		<AddShoppingCartIcon />
-																	</IconButton>
+																	data.service.price
 																)}
-															</Tooltip>
-														</TableCell>
-														{data.service == null ? (
-															""
-														) : clickedIdService === data.service._id &&
-														  clickedIdBought === data._id ? (
-															<ModalConfirm
-																isOpen={openDialog}
-																onClose={handleCloseDialog}
-																contentDialog='Xác nhận mua dịch vụ này ?'
-																onClickConfirm={(e) => {
-																	handleClickConfirm(data.service._id);
-																}}
-																id={data._id}
-																onSuccess={onSuccess}
-																onError={onError}
-															/>
-														) : (
-															""
-														)}
-													</TableRow>
-												))}
+															</TableCell>
+															<TableCell style={{ fontWeight: "bold" }}>
+																{data.service == null ? (
+																	<div>NULL</div>
+																) : (
+																	data.service.quantity
+																)}
+															</TableCell>
+
+															<TableCell>
+																<Tooltip title='Mua lại dịch vụ này'>
+																	{data.service == null ? (
+																		<IconButton
+																			color='secondary'
+																			aria-label='add an alarm'
+																			disabled>
+																			<AddShoppingCartIcon />
+																		</IconButton>
+																	) : (
+																		<IconButton
+																			color='secondary'
+																			aria-label='add an alarm'
+																			onClick={(e) => {
+																				handleOpenDialog(
+																					data._id,
+																					data.service._id
+																				);
+																			}}>
+																			<AddShoppingCartIcon />
+																		</IconButton>
+																	)}
+																</Tooltip>
+															</TableCell>
+															{data.service == null ? (
+																""
+															) : clickedIdService === data.service._id &&
+															  clickedIdBought === data._id ? (
+																<ModalConfirm
+																	isOpen={openDialog}
+																	onClose={handleCloseDialog}
+																	contentDialog='Xác nhận mua dịch vụ này ?'
+																	onClickConfirm={(e) => {
+																		handleClickConfirm(data.service._id);
+																	}}
+																	id={data._id}
+																	onSuccess={onSuccess}
+																	onError={onError}
+																/>
+															) : (
+																""
+															)}
+														</TableRow>
+													))}
 											</TableBody>
 										</Table>
 									</TableContainer>
@@ -239,8 +236,7 @@ const UserPurchased = () => {
 											color='secondary'
 											href='/xem-online'
 											size='medium'
-											endIcon={<AddShoppingCartIcon />}
-										>
+											endIcon={<AddShoppingCartIcon />}>
 											Mua dịch vụ
 										</Button>
 									</div>
