@@ -200,7 +200,7 @@ const UserInformation = () => {
 								<Typography variant='subtitle1'>
 									Số tiền còn lại :{" "}
 									<span style={{ fontSize: "1.2rem", fontWeight: "bold" }}>
-										{userInfo.money.toLocaleString('it-IT', {style: 'currency', currency: 'VND'})}
+										{userInfo.money ? userInfo.money.toLocaleString('it-IT', {style: 'currency', currency: 'VND'}) : ''}
 									</span>
 									<Button
 										color='secondary'
