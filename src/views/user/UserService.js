@@ -114,7 +114,7 @@ const UserService = (props) => {
 		const { email } = props;
 		return (
 			<React.Fragment>
-				<Typography component='h4' style={{ fontSize: "1.2rem" }}>
+				<Typography component='h5' style={{ fontSize: "1.2rem" }}>
 					Cảm ơn bạn đã sử dụng dịch vụ của chúng tôi
 				</Typography>
 				<p>

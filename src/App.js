@@ -8,6 +8,9 @@ const AppHome = React.lazy(() => import("./views/home/Home"));
 const Login = React.lazy(() => import("./views/login/Login"));
 const SignIn = React.lazy(() => import("./views/signIn/SignIn"));
 const Lookup = React.lazy(() => import("./views/lookup/Lookup"));
+const ForgotPassword = React.lazy(() =>
+	import("./views/forgotPassword/ForgotPassword")
+);
 const Userhome = React.lazy(() => import("./views/user/Userhome"));
 const UserInformation = React.lazy(() =>
 	import("./views/user/UserInformation")
@@ -43,24 +46,25 @@ function App() {
 						<Route exact path='/dang-nhap' component={Login}></Route>
 						<Route exact path='/dang-ky' component={SignIn}></Route>
 						<Route exact path='/tra-cuu' component={Lookup}></Route>
+						<Route
+							exact
+							path='/quen-mat-khau'
+							component={ForgotPassword}></Route>
 						<Route exact path='/xem-online' component={Userhome}></Route>
 
 						<Route
 							exact
 							path='/xem-online/thong-tin-tai-khoan'
-							component={UserInformation}
-						></Route>
+							component={UserInformation}></Route>
 						<Route
 							exact
 							path='/xem-online/lich-su-tra-cuu'
-							component={UserSearchHistory}
-						></Route>
+							component={UserSearchHistory}></Route>
 						<Route
 							exact
 							path='/xem-online/purchased'
-							component={UserPurchased}
-						></Route>
-						<Route path='*' component={NotFound} />
+							component={UserPurchased}></Route>
+						{/* <Route path='*' component={NotFound} /> */}
 					</Switch>
 					<MoveTop />
 				</BrowserRouter>

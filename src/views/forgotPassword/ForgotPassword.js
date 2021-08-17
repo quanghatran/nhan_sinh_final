@@ -16,8 +16,8 @@ import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import loginServiceApi from "../../api/loginServiceApi";
 import logo from "../../images/logo_satsi.png";
-import "./Login.scss";
-import { addUser } from "./loginSlice";
+import "./ForgotPassword.scss";
+import KeyboardBackspaceOutlinedIcon from "@material-ui/icons/KeyboardBackspaceOutlined";
 
 const useStyles = makeStyles((theme) => ({
 	textField: {
@@ -50,7 +50,7 @@ const CssTextField = withStyles({
 	},
 })(TextField);
 
-const Login = () => {
+const ForgotPassword = () => {
 	const classes = useStyles();
 	const history = useHistory();
 	const dispatch = useDispatch();
@@ -77,31 +77,31 @@ const Login = () => {
 			password: password,
 		};
 
-		const fetchLoginData = async () => {
-			try {
-				const request = await loginServiceApi.postLogin(dataSignIn);
+		// const fetchLoginData = async () => {
+		// 	try {
+		// 		const request = await loginServiceApi.postLogin(dataSignIn);
 
-				localStorage.setItem("user", JSON.stringify(request.data));
-				localStorage.setItem("userToken", request.data.token);
-				localStorage.setItem("userName", request.data.name);
+		// 		localStorage.setItem("user", JSON.stringify(request.data));
+		// 		localStorage.setItem("userToken", request.data.token);
+		// 		localStorage.setItem("userName", request.data.name);
 
-				setTimeout(() => {
-					const action = addUser(request.data);
-					dispatch(action);
+		// 		setTimeout(() => {
+		// 			const action = addUser(request.data);
+		// 			dispatch(action);
 
-					history.push("/xem-online");
-				}, 1000);
-			} catch (error) {
-				setError(true);
-				setPassword("");
+		// 			history.push("/xem-online");
+		// 		}, 1000);
+		// 	} catch (error) {
+		// 		setError(true);
+		// 		setPassword("");
 
-				setTimeout(() => {
-					setError(false);
-				}, 1500);
-			}
-		};
+		// 		setTimeout(() => {
+		// 			setError(false);
+		// 		}, 1500);
+		// 	}
+		// };
 
-		fetchLoginData();
+		// fetchLoginData();
 	};
 
 	return (
@@ -145,8 +145,8 @@ const Login = () => {
 											size='medium'
 											variant='outlined'
 											margin='normal'
-											type='number'
-											label='Số điện thoại đăng nhập'
+											type='email'
+											label='Email đã đăng ký'
 											className={clsx(classes.textField)}
 											required
 											variant='outlined'
@@ -193,31 +193,30 @@ const Login = () => {
 										</FormControl>
 									</Grid>
 								</Grid>
-								<div className='navigateBlock signInBlock'>
-									<a className='forgotPassword' href='/quen-mat-khau'>
+								{/* <div className='navigateBlock signInBlock'>
+									<a className='forgotPassword' href='/dang-ky'>
 										Quên mật khẩu?
 									</a>
-								</div>
+								</div> */}
 								<Button
 									size='large'
 									type='submit'
 									color='secondary'
-									variant='contained'>
-									đăng nhập
+									variant='contained'
+									style={{ marginTop: "2rem" }}>
+									xác nhận
 								</Button>
 								<div className='navigateBlock signInBlock'>
 									<a className='signIn' href='/dang-ky'>
 										Đăng ký tài khoản!
 									</a>
 								</div>
-								{/* <div className='navigateBlock signInBlock'>
-									<a className='signIn' href='/dang-ky'>
-										Quên mật khẩu?
-									</a>
-								</div> */}
 							</form>
-							<Button href='/' startIcon={<HomeIcon />} color='secondary'>
-								Quay Về Trang Chủ
+							<Button
+								href='/dang-nhap'
+								startIcon={<KeyboardBackspaceOutlinedIcon />}
+								color='secondary'>
+								Quay Về Trang đăng nhập
 							</Button>
 						</div>
 					</div>
@@ -227,4 +226,4 @@ const Login = () => {
 	);
 };
 
-export default Login;
+export default ForgotPassword;

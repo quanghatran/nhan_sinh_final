@@ -69,8 +69,7 @@ export default function UserAccountMenu(props) {
 				aria-haspopup='true'
 				color='primary'
 				onClick={handleClick}
-				startIcon={<AccountCircleIcon />}
-			>
+				startIcon={<AccountCircleIcon />}>
 				{userName}
 			</Button>
 			<StyledMenu
@@ -78,8 +77,7 @@ export default function UserAccountMenu(props) {
 				anchorEl={anchorEl}
 				keepMounted
 				open={Boolean(anchorEl)}
-				onClose={handleClose}
-			>
+				onClose={handleClose}>
 				<StyledMenuItem>
 					<ListItemIcon>
 						<SettingsIcon fontSize='small' />
