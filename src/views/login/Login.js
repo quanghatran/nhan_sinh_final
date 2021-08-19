@@ -126,6 +126,14 @@ const Login = () => {
 										MINH TRIẾT NHÂN SINH
 									</Typography>
 								</Grid>
+								<Grid item xs={12}>
+									<Typography
+										variant='subtitle1'
+										align='center'
+										style={{ fontStyle: "italic" }}>
+										Đăng nhập
+									</Typography>
+								</Grid>
 							</Grid>
 						</Typography>
 
@@ -149,7 +157,6 @@ const Login = () => {
 											label='Số điện thoại đăng nhập'
 											className={clsx(classes.textField)}
 											required
-											variant='outlined'
 											value={phone}
 											onChange={(e) => setPhone(e.target.value)}
 											color='secondary'
@@ -194,8 +201,17 @@ const Login = () => {
 									</Grid>
 								</Grid>
 								<div className='navigateBlock signInBlock'>
-									<a className='forgotPassword' href='/quen-mat-khau'>
+									<a
+										className='forgotPassword'
+										href='/quen-mat-khau'
+										style={{ marginRight: 10 }}>
 										Quên mật khẩu?
+									</a>
+									<a
+										className='forgotPassword'
+										href='/xac-thuc-email'
+										style={{ marginLeft: 10 }}>
+										Xác thực email
 									</a>
 								</div>
 								<Button

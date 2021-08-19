@@ -35,6 +35,8 @@ const UserService = (props) => {
 
 	const date = new Date();
 
+	const [linkReport, setLinkReport] = useState("");
+
 	const [name, setName] = useState("");
 	const [email, setEmail] = useState("");
 	const [birthDay, setBirthDay] = useState(date);
@@ -50,8 +52,6 @@ const UserService = (props) => {
 
 	const [pending, setPending] = useState(false);
 
-	var slotVipChanged = isSlotVipChanged;
-
 	const handleSubmit = (e) => {
 		e.preventDefault();
 
@@ -66,8 +66,8 @@ const UserService = (props) => {
 		const fetchDemoService = async () => {
 			setPending(true);
 			try {
-				await vipServiceApi.postVipService(dataFormCheck);
-
+				const res = await vipServiceApi.postVipService(dataFormCheck);
+				setLinkReport(res.data.linkReportFull);
 				onSlotVipChange();
 
 				setPending(false);
@@ -166,8 +166,7 @@ const UserService = (props) => {
 								textAlign: "center",
 								color: "white",
 								fontSize: "1.2rem",
-							}}
-						>
+							}}>
 							Bạn có <b style={{ color: "#ff5656" }}>{userInfo.slotVip}</b> lượt
 							tra vip
 							<Button size='large' color='secondary' href='#meaningNumerology'>
@@ -178,8 +177,7 @@ const UserService = (props) => {
 						<Alert
 							variant='filled'
 							severity='error'
-							style={{ marginBottom: "1rem" }}
-						>
+							style={{ marginBottom: "1rem" }}>
 							Bạn cần đăng nhập để thực hiện dịch vụ này
 						</Alert>
 					)}
@@ -274,13 +272,14 @@ const UserService = (props) => {
 									size='large'
 									type='submit'
 									endIcon={<SearchIcon />}
-									className={classes.mtBtn}
-								>
+									className={classes.mtBtn}>
 									Tra Cứu VIP
 								</Button>
 							</form>
 							<ModalConfirm
+								linkreport={linkReport}
 								isOpen={isOpenSuccess}
+								succsess={true}
 								onClose={handleOnClose}
 								contentDialog={<ContentDialogSuccess email={email} />}
 								modalTitle={
@@ -288,8 +287,7 @@ const UserService = (props) => {
 										icon={<CheckIcon fontSize='inherit' />}
 										variant='filled'
 										severity='success'
-										style={{ justifyContent: "center" }}
-									>
+										style={{ justifyContent: "center" }}>
 										TRA CỨU DỊCH VỤ VIP THÀNH CÔNG
 									</Alert>
 								}
@@ -303,8 +301,7 @@ const UserService = (props) => {
 										icon={<CheckIcon fontSize='inherit' />}
 										variant='filled'
 										severity='error'
-										style={{ justifyContent: "center" }}
-									>
+										style={{ justifyContent: "center" }}>
 										TRA CỨU DỊCH VỤ VIP KHÔNG THÀNH CÔNG
 									</Alert>
 								}

@@ -12,20 +12,18 @@ function PaperComponent(props) {
 }
 
 export default function ModalConfirm(props) {
-	const { isOpen, onClose, contentDialog, modalTitle } = props;
+	const { linkreport, succsess, isOpen, onClose, contentDialog, modalTitle } =
+		props;
 
 	return (
 		<Dialog
 			open={isOpen}
 			onClose={onClose}
 			PaperComponent={PaperComponent}
-			aria-labelledby='draggable-dialog-title'
-		>
+			aria-labelledby='draggable-dialog-title'>
 			<DialogTitle
-				style={{ cursor: "move" }}
-				id='draggable-dialog-title'
-				style={{ textAlign: "center" }}
-			>
+				style={{ cursor: "move", textAlign: "center" }}
+				id='draggable-dialog-title'>
 				{modalTitle}
 			</DialogTitle>
 			<DialogContent>
@@ -33,6 +31,15 @@ export default function ModalConfirm(props) {
 			</DialogContent>
 
 			<DialogActions style={{ justifyContent: "center" }}>
+				{succsess && (
+					<Button
+						color='primary'
+						variant='contained'
+						href={linkreport}
+						target='_blank'>
+						Xem chi tiết
+					</Button>
+				)}
 				<Button onClick={onClose} color='secondary' variant='contained'>
 					Đóng
 				</Button>

@@ -18,7 +18,6 @@ import PropTypes from "prop-types";
 import { default as React } from "react";
 import { useSelector } from "react-redux";
 import logo_footer from "../../images/logo_footer.png";
-import logo from "../../images/logo_satsi.png";
 import "./AppBar.scss";
 import UserAccountMenu from "./UserAccountMenu";
 
@@ -39,13 +38,13 @@ const listNav = [
 		color: "default",
 		variant: "text",
 	},
-	{
-		id: 2,
-		href: "/xem-online",
-		name: "Tra cứu",
-		color: "default",
-		variant: "text",
-	},
+	// {
+	// 	id: 2,
+	// 	href: "/xem-online",
+	// 	name: "Tra cứu",
+	// 	color: "default",
+	// 	variant: "text",
+	// },
 	{
 		id: 3,
 		href: "#meaningsBlock",
@@ -56,7 +55,7 @@ const listNav = [
 	{
 		id: 4,
 		href: "#demoServiceBlock",
-		name: "dịch vụ",
+		name: "dịch vụ tra cứu",
 		color: "default",
 		variant: "text",
 	},
@@ -111,8 +110,7 @@ const AppBarComponent = (props) => {
 			className={clsx(classes.list, {
 				[classes.fullList]: anchor === "top" || anchor === "bottom",
 			})}
-			role='presentation'
-		>
+			role='presentation'>
 			<List>
 				<div className='logo'>
 					<Button onClick={toggleDrawer(anchor, false)} href='/'>
@@ -136,8 +134,7 @@ const AppBarComponent = (props) => {
 							onClick={toggleDrawer(anchor, false)}
 							color={navItem.color}
 							href={navItem.href}
-							variant={navItem.variant}
-						>
+							variant={navItem.variant}>
 							{navItem.name}
 						</Button>
 					</ListItem>
@@ -181,8 +178,7 @@ const AppBarComponent = (props) => {
 													<Button
 														color={navItem.color}
 														href={navItem.href}
-														variant={navItem.variant}
-													>
+														variant={navItem.variant}>
 														{navItem.name}
 													</Button>
 												</li>
@@ -219,8 +215,7 @@ const AppBarComponent = (props) => {
 														anchor={anchor}
 														open={state[anchor]}
 														onClose={toggleDrawer(anchor, false)}
-														style={{ width: "250px" }}
-													>
+														style={{ width: "250px" }}>
 														{list(anchor)}
 													</Drawer>
 												</React.Fragment>

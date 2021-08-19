@@ -19,7 +19,7 @@ const listContent = [
 ];
 
 const MeaningNumerology = (props) => {
-	const { isSlotVipChanged, onSlotVipChange } = props;
+	const { onSlotVipChange } = props;
 
 	const [dataServices, setNotes] = useState([]);
 
@@ -30,8 +30,6 @@ const MeaningNumerology = (props) => {
 	const [openDialog, setOpenDialog] = useState(false);
 
 	// const [slotVipChanged, setSlotVipChanged] = useState(isSlotVipChanged);
-
-	var slotVipChanged = isSlotVipChanged;
 
 	// get list services
 	useEffect(() => {
@@ -88,29 +86,25 @@ const MeaningNumerology = (props) => {
 					<div className='listService'>
 						<Grid container spacing={3} justifyContent='center'>
 							{dataServices.map((data) => (
-								<Grid item xs={12} sm={6} md={3} key={data._id}>
+								<Grid item xs={12} sm={6} md={4} key={data._id}>
 									<Card
 										style={{
 											background: "#34495e",
 											color: "#fff",
-										}}
-									>
+										}}>
 										<CardContent>
 											<Typography
 												variant='h6'
 												component='h2'
-												style={{ fontSize: "1.2rem", textAlign: "center" }}
-											>
+												style={{ fontSize: "1.2rem", textAlign: "center" }}>
 												{data.title}
 											</Typography>
 											<Typography
-												style={{ marginBottom: "1rem", marginTop: "0.7rem" }}
-											>
+												style={{ marginBottom: "1rem", marginTop: "0.7rem" }}>
 												Giá dịch vụ: <b>{data.price}</b>
 											</Typography>
 											<Typography
-												style={{ marginBottom: "1rem", marginTop: "0.7rem" }}
-											>
+												style={{ marginBottom: "1rem", marginTop: "0.7rem" }}>
 												Lượt tra VIP: <b>{data.quantity}</b>
 											</Typography>
 
@@ -122,8 +116,7 @@ const MeaningNumerology = (props) => {
 												style={{ marginTop: "0.7rem" }}
 												onClick={(e) => {
 													handleOpenDialog(data._id);
-												}}
-											>
+												}}>
 												Mua dịch vụ
 											</Button>
 										</CardContent>
@@ -151,16 +144,14 @@ const MeaningNumerology = (props) => {
 
 					<div
 						className='contentMeaningNumerology'
-						style={{ marginTop: "3rem" }}
-					>
+						style={{ marginTop: "3rem" }}>
 						<TitleSection titleHeader='Lời ngỏ' />
 						<div>
 							{listContent.map((content) => (
 								<div
 									key={content.id}
 									style={{ fontSize: "1.1rem", marginBottom: "1rem" }}
-									dangerouslySetInnerHTML={{ __html: content.content }}
-								></div>
+									dangerouslySetInnerHTML={{ __html: content.content }}></div>
 							))}
 						</div>
 					</div>

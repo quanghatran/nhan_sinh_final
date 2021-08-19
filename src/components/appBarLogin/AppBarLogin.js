@@ -17,10 +17,9 @@ import clsx from "clsx";
 import PropTypes from "prop-types";
 import { default as React } from "react";
 import { useSelector } from "react-redux";
-import logo from "../../images/logo_satsi.png";
+import logo_footer from "../../images/logo_footer.png";
 import UserAccountMenu from "../appBar/UserAccountMenu";
 import "./AppBarLogin.scss";
-import logo_footer from "../../images/logo_footer.png";
 
 const useStyles = makeStyles({
 	list: {
@@ -97,8 +96,7 @@ const AppBarLogin = (props) => {
 			className={clsx(classes.list, {
 				[classes.fullList]: anchor === "top" || anchor === "bottom",
 			})}
-			role='presentation'
-		>
+			role='presentation'>
 			<List>
 				<div className='logo'>
 					<Button onClick={toggleDrawer(anchor, false)} href='/'>
@@ -122,8 +120,7 @@ const AppBarLogin = (props) => {
 							onClick={toggleDrawer(anchor, false)}
 							color={navItem.color}
 							href={navItem.href}
-							variant={navItem.variant}
-						>
+							variant={navItem.variant}>
 							{navItem.name}
 						</Button>
 					</ListItem>
@@ -167,8 +164,7 @@ const AppBarLogin = (props) => {
 													<Button
 														color={navItem.color}
 														href={navItem.href}
-														variant={navItem.variant}
-													>
+														variant={navItem.variant}>
 														{navItem.name}
 													</Button>
 												</li>
@@ -205,8 +201,7 @@ const AppBarLogin = (props) => {
 														anchor={anchor}
 														open={state[anchor]}
 														onClose={toggleDrawer(anchor, false)}
-														style={{ width: "250px" }}
-													>
+														style={{ width: "250px" }}>
 														{list(anchor)}
 													</Drawer>
 												</React.Fragment>

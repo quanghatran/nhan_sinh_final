@@ -11,6 +11,7 @@ const Lookup = React.lazy(() => import("./views/lookup/Lookup"));
 const ForgotPassword = React.lazy(() =>
 	import("./views/forgotPassword/ForgotPassword")
 );
+const VerifyEmail = React.lazy(() => import("./views/verifyEmail"));
 const Userhome = React.lazy(() => import("./views/user/Userhome"));
 const UserInformation = React.lazy(() =>
 	import("./views/user/UserInformation")
@@ -19,6 +20,7 @@ const UserSearchHistory = React.lazy(() =>
 	import("./views/user/UserSearchHistory")
 );
 const UserPurchased = React.lazy(() => import("./views/user/UserPurchased"));
+const Affiliate = React.lazy(() => import("./views/user/Affiliate"));
 
 function App() {
 	// const [isSignedIn, setIsSignedIn] = useState(false); // Local signed-in state
@@ -52,6 +54,8 @@ function App() {
 							component={ForgotPassword}></Route>
 						<Route exact path='/xem-online' component={Userhome}></Route>
 
+						<Route exact path='/xac-thuc-email' component={VerifyEmail}></Route>
+
 						<Route
 							exact
 							path='/xem-online/thong-tin-tai-khoan'
@@ -64,6 +68,12 @@ function App() {
 							exact
 							path='/xem-online/purchased'
 							component={UserPurchased}></Route>
+
+						<Route
+							exact
+							path='/xem-online/dang-ky-hop-tac'
+							component={Affiliate}></Route>
+
 						{/* <Route path='*' component={NotFound} /> */}
 					</Switch>
 					<MoveTop />

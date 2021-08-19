@@ -11,6 +11,7 @@ import SettingsIcon from "@material-ui/icons/Settings";
 import ShopIcon from "@material-ui/icons/Shop";
 import React from "react";
 import { Link, useHistory } from "react-router-dom";
+import PersonAddOutlinedIcon from "@material-ui/icons/PersonAddOutlined";
 import "./UserAccountMenu.css";
 const StyledMenu = withStyles({
 	paper: {
@@ -94,12 +95,22 @@ export default function UserAccountMenu(props) {
 						<ListItemText primary='Lịch sử tra cứu' />
 					</Link>
 				</StyledMenuItem>
+
 				<StyledMenuItem>
 					<ListItemIcon>
 						<ShopIcon fontSize='small' />
 					</ListItemIcon>
 					<Link to='/xem-online/purchased'>
 						<ListItemText primary='Dịch vụ đã mua' />
+					</Link>
+				</StyledMenuItem>
+
+				<StyledMenuItem>
+					<ListItemIcon>
+						<PersonAddOutlinedIcon fontSize='small' />
+					</ListItemIcon>
+					<Link to='/xem-online/dang-ky-hop-tac'>
+						<ListItemText primary='Đăng ký hợp tác' />
 					</Link>
 				</StyledMenuItem>
 

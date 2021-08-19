@@ -141,9 +141,16 @@ const SignIn = () => {
 										variant='h5'
 										component='h1'
 										align='center'
-										style={{ margin: "1rem 0" }}
-									>
+										style={{ margin: "1rem 0" }}>
 										MINH TRIẾT NHÂN SINH
+									</Typography>
+								</Grid>
+								<Grid item xs={12}>
+									<Typography
+										variant='subtitle1'
+										align='center'
+										style={{ fontStyle: "italic" }}>
+										Đăng ký tài khoản
 									</Typography>
 								</Grid>
 							</Grid>
@@ -155,8 +162,7 @@ const SignIn = () => {
 									<Alert
 										variant='filled'
 										severity='success'
-										style={{ marginTop: "1rem", justifyContent: "center" }}
-									>
+										style={{ marginTop: "1rem", justifyContent: "center" }}>
 										Đăng ký thành công
 									</Alert>
 								)}
@@ -164,8 +170,7 @@ const SignIn = () => {
 									<Alert
 										variant='filled'
 										severity='error'
-										style={{ marginTop: "1rem", justifyContent: "center" }}
-									>
+										style={{ marginTop: "1rem", justifyContent: "center" }}>
 										Đăng ký không thành công
 									</Alert>
 								)}
@@ -173,8 +178,7 @@ const SignIn = () => {
 									<Alert
 										variant='filled'
 										severity='error'
-										style={{ marginTop: "1rem", justifyContent: "center" }}
-									>
+										style={{ marginTop: "1rem", justifyContent: "center" }}>
 										Nhập lại mật khẩu không chính xác
 									</Alert>
 								)}
@@ -188,7 +192,6 @@ const SignIn = () => {
 											className={clsx(classes.textField)}
 											required
 											type='text'
-											variant='outlined'
 											value={name}
 											onChange={(e) => setName(e.target.value)}
 											// id='custom-css-outlined-input'
@@ -205,7 +208,6 @@ const SignIn = () => {
 											label='Email'
 											className={clsx(classes.textField)}
 											required
-											variant='outlined'
 											value={email}
 											onChange={(e) => setEmail(e.target.value)}
 											// id='custom-css-outlined-input'
@@ -222,7 +224,6 @@ const SignIn = () => {
 											label='Số điện thoại đăng nhập'
 											className={clsx(classes.textField)}
 											required
-											variant='outlined'
 											value={phone}
 											onChange={(e) => setPhone(e.target.value)}
 											color='secondary'
@@ -234,8 +235,7 @@ const SignIn = () => {
 											className={clsx(classes.textField, classes.spaceTop)}
 											variant='outlined'
 											size='medium'
-											color='secondary'
-										>
+											color='secondary'>
 											<InputLabel htmlFor='outlined-adornment-password'>
 												Mật khẩu
 											</InputLabel>
@@ -251,8 +251,7 @@ const SignIn = () => {
 															aria-label='toggle password visibility'
 															onClick={handleClickShowPassword}
 															onMouseDown={handleMouseDownPassword}
-															edge='end'
-														>
+															edge='end'>
 															{showPassword ? (
 																<Visibility />
 															) : (
@@ -271,8 +270,7 @@ const SignIn = () => {
 											className={clsx(classes.textField, classes.spaceTop)}
 											variant='outlined'
 											size='medium'
-											color='secondary'
-										>
+											color='secondary'>
 											<InputLabel htmlFor='outlined-adornment-password'>
 												Nhập lại mật khẩu
 											</InputLabel>
@@ -288,8 +286,7 @@ const SignIn = () => {
 															aria-label='toggle password visibility'
 															onClick={handleClickShowPasswordAgain}
 															onMouseDown={handleMouseDownPasswordAgain}
-															edge='end'
-														>
+															edge='end'>
 															{showPasswordAgain ? (
 																<Visibility />
 															) : (
@@ -308,8 +305,7 @@ const SignIn = () => {
 									color='secondary'
 									variant='contained'
 									type='submit'
-									style={{ marginTop: "2rem" }}
-								>
+									style={{ marginTop: "2rem" }}>
 									Đăng Ký
 								</Button>
 								<div className='navigateBlock signInBlock'>

@@ -135,7 +135,7 @@ const Lookup = () => {
 		};
 
 		fetchFreeSearchInfo();
-	}, []);
+	}, [idFreeSearch]);
 
 	setTimeout(() => {
 		setDelayButton(true);
@@ -155,8 +155,7 @@ const Lookup = () => {
 								IconButton
 								aria-label='back'
 								style={{ color: "#fff" }}
-								onClick={handleBackClick}
-							>
+								onClick={handleBackClick}>
 								<KeyboardBackspaceOutlinedIcon fontSize='large' />
 							</IconButton>
 						</Tooltip>
@@ -184,8 +183,7 @@ const Lookup = () => {
 												}}
 												variants={childVariants}
 												initial='hidden'
-												animate='visible'
-											>
+												animate='visible'>
 												<span style={{ textTransform: "uppercase" }}>
 													{infoFreeSearch.name}{" "}
 												</span>
@@ -198,8 +196,7 @@ const Lookup = () => {
 												}}
 												variants={firstContainerVariants}
 												initial='hidden'
-												animate='visible'
-											>
+												animate='visible'>
 												<motion.div
 													className='titleContentFreeLookUp'
 													whileHover={{
@@ -207,8 +204,7 @@ const Lookup = () => {
 														originX: 0,
 														color: "#f50057",
 													}}
-													transition={{ type: "spring", stiffness: 300 }}
-												>
+													transition={{ type: "spring", stiffness: 300 }}>
 													BÀI HỌC
 												</motion.div>{" "}
 												{infoFreeSearch.baiHoc.content}
@@ -217,8 +213,7 @@ const Lookup = () => {
 												style={{ textAlign: "justify", fontWeight: "lighter" }}
 												variants={secondContainerVariants}
 												initial='hidden'
-												animate='visible'
-											>
+												animate='visible'>
 												<motion.div
 													className='titleContentFreeLookUp'
 													whileHover={{
@@ -226,8 +221,7 @@ const Lookup = () => {
 														originX: 0,
 														color: "#f50057",
 													}}
-													transition={{ type: "spring", stiffness: 300 }}
-												>
+													transition={{ type: "spring", stiffness: 300 }}>
 													KHÁT TÂM
 												</motion.div>{" "}
 												{infoFreeSearch.khatTam.content}
@@ -236,8 +230,7 @@ const Lookup = () => {
 												style={{ textAlign: "justify", fontWeight: "lighter" }}
 												variants={thirdContainerVariants}
 												initial='hidden'
-												animate='visible'
-											>
+												animate='visible'>
 												<motion.div
 													className='titleContentFreeLookUp'
 													whileHover={{
@@ -245,8 +238,7 @@ const Lookup = () => {
 														originX: 0,
 														color: "#f50057",
 													}}
-													transition={{ type: "spring", stiffness: 300 }}
-												>
+													transition={{ type: "spring", stiffness: 300 }}>
 													NHÂN CÁCH
 												</motion.div>{" "}
 												{infoFreeSearch.nhanCach.content}
@@ -258,15 +250,13 @@ const Lookup = () => {
 										<motion.div
 											variants={buttonVariants}
 											initial='hidden'
-											animate='visible'
-										>
+											animate='visible'>
 											<Button
 												href='/'
 												startIcon={<HomeIcon />}
 												color='primary'
 												variant='contained'
-												style={{ margin: "10px" }}
-											>
+												style={{ margin: "10px" }}>
 												Về Trang Chủ
 											</Button>
 
@@ -276,8 +266,7 @@ const Lookup = () => {
 													startIcon={<SearchIcon />}
 													color='secondary'
 													variant='contained'
-													style={{ margin: "10px" }}
-												>
+													style={{ margin: "10px" }}>
 													Tra cứu VIP
 												</Button>
 											</Tooltip>

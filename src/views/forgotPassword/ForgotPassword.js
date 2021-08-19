@@ -1,23 +1,15 @@
 import { Button, Grid, Typography } from "@material-ui/core";
-import FormControl from "@material-ui/core/FormControl";
-import IconButton from "@material-ui/core/IconButton";
-import InputAdornment from "@material-ui/core/InputAdornment";
-import InputLabel from "@material-ui/core/InputLabel";
-import OutlinedInput from "@material-ui/core/OutlinedInput";
+import CircularProgress from "@material-ui/core/CircularProgress";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
-import HomeIcon from "@material-ui/icons/Home";
-import Visibility from "@material-ui/icons/Visibility";
-import VisibilityOff from "@material-ui/icons/VisibilityOff";
+import KeyboardBackspaceOutlinedIcon from "@material-ui/icons/KeyboardBackspaceOutlined";
 import Alert from "@material-ui/lab/Alert";
 import clsx from "clsx";
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import loginServiceApi from "../../api/loginServiceApi";
+import forgotPasswordApi from "../../api/forgotPasswordApi";
 import logo from "../../images/logo_satsi.png";
 import "./ForgotPassword.scss";
-import KeyboardBackspaceOutlinedIcon from "@material-ui/icons/KeyboardBackspaceOutlined";
 
 const useStyles = makeStyles((theme) => ({
 	textField: {
@@ -53,55 +45,82 @@ const CssTextField = withStyles({
 const ForgotPassword = () => {
 	const classes = useStyles();
 	const history = useHistory();
-	const dispatch = useDispatch();
 
-	const [phone, setPhone] = useState("");
+	const [email, setEmail] = useState("");
+
+	const [otp, setOtp] = useState("");
 	const [password, setPassword] = useState("");
-	const [showPassword, setShowPassword] = useState(false);
 
-	const [error, setError] = useState(false);
+	const [hasOtp, setHasOtp] = useState(false);
 
-	const handleClickShowPassword = () => {
-		setShowPassword(!showPassword);
-	};
+	const [isError, setIsError] = useState(false);
 
-	const handleMouseDownPassword = (event) => {
-		event.preventDefault();
-	};
+	const [isSuccess, setIsSuccess] = useState(false);
 
-	const handleSubmitLogin = (e) => {
+	const [errorOtp, setErrorOtp] = useState(false);
+
+	const [isLoading, setIsLoading] = useState(false);
+
+	const handleSubmitGetOtp = (e) => {
 		e.preventDefault();
 
-		const dataSignIn = {
-			phone: phone,
+		const data = {
+			email: email,
+			// password: password,
+		};
+
+		const fetchPostToGetOtp = async () => {
+			setIsLoading(true);
+			try {
+				const request = await forgotPasswordApi.postRequestOtp(data);
+				if (request) {
+					setHasOtp(true);
+					setIsLoading(false);
+				}
+			} catch (error) {
+				setIsLoading(false);
+				setErrorOtp(true);
+
+				setTimeout(() => {
+					setErrorOtp(false);
+				}, 1500);
+			}
+		};
+
+		fetchPostToGetOtp();
+	};
+
+	const handleSubmitChangePassword = (e) => {
+		e.preventDefault();
+
+		const data = {
+			email: email,
+			otp: otp,
 			password: password,
 		};
 
-		// const fetchLoginData = async () => {
-		// 	try {
-		// 		const request = await loginServiceApi.postLogin(dataSignIn);
+		const fetchPostNewPasswordRequest = async () => {
+			try {
+				const request = await forgotPasswordApi.postRequestNewPassword(data);
 
-		// 		localStorage.setItem("user", JSON.stringify(request.data));
-		// 		localStorage.setItem("userToken", request.data.token);
-		// 		localStorage.setItem("userName", request.data.name);
+				if (request) {
+					setIsSuccess(true);
+					setTimeout(() => {
+						setIsSuccess(false);
+						history.push("/dang-nhap");
+					}, 1500);
+				}
+			} catch (er) {
+				setIsError(true);
+				setTimeout(() => {
+					setIsError(false);
+					setOtp("");
+					setPassword("");
+				}, 1500);
+			}
+		};
 
-		// 		setTimeout(() => {
-		// 			const action = addUser(request.data);
-		// 			dispatch(action);
-
-		// 			history.push("/xem-online");
-		// 		}, 1000);
-		// 	} catch (error) {
-		// 		setError(true);
-		// 		setPassword("");
-
-		// 		setTimeout(() => {
-		// 			setError(false);
-		// 		}, 1500);
-		// 	}
-		// };
-
-		// fetchLoginData();
+		fetchPostNewPasswordRequest();
 	};
 
 	return (
@@ -112,7 +131,6 @@ const ForgotPassword = () => {
 						<Typography variant='h4' component='h1' align='center'>
 							<Grid container>
 								<Grid item xs={12}>
-									{" "}
 									<Button href='/'>
 										<img src={logo} alt='logo' />
 									</Button>
@@ -126,17 +144,47 @@ const ForgotPassword = () => {
 										MINH TRIẾT NHÂN SINH
 									</Typography>
 								</Grid>
+								<Grid item xs={12}>
+									<Typography
+										variant='subtitle1'
+										align='center'
+										style={{ fontStyle: "italic" }}>
+										Quên mật khẩu
+									</Typography>
+								</Grid>
 							</Grid>
 						</Typography>
 
 						<div className='loginFiled'>
-							<form className={classes.root} onSubmit={handleSubmitLogin}>
-								{error && (
+							<form
+								className={classes.root}
+								onSubmit={
+									!hasOtp ? handleSubmitGetOtp : handleSubmitChangePassword
+								}>
+								{isLoading && <CircularProgress color='secondary' />}
+								{errorOtp && (
 									<Alert
 										variant='filled'
 										severity='error'
 										style={{ marginTop: "1rem", justifyContent: "center" }}>
-										Đăng nhập thất bại
+										Lấy mã OTP không thành công
+									</Alert>
+								)}
+								{isError && (
+									<Alert
+										variant='filled'
+										severity='error'
+										style={{ marginTop: "1rem", justifyContent: "center" }}>
+										Cập nhật mật khẩu không thành công
+									</Alert>
+								)}
+
+								{isSuccess && (
+									<Alert
+										variant='filled'
+										severity='success'
+										style={{ marginTop: "1rem", justifyContent: "center" }}>
+										Cập nhật mật khẩu thành công
 									</Alert>
 								)}
 								<Grid container direction='column'>
@@ -149,71 +197,80 @@ const ForgotPassword = () => {
 											label='Email đã đăng ký'
 											className={clsx(classes.textField)}
 											required
-											variant='outlined'
-											value={phone}
-											onChange={(e) => setPhone(e.target.value)}
+											value={email}
+											onChange={(e) => setEmail(e.target.value)}
 											color='secondary'
 											autoComplete='off'
 										/>
 									</Grid>
-
-									<Grid item>
-										<FormControl
-											className={clsx(classes.textField, classes.spaceTop)}
-											variant='outlined'
-											size='medium'
-											color='secondary'>
-											<InputLabel htmlFor='outlined-adornment-password'>
-												Mật khẩu
-											</InputLabel>
-											<OutlinedInput
-												id='outlined-adornment-password'
-												type={showPassword ? "text" : "password"}
-												value={password}
-												onChange={(e) => setPassword(e.target.value)}
-												required
-												autoComplete='off'
-												endAdornment={
-													<InputAdornment position='end'>
-														<IconButton
-															aria-label='toggle password visibility'
-															onClick={handleClickShowPassword}
-															onMouseDown={handleMouseDownPassword}
-															edge='end'>
-															{showPassword ? (
-																<Visibility />
-															) : (
-																<VisibilityOff />
-															)}
-														</IconButton>
-													</InputAdornment>
-												}
-												labelWidth={70}
-											/>
-										</FormControl>
-									</Grid>
 								</Grid>
-								{/* <div className='navigateBlock signInBlock'>
-									<a className='forgotPassword' href='/dang-ky'>
-										Quên mật khẩu?
-									</a>
-								</div> */}
-								<Button
-									size='large'
-									type='submit'
-									color='secondary'
-									variant='contained'
-									style={{ marginTop: "2rem" }}>
-									xác nhận
-								</Button>
-								<div className='navigateBlock signInBlock'>
-									<a className='signIn' href='/dang-ky'>
-										Đăng ký tài khoản!
-									</a>
-								</div>
+								{hasOtp ? (
+									<div>
+										<Grid container direction='column'>
+											<Grid item>
+												<CssTextField
+													size='medium'
+													variant='outlined'
+													margin='normal'
+													type='text'
+													label='Nhập mã OTP'
+													className={clsx(classes.textField)}
+													required
+													value={otp}
+													onChange={(e) => setOtp(e.target.value)}
+													color='secondary'
+													autoComplete='off'
+												/>
+											</Grid>
+											<Grid item>
+												<CssTextField
+													size='medium'
+													variant='outlined'
+													margin='normal'
+													type='text'
+													label='Nhập mật khẩu mới'
+													className={clsx(classes.textField)}
+													required
+													value={password}
+													onChange={(e) => setPassword(e.target.value)}
+													color='secondary'
+													autoComplete='off'
+												/>
+											</Grid>
+										</Grid>
+										<Typography
+											variant='caption'
+											style={{ fontStyle: "italic", marginTop: "1rem" }}>
+											Mã OTP chỉ có thời hạn trong 2 phút
+										</Typography>
+										<div>
+											<Button
+												size='large'
+												type='submit'
+												color='secondary'
+												variant='contained'
+												style={{ marginTop: "2rem" }}>
+												XÁC NHẬN
+											</Button>
+										</div>
+									</div>
+								) : (
+									<div>
+										<Button
+											size='large'
+											type='submit'
+											color='secondary'
+											variant='contained'
+											disabled={isLoading ? true : false}
+											style={{ marginTop: "2rem" }}>
+											GỬI YÊU CẦU
+										</Button>
+									</div>
+								)}
 							</form>
 							<Button
 								href='/dang-nhap'
+								style={{ marginTop: "1rem" }}
 								startIcon={<KeyboardBackspaceOutlinedIcon />}
 								color='secondary'>
 								Quay Về Trang đăng nhập

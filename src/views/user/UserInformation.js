@@ -66,13 +66,17 @@ const UserInformation = () => {
 		e.preventDefault();
 		dispatch(updateName(document.getElementById("name").value));
 		dispatch(updateUser(document.getElementById("name").value));
+
+		dispatch(updateName(document.getElementById("email").value));
+		dispatch(updateUser(document.getElementById("email").value));
 	};
 
 	// handle update new name
 	const handleUpdateName = (e) => {
 		e.preventDefault();
 		const data = {
-			newName: document.getElementById("name").value,
+			name: document.getElementById("name").value,
+			email: document.getElementById("email").value,
 		};
 		try {
 			userAPI.patchUserName(data);
@@ -177,7 +181,10 @@ const UserInformation = () => {
 			<HeaderLogin />
 			<div className='UserInformation__container'>
 				<div className='container-fluid'>
-					<TitleSection titleHeader='Thông tin người dùng' />
+					<TitleSection
+						titleHeader='Thông tin người dùng'
+						style={{ marginTop: "1rem" }}
+					/>
 					<div className='UserInformation__content'>
 						<Grid container spacing={3}>
 							<Grid item container>
@@ -200,13 +207,17 @@ const UserInformation = () => {
 								<Typography variant='subtitle1'>
 									Số tiền còn lại :{" "}
 									<span style={{ fontSize: "1.2rem", fontWeight: "bold" }}>
-										{userInfo.money}
+										{userInfo.money
+											? userInfo.money.toLocaleString("it-IT", {
+													style: "currency",
+													currency: "VND",
+											  })
+											: "0 VND"}
 									</span>
 									<Button
 										color='secondary'
 										size='large'
-										onClick={handleOpenDepositInfo}
-									>
+										onClick={handleOpenDepositInfo}>
 										Nạp thêm tiền
 									</Button>
 								</Typography>
@@ -214,6 +225,14 @@ const UserInformation = () => {
 							<Grid item container>
 								<Typography variant='subtitle1'>
 									Số điện thoại (Đăng nhập) :{" "}
+									<span style={{ fontSize: "1.2rem", fontWeight: "bold" }}>
+										{userInfo.phone}
+									</span>
+								</Typography>
+							</Grid>
+							<Grid item container>
+								<Typography variant='subtitle1'>
+									Mã giới thiệu:{" "}
 									<span style={{ fontSize: "1.2rem", fontWeight: "bold" }}>
 										{userInfo.phone}
 									</span>
@@ -244,16 +263,14 @@ const UserInformation = () => {
 							direction='row'
 							justifyContent='center'
 							spacing={0}
-							style={{ marginBottom: "3rem" }}
-						>
+							style={{ marginBottom: "3rem" }}>
 							<Grid item>
 								<Button
 									variant='contained'
 									color='primary'
 									startIcon={<InfoIcon />}
 									style={{ margin: "5px" }}
-									onClick={handleClickOpenInfo}
-								>
+									onClick={handleClickOpenInfo}>
 									Thay đổi thông tin
 								</Button>
 							</Grid>
@@ -263,8 +280,7 @@ const UserInformation = () => {
 									color='secondary'
 									startIcon={<LockIcon />}
 									onClick={handleClickOpenPassword}
-									style={{ margin: "5px" }}
-								>
+									style={{ margin: "5px" }}>
 									Thay đổi mật khẩu
 								</Button>
 							</Grid>
@@ -281,13 +297,11 @@ const UserInformation = () => {
 					onClose={handleCloseInfo}
 					aria-labelledby='form-dialog-title'
 					fullWidth={true}
-					maxWidth={"sm"}
-				>
+					maxWidth={"sm"}>
 					<form onSubmit={(e) => handleOnSubmit(e)}>
 						<DialogTitle
 							id='form-dialog-title'
-							style={{ textTransform: "uppercase" }}
-						>
+							style={{ textTransform: "uppercase" }}>
 							Sửa thông tin cá nhân
 						</DialogTitle>
 						<DialogContent>
@@ -301,12 +315,21 @@ const UserInformation = () => {
 								defaultValue={userInfo.name}
 							/>
 
+							<TextField
+								autoFocus
+								margin='dense'
+								id='email'
+								label='Email'
+								type='email'
+								fullWidth
+								defaultValue={userInfo.email}
+							/>
+
 							{isError && (
 								<Alert
 									variant='filled'
 									severity='error'
-									style={{ marginTop: "1rem", justifyContent: "center" }}
-								>
+									style={{ marginTop: "1rem", justifyContent: "center" }}>
 									Thay đổi thông tin không thành công
 								</Alert>
 							)}
@@ -315,8 +338,7 @@ const UserInformation = () => {
 								<Alert
 									variant='filled'
 									severity='success'
-									style={{ marginTop: "1rem", justifyContent: "center" }}
-								>
+									style={{ marginTop: "1rem", justifyContent: "center" }}>
 									Thay đổi thông tin thành công
 								</Alert>
 							)}
@@ -339,13 +361,11 @@ const UserInformation = () => {
 					onClose={handleClosePassword}
 					aria-labelledby='form-dialog-title'
 					fullWidth={true}
-					maxWidth={"sm"}
-				>
+					maxWidth={"sm"}>
 					<form onSubmit={handleSubmitPassword}>
 						<DialogTitle
 							id='form-dialog-title'
-							style={{ textTransform: "uppercase" }}
-						>
+							style={{ textTransform: "uppercase" }}>
 							Thay đổi mật khẩu
 						</DialogTitle>
 						<DialogContent>
@@ -390,8 +410,7 @@ const UserInformation = () => {
 								<Alert
 									variant='filled'
 									severity='error'
-									style={{ marginTop: "1rem", justifyContent: "center" }}
-								>
+									style={{ marginTop: "1rem", justifyContent: "center" }}>
 									Thay đổi mật khẩu không thành công, độ dài phải lớn hơn hoặc
 									bằng 6 ký tự
 								</Alert>
@@ -401,8 +420,7 @@ const UserInformation = () => {
 								<Alert
 									variant='filled'
 									severity='success'
-									style={{ marginTop: "1rem", justifyContent: "center" }}
-								>
+									style={{ marginTop: "1rem", justifyContent: "center" }}>
 									Thay đổi mật khẩu thành công
 								</Alert>
 							)}

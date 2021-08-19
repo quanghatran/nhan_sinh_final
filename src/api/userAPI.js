@@ -13,6 +13,22 @@ const userAPI = {
 		const url = "/api/users/change-password";
 		return axiosClient.patch(url, params);
 	},
+	patchAddIdLauncher: (params) => {
+		const url = "/api/users/add-referrer-code";
+		return axiosClient.patch(url, params);
+	},
+	getListMemberShip: (params) => {
+		const url = "/api/users/get-references";
+		return axiosClient.get(url, params);
+	},
+	postAddingSlotVip: (params, idMember) => {
+		const url = `/api/users/add-VIP-for-reference/${idMember}`;
+		return axiosClient.post(url, params);
+	},
+	postDepositMoney: (params, idMember) => {
+		const url = `/api/users/add-money-for-reference/${idMember}`;
+		return axiosClient.post(url, params);
+	},
 };
 
 export default userAPI;

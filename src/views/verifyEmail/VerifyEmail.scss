@@ -1,0 +1,56 @@
+.login-wrapper {
+	width: 100vw;
+	height: 100vh;
+	color: #fff;
+
+	background-image: url(../../images/image1.jpg);
+	background-position: center;
+	background-size: cover;
+
+	.loginCover {
+		background: rgba(0, 0, 0, 0.75);
+		width: 100vw;
+		height: 100vh;
+		position: relative;
+
+		.contentLogin {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+
+		.loginFiled {
+			text-align: center;
+			.MuiInputBase-input {
+				&::placeholder {
+					color: #fff !important;
+				}
+			}
+
+			.MuiInputBase-root,
+			.MuiFormLabel-root,
+			.MuiOutlinedInput-notchedOutline,
+			.MuiIconButton-edgeEnd {
+				border-color: #fff !important;
+				color: #fff !important;
+			}
+
+			.navigateBlock {
+				margin: 1rem 0;
+
+				a {
+					color: #d4d4d4;
+					text-decoration: none;
+					&:hover {
+						color: #fff;
+					}
+				}
+			}
+
+			.signInBlock {
+				margin-top: 2rem;
+			}
+		}
+	}
+}

@@ -87,10 +87,12 @@ const UserSearchHistory = () => {
 			<HeaderLogin />
 			<div
 				className='UserSearchHistory__container'
-				style={{ marginBottom: "3rem" }}
-			>
+				style={{ marginBottom: "3rem" }}>
 				<div className='container-fluid'>
-					<TitleSection titleHeader='Lịch sử tra cứu' />
+					<TitleSection
+						titleHeader='Lịch sử tra cứu'
+						style={{ marginTop: "1rem" }}
+					/>
 					<div className='UserSearchHistory__content'>
 						{freeSearch.length <= 0 && vipSearch <= 0 ? (
 							<div>
@@ -103,8 +105,7 @@ const UserSearchHistory = () => {
 										color='secondary'
 										href='/xem-online'
 										size='medium'
-										endIcon={<SearchIcon />}
-									>
+										endIcon={<SearchIcon />}>
 										Tra cứu
 									</Button>
 								</div>
@@ -116,8 +117,7 @@ const UserSearchHistory = () => {
 										style={{
 											backgroundColor: "#3f51b5",
 											textTransform: "upperCase",
-										}}
-									>
+										}}>
 										<TableRow>
 											<TableCell style={{ color: "#fff" }}>
 												Thông tin tra cứu
@@ -144,8 +144,7 @@ const UserSearchHistory = () => {
 																fontWeight: "bold",
 																marginRight: "0.5rem",
 																marginBottom: "0.3rem",
-															}}
-														>
+															}}>
 															{data.name}
 														</span>
 														<div style={{ fontSize: "0.9rem" }}>
@@ -158,8 +157,7 @@ const UserSearchHistory = () => {
 													{moment(data.createdAt).format("MM/DD/YYYY")}
 												</TableCell>
 												<TableCell
-													style={{ color: "#3f51b5", fontWeight: "bold" }}
-												>
+													style={{ color: "#3f51b5", fontWeight: "bold" }}>
 													Free
 												</TableCell>
 												<TableCell>
@@ -169,8 +167,7 @@ const UserSearchHistory = () => {
 															color='primary'
 															onClick={(e) => {
 																handleClickWatchDetail(data._id);
-															}}
-														>
+															}}>
 															<FileCopyOutlinedIcon />
 														</IconButton>
 													</Tooltip>
@@ -187,8 +184,7 @@ const UserSearchHistory = () => {
 																fontWeight: "bold",
 																marginRight: "0.5rem",
 																marginBottom: "0.3rem",
-															}}
-														>
+															}}>
 															{data.name}
 														</span>
 														<div style={{ fontSize: "0.9rem" }}>
@@ -200,8 +196,7 @@ const UserSearchHistory = () => {
 													{moment(data.createdAt).format("MM/DD/YYYY")}
 												</TableCell>
 												<TableCell
-													style={{ color: "#f50057", fontWeight: "bold" }}
-												>
+													style={{ color: "#f50057", fontWeight: "bold" }}>
 													VIP
 												</TableCell>
 												<TableCell>
