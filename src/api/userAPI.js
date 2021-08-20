@@ -29,6 +29,26 @@ const userAPI = {
 		const url = `/api/users/add-money-for-reference/${idMember}`;
 		return axiosClient.post(url, params);
 	},
+	postCreatCoachingService: (params) => {
+		const url = "/api/users/tao-lich-gap-truc-tiep";
+		return axiosClient.post(url, params);
+	},
+	getListCoacher: (params) => {
+		const url = "/api/admin/get-all-coacher";
+		return axiosClient.get(url, params);
+	},
+	getListCoacherBooked: (idCoacher, params) => {
+		const url = `/api/users/get-lich-truc-tiep/${idCoacher}`;
+		return axiosClient.get(url, params);
+	},
+	postBookingCoaching: (params) => {
+		const url = "/api/users/tao-lich-gap-truc-tiep";
+		return axiosClient.post(url, params);
+	},
+	getListUserBooked: (params) => {
+		const url = "/api/users/get-lich-truc-tiep-cua-user";
+		return axiosClient.get(url, params);
+	},
 };
 
 export default userAPI;

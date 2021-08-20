@@ -16,6 +16,9 @@ const Userhome = React.lazy(() => import("./views/user/Userhome"));
 const UserInformation = React.lazy(() =>
 	import("./views/user/UserInformation")
 );
+const BookCoachingService = React.lazy(() =>
+	import("./views/user/BookCoachingService")
+);
 const UserSearchHistory = React.lazy(() =>
 	import("./views/user/UserSearchHistory")
 );
@@ -62,6 +65,10 @@ function App() {
 							component={UserInformation}></Route>
 						<Route
 							exact
+							path='/xem-online/dat-lich-coaching'
+							component={BookCoachingService}></Route>
+						<Route
+							exact
 							path='/xem-online/lich-su-tra-cuu'
 							component={UserSearchHistory}></Route>
 						<Route
@@ -74,7 +81,7 @@ function App() {
 							path='/xem-online/dang-ky-hop-tac'
 							component={Affiliate}></Route>
 
-						{/* <Route path='*' component={NotFound} /> */}
+						<Route path='*' component={NotFound} />
 					</Switch>
 					<MoveTop />
 				</BrowserRouter>

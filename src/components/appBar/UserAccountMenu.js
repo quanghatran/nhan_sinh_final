@@ -12,6 +12,7 @@ import ShopIcon from "@material-ui/icons/Shop";
 import React from "react";
 import { Link, useHistory } from "react-router-dom";
 import PersonAddOutlinedIcon from "@material-ui/icons/PersonAddOutlined";
+import TurnedInNotIcon from "@material-ui/icons/TurnedInNot";
 import "./UserAccountMenu.css";
 const StyledMenu = withStyles({
 	paper: {
@@ -102,6 +103,15 @@ export default function UserAccountMenu(props) {
 					</ListItemIcon>
 					<Link to='/xem-online/purchased'>
 						<ListItemText primary='Dịch vụ đã mua' />
+					</Link>
+				</StyledMenuItem>
+
+				<StyledMenuItem>
+					<ListItemIcon>
+						<TurnedInNotIcon fontSize='small' />
+					</ListItemIcon>
+					<Link to='/xem-online/dat-lich-coaching'>
+						<ListItemText primary='Đặt lịch coaching' />
 					</Link>
 				</StyledMenuItem>
 
