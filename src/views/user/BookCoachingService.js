@@ -30,7 +30,6 @@ import DatePicker from "../../components/controls/DatePicker";
 import TitleSection from "../../components/titleSection/TitleSection";
 import HeaderLogin from "../home/headerLogin/HeaderLogin";
 import "./UserSearchHistory.css";
-// import moment from "moment";
 const useStyles = makeStyles((theme) => ({
 	modal: {
 		display: "flex",
@@ -79,6 +78,8 @@ const BookCoachingService = () => {
 	const [success, setSuccess] = useState(false);
 	const [error, setError] = useState(false);
 
+	const [isDataChanged, setIsDataChanged] = useState(false);
+
 	const handleCloseCoachingDialog = () => {
 		setIsOpenCoachingDialog(false);
 	};
@@ -114,6 +115,8 @@ const BookCoachingService = () => {
 						setCoacherPerson("");
 						setTime(date);
 						setIsOpenCoachingDialog(false);
+
+						setIsDataChanged(!isDataChanged);
 					}, 1500);
 				}
 			} catch {
@@ -179,19 +182,18 @@ const BookCoachingService = () => {
 
 	const [listUserBooked, setListUserBooked] = useState([]);
 
-	// get list booked of each coacher
+	// get list user booked
 	useEffect(() => {
 		const fetchGetListUserBooked = async () => {
 			try {
 				const response = await userAPI.getListUserBooked();
-				console.log("list user booked: ", response.data);
 				setListUserBooked(response.data);
 			} catch (error) {
 				console.log("failed to fetch product list: ", error);
 			}
 		};
 		fetchGetListUserBooked();
-	}, []);
+	}, [isDataChanged]);
 
 	return (
 		<div className='UserSearchHistory'>
@@ -289,7 +291,6 @@ const BookCoachingService = () => {
 													variant='outlined'
 													fullWidth
 													required
-													size='small'
 													value={name}
 													onChange={(e) => setName(e.target.value)}
 												/>
@@ -301,7 +302,6 @@ const BookCoachingService = () => {
 													type='email'
 													fullWidth
 													required
-													size='small'
 													value={email}
 													onChange={(e) => setEmail(e.target.value)}
 												/>
@@ -313,7 +313,6 @@ const BookCoachingService = () => {
 													color='primary'
 													name='birthDay'
 													fullWidth
-													size='small'
 													value={birthDay}
 													onChange={(e) => setBirthDay(e.target.value)}
 												/>
@@ -325,7 +324,6 @@ const BookCoachingService = () => {
 													type='number'
 													fullWidth
 													required
-													size='small'
 													value={phoneNumber}
 													onChange={(e) => setPhoneNumber(e.target.value)}
 												/>
@@ -338,14 +336,13 @@ const BookCoachingService = () => {
 													type='text'
 													fullWidth
 													required
-													size='small'
 													value={address}
 													onChange={(e) => setAddress(e.target.value)}
 												/>
 											</Grid>
 
 											<Grid item xs={12} sm={6} className={classes.grid}>
-												<FormControl variant='outlined' size='small' fullWidth>
+												<FormControl variant='outlined' fullWidth>
 													<InputLabel id='demo-simple-select-outlined-label'>
 														Coacher
 													</InputLabel>
@@ -382,7 +379,7 @@ const BookCoachingService = () => {
 													name='birthDay'
 													fullWidth
 													// shouldDisableDate={disableDate}
-													size='small'
+
 													value={time}
 													onChange={(e) => {
 														handleTimeCoacherBookedChange(e);

@@ -9,6 +9,7 @@ import Typography from "@material-ui/core/Typography";
 import InfoIcon from "@material-ui/icons/Info";
 import LockIcon from "@material-ui/icons/Lock";
 import Alert from "@material-ui/lab/Alert";
+import moment from "moment";
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import userAPI from "../../api/userAPI";
@@ -244,7 +245,8 @@ const UserInformation = () => {
 									<span style={{ fontSize: "1.2rem", fontWeight: "bold" }}>
 										{userInfo.slotVip}
 									</span>{" "}
-									lần sử dụng dịch vụ tra cứu VIP{" "}
+									lần sử dụng dịch vụ tra cứu VIP - Được sử dụng tới ngày{" "}
+									<b>{moment(userInfo.expirySlotVIP).format("DD/MM/YYYY")}</b>
 									{userInfo.slotVip >= 1 ? (
 										<Button color='primary' href='/xem-online' size='large'>
 											Tra cứu VIP ngay
