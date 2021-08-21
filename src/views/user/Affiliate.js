@@ -167,7 +167,7 @@ const Affiliate = () => {
 						setOpenChangeSlotVip(false);
 						setIsSuccess(false);
 					}, 1500);
-				} catch {
+				} catch (error) {
 					setIsError(true);
 
 					setTimeout(() => {
@@ -199,7 +199,7 @@ const Affiliate = () => {
 						setOpenChangeMoneyForm(false);
 						setIsSuccess(false);
 					}, 1500);
-				} catch {
+				} catch (error) {
 					setIsError(true);
 
 					setTimeout(() => {
