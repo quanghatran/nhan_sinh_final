@@ -81,7 +81,7 @@ function App() {
 							path='/xem-online/dang-ky-hop-tac'
 							component={Affiliate}></Route>
 
-						<Route path='*' component={NotFound} />
+						{/* <Route path='*' component={NotFound} /> */}
 					</Switch>
 					<MoveTop />
 				</BrowserRouter>

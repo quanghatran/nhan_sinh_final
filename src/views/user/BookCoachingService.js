@@ -221,7 +221,9 @@ const BookCoachingService = () => {
 										}}>
 										<TableRow>
 											<TableCell style={{ color: "#fff" }}>STT</TableCell>
-											<TableCell style={{ color: "#fff" }}>SĐT</TableCell>
+											<TableCell style={{ color: "#fff" }}>
+												Số điện thoại
+											</TableCell>
 											<TableCell style={{ color: "#fff" }}>
 												Người đặt lịch
 											</TableCell>
@@ -244,13 +246,12 @@ const BookCoachingService = () => {
 												<TableCell>{index + 1}</TableCell>
 												<TableCell>{useBooked.phoneNumber}</TableCell>
 												<TableCell>
-													{" "}
 													<div>{useBooked.name}</div>{" "}
 													<div>{useBooked.email}</div>
 												</TableCell>
 												<TableCell>{useBooked.address}</TableCell>
 												<TableCell>{useBooked.status}</TableCell>
-												<TableCell>{useBooked.coacher}</TableCell>
+												<TableCell>{useBooked.coacher.name}</TableCell>
 												<TableCell>
 													{moment(useBooked.time).format("DD/MM/YYYY")}
 												</TableCell>

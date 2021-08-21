@@ -112,7 +112,6 @@ const MeaningNumerology = (props) => {
 												variant='contained'
 												color='secondary'
 												size='small'
-												endIcon={<AddShoppingCartIcon />}
 												style={{ marginTop: "0.7rem" }}
 												onClick={(e) => {
 													handleOpenDialog(data._id);
