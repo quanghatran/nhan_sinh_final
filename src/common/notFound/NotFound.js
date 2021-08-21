@@ -1,7 +1,7 @@
 import { Button } from "@material-ui/core";
 import HomeIcon from "@material-ui/icons/Home";
+import React from "react";
 import "./NotFound.scss";
-
 const NotFund = () => {
 	return (
 		<div className='notFound'>
