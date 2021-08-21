@@ -119,7 +119,7 @@ const BookCoachingService = () => {
 						setIsDataChanged(!isDataChanged);
 					}, 1500);
 				}
-			} catch {
+			} catch (error) {
 				setError(true);
 				setTimeout(() => {
 					setError(false);
