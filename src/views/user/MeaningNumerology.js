@@ -2,6 +2,7 @@ import { Button, Card, CardContent, Grid, Typography } from "@material-ui/core";
 import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
 import React, { useEffect, useState } from "react";
 import servicesApi from "../../api/servicesApi";
+import formatCash from "../../components/FormatMoney";
 import ModalConfirm from "../../components/modalConfirm/ModalConfirm";
 import TitleSection from "../../components/titleSection/TitleSection";
 import "./MeaningNumerology.css";
@@ -101,7 +102,7 @@ const MeaningNumerology = (props) => {
 											</Typography>
 											<Typography
 												style={{ marginBottom: "1rem", marginTop: "0.7rem" }}>
-												Giá dịch vụ: <b>{data.price}</b>
+												Giá dịch vụ: <b>{formatCash("" + data.price)} VNĐ</b>
 											</Typography>
 											<Typography
 												style={{ marginBottom: "1rem", marginTop: "0.7rem" }}>

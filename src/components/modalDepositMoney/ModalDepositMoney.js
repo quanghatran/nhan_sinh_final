@@ -19,16 +19,14 @@ export default function ModalDepositMoney(props) {
 			open={isOpen}
 			onClose={onClose}
 			PaperComponent={PaperComponent}
-			aria-labelledby='draggable-dialog-title'
-		>
+			aria-labelledby='draggable-dialog-title'>
 			<DialogTitle
 				style={{
 					cursor: "move",
 					textAlign: "center",
 					textTransform: "uppercase",
 				}}
-				id='draggable-dialog-title'
-			>
+				id='draggable-dialog-title'>
 				Thông tin chuyển khoản
 			</DialogTitle>
 			<DialogContent>
@@ -49,8 +47,7 @@ export default function ModalDepositMoney(props) {
 								style={{
 									color: "#f50057",
 									fontWeight: "bold",
-								}}
-							>
+								}}>
 								NAP TIEN - Ten - SĐT - Email
 							</span>{" "}
 							( Trong đó: Ten là tên người dùng, SĐT là số điện thoại đăng nhập,
@@ -59,10 +56,10 @@ export default function ModalDepositMoney(props) {
 						<p
 							style={{
 								fontWeight: "bold",
-							}}
-						>
-							Sau khi nhận được tiền, chúng tôi sẽ kiểm tra và nạp tiền vào tài
-							khoản trong vòng tối đa 2 tiếng (từ 8h30 sáng đến 18h chiều)
+							}}>
+							Sau khi nhận được thông tin chuyển khoản, chúng tôi sẽ kiểm tra và
+							nạp tiền vào tài khoản trong vòng tối đa 2 tiếng (từ 8h30 sáng đến
+							18h chiều)
 						</p>
 					</div>
 				</DialogContentText>

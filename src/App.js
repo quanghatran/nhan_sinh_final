@@ -12,6 +12,9 @@ const ForgotPassword = React.lazy(() =>
 	import("./views/forgotPassword/ForgotPassword")
 );
 const VerifyEmail = React.lazy(() => import("./views/verifyEmail"));
+const SuccessVerifyEmail = React.lazy(() =>
+	import("./views/SuccessVerifyEmail")
+);
 const Userhome = React.lazy(() => import("./views/user/Userhome"));
 const UserInformation = React.lazy(() =>
 	import("./views/user/UserInformation")
@@ -26,19 +29,10 @@ const UserPurchased = React.lazy(() => import("./views/user/UserPurchased"));
 const Affiliate = React.lazy(() => import("./views/user/Affiliate"));
 
 function App() {
-	// const [isSignedIn, setIsSignedIn] = useState(false); // Local signed-in state
-	// handle quan ly on auth sate change
-	// Listen to the Firebase Auth state and set the local state.
 	useEffect(() => {
 		// component did mount
-		const unregisterAuthObserver = async (user) => {
-			// setIsSignedIn(!!user);
-			// if (!user) {
-			// 	return;
-			// }
-		};
+		const unregisterAuthObserver = async (user) => {};
 
-		// component will unmount
 		return () => unregisterAuthObserver(); // Make sure we un-register Firebase observers when the component unmounts.
 	}, []);
 
@@ -51,6 +45,12 @@ function App() {
 						<Route exact path='/dang-nhap' component={Login}></Route>
 						<Route exact path='/dang-ky' component={SignIn}></Route>
 						<Route exact path='/tra-cuu' component={Lookup}></Route>
+
+						<Route
+							exact
+							path='/verify/:token'
+							component={SuccessVerifyEmail}></Route>
+
 						<Route
 							exact
 							path='/quen-mat-khau'

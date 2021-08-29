@@ -29,10 +29,6 @@ const userAPI = {
 		const url = `/api/users/add-money-for-reference/${idMember}`;
 		return axiosClient.post(url, params);
 	},
-	postCreatCoachingService: (params) => {
-		const url = "/api/users/tao-lich-gap-truc-tiep";
-		return axiosClient.post(url, params);
-	},
 	getListCoacher: (params) => {
 		const url = "/api/admin/get-all-coacher";
 		return axiosClient.get(url, params);
@@ -42,12 +38,28 @@ const userAPI = {
 		return axiosClient.get(url, params);
 	},
 	postBookingCoaching: (params) => {
-		const url = "/api/users/tao-lich-gap-truc-tiep";
+		const url = "/api/users/tao-lich-gap-truc-tiep-by-user";
 		return axiosClient.post(url, params);
 	},
 	getListUserBooked: (params) => {
 		const url = "/api/users/get-lich-truc-tiep-cua-user";
 		return axiosClient.get(url, params);
+	},
+	getVerifyEmail: (params) => {
+		const url = `/api/users/verify-email/${params}`;
+		return axiosClient.get(url);
+	},
+	postToGetListSearchFree: (params) => {
+		const url = "/api/users/get-search-free-data-by-day";
+		return axiosClient.post(url, params);
+	},
+	postToGetListSearchVip: (params) => {
+		const url = "/api/users//get-search-vip-data-by-day";
+		return axiosClient.post(url, params);
+	},
+	postRating: (idUser, params) => {
+		const url = `/api/users/danh-gia-gap-truc-tiep/${idUser}`;
+		return axiosClient.post(url, params);
 	},
 };
 

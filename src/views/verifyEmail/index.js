@@ -1,10 +1,12 @@
-import { Button, Grid, Typography } from "@material-ui/core";
+import { Button, CircularProgress, Grid, Typography } from "@material-ui/core";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import KeyboardBackspaceOutlinedIcon from "@material-ui/icons/KeyboardBackspaceOutlined";
+import { Alert } from "@material-ui/lab";
 import clsx from "clsx";
-import React, { useState } from "react";
-import signInServiceApi from "../../api/signInServiceApi";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import loginServiceApi from "../../api/loginServiceApi";
 import logo from "../../images/logo_satsi.png";
 import "./VerifyEmail.scss";
 
@@ -42,42 +44,51 @@ const CssTextField = withStyles({
 const VerifyEmail = () => {
 	const classes = useStyles();
 
-	const [email, setEmail] = useState("");
+	const emailVerify = useSelector((state) => state.login.email);
+	const emailSignInVerify = useSelector((state) => state.signIn.email);
 
-	const handleSubmitVerifyOtp = (e) => {
-		e.preventDefault();
+	const [success, setSuccess] = useState(false);
+	const [error, setError] = useState(false);
+	const [isLoading, setIsLoading] = useState(false);
 
-		const data = {
-			email: email,
-		};
+	const [emailFilled, setEmailFilled] = useState("");
 
-		console.log(data);
-
-		const fetchPostToGetVerifyOtp = async () => {
+	// handle send verify email when user account is not authorized
+	useEffect(() => {
+		setIsLoading(true);
+		let dataVerify;
+		if (emailVerify) {
+			dataVerify = {
+				email: emailVerify,
+			};
+		} else if (emailSignInVerify) {
+			dataVerify = {
+				email: emailSignInVerify,
+			};
+		}
+		setEmailFilled(dataVerify.email);
+		const fetchSendEmailVerify = async () => {
 			try {
-				const request = await signInServiceApi.postVerifyEmail(data);
+				const requestVerify = await loginServiceApi.postVerifyEmail(dataVerify);
 
-				console.log(request);
-				// if (request) {
-				// 	// setIsSuccess(true);
-				// 	setTimeout(() => {
-				// 		// setIsSuccess(false);
-				// 		// history.push("/dang-nhap");
-				// 	}, 1500);
-				// }
-			} catch (er) {
-				// setIsError(true);
-				// setTimeout(() => {
-				// 	// setIsError(false);
-				// 	// setOtp("");
-				// 	// setPassword("");
-				// }, 1500);
-				// console.log(er);
+				if (requestVerify.message === "mail sent") {
+					setTimeout(() => {
+						setSuccess(true);
+						setIsLoading(false);
+					}, 1500);
+				} else {
+					throw error;
+				}
+			} catch (error) {
+				setTimeout(() => {
+					setError(true);
+					setIsLoading(false);
+				}, 1500);
 			}
 		};
 
-		fetchPostToGetVerifyOtp();
-	};
+		fetchSendEmailVerify();
+	}, []);
 
 	return (
 		<div className='login-wrapper'>
@@ -112,67 +123,56 @@ const VerifyEmail = () => {
 						</Typography>
 
 						<div className='loginFiled'>
-							<form className={classes.root} onSubmit={handleSubmitVerifyOtp}>
-								{/* {isLoading && <CircularProgress color='secondary' />} */}
-								{/* {errorOtp && (
-									<Alert
-										variant='filled'
-										severity='error'
-										style={{ marginTop: "1rem", justifyContent: "center" }}>
-										Lấy mã OTP không thành công
-									</Alert>
-								)}
-								{isError && (
-									<Alert
-										variant='filled'
-										severity='error'
-										style={{ marginTop: "1rem", justifyContent: "center" }}>
-										Cập nhật mật khẩu không thành công
-									</Alert>
-								)}
+							{success && (
+								<Alert
+									variant='filled'
+									severity='success'
+									style={{ marginTop: "1rem", justifyContent: "center" }}>
+									Yêu cầu xác thực thành công, kiểm tra email đã đăng ký để hoàn
+									tất xác thực
+								</Alert>
+							)}
+							{error && (
+								<Alert
+									variant='filled'
+									severity='error'
+									style={{ marginTop: "1rem", justifyContent: "center" }}>
+									Yêu cầu xác thực không thành công, vui lòng thử lại
+								</Alert>
+							)}
 
-								{isSuccess && (
-									<Alert
-										variant='filled'
-										severity='success'
-										style={{ marginTop: "1rem", justifyContent: "center" }}>
-										Cập nhật mật khẩu thành công
-									</Alert>
-								)} */}
-								<Grid container direction='column'>
-									<Grid item>
-										<CssTextField
-											size='medium'
-											variant='outlined'
-											margin='normal'
-											type='email'
-											label='Email đã đăng ký'
-											className={clsx(classes.textField)}
-											required
-											value={email}
-											onChange={(e) => setEmail(e.target.value)}
-											color='secondary'
-											autoComplete='off'
-										/>
-									</Grid>
+							<Grid container direction='column'>
+								<Grid item>
+									<CssTextField
+										size='medium'
+										variant='outlined'
+										margin='normal'
+										type='email'
+										label='Email đã đăng ký'
+										className={clsx(classes.textField)}
+										required
+										value={emailFilled}
+										disabled
+										color='secondary'
+										autoComplete='off'
+									/>
 								</Grid>
-								<Button
-									size='large'
-									type='submit'
-									color='secondary'
-									variant='contained'
-									// disabled={isLoading ? true : false}
-									style={{ marginTop: "2rem" }}>
-									GỬI YÊU CẦU
-								</Button>
-							</form>
-							<Button
-								href='/dang-nhap'
-								style={{ marginTop: "1rem" }}
-								startIcon={<KeyboardBackspaceOutlinedIcon />}
-								color='secondary'>
-								Quay Về Trang đăng nhập
-							</Button>
+							</Grid>
+							<div>
+								{isLoading ? (
+									<div style={{ textAlign: "center", marginTop: "2rem" }}>
+										<CircularProgress color='secondary' />
+									</div>
+								) : (
+									<Button
+										href='/dang-nhap'
+										style={{ marginTop: "1rem" }}
+										startIcon={<KeyboardBackspaceOutlinedIcon />}
+										color='secondary'>
+										Quay Về Trang đăng nhập
+									</Button>
+								)}
+							</div>
 						</div>
 					</div>
 				</div>

@@ -12,9 +12,11 @@ import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import Alert from "@material-ui/lab/Alert";
 import clsx from "clsx";
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import signInServiceApi from "../../api/signInServiceApi";
 import logo from "../../images/logo_satsi.png";
+import { signInVerifyEmail } from "./sigInSlice";
 import "./SignIn.scss";
 
 const useStyles = makeStyles((theme) => ({
@@ -50,6 +52,8 @@ const CssTextField = withStyles({
 
 const SignIn = () => {
 	const classes = useStyles();
+	const dispatch = useDispatch();
+	const history = useHistory();
 
 	const [name, setName] = useState("");
 	const [email, setEmail] = useState("");
@@ -61,9 +65,8 @@ const SignIn = () => {
 
 	const [success, setSuccess] = useState(false);
 	const [error, setError] = useState(false);
+	const [errorMessage, setErrorMessage] = useState("");
 	const [errorPasswordAgain, setErrorPasswordAgain] = useState(false);
-
-	const history = useHistory();
 
 	const handleClickShowPassword = () => {
 		setShowPassword(!showPassword);
@@ -97,13 +100,23 @@ const SignIn = () => {
 					signInServiceApi
 						.postSignIn(dataSignIn)
 						.then(function (response) {
-							setSuccess(true);
-							setTimeout(() => {
-								setSuccess(false);
-								history.push("/dang-nhap");
-							}, 1500);
+							if (response.data.email === dataSignIn.email) {
+								setSuccess(true);
+
+								const action = signInVerifyEmail(dataSignIn.email);
+
+								dispatch(action);
+
+								setTimeout(() => {
+									setSuccess(false);
+									history.push("/xac-thuc-email");
+								}, 1500);
+							} else {
+								throw "SĐT hoặc email đã được đăng ký trước";
+							}
 						})
 						.catch(function (error) {
+							setErrorMessage(error);
 							setError(true);
 							setTimeout(() => {
 								setError(false);
@@ -171,7 +184,7 @@ const SignIn = () => {
 										variant='filled'
 										severity='error'
 										style={{ marginTop: "1rem", justifyContent: "center" }}>
-										Đăng ký không thành công
+										{errorMessage}
 									</Alert>
 								)}
 								{errorPasswordAgain && (
@@ -236,11 +249,11 @@ const SignIn = () => {
 											variant='outlined'
 											size='medium'
 											color='secondary'>
-											<InputLabel htmlFor='outlined-adornment-password'>
+											<InputLabel htmlFor='outlined-adornment-password-2'>
 												Mật khẩu
 											</InputLabel>
 											<OutlinedInput
-												id='outlined-adornment-password'
+												id='outlined-adornment-password-2'
 												type={showPassword ? "text" : "password"}
 												value={password}
 												onChange={(e) => setPassword(e.target.value)}
@@ -271,11 +284,11 @@ const SignIn = () => {
 											variant='outlined'
 											size='medium'
 											color='secondary'>
-											<InputLabel htmlFor='outlined-adornment-password'>
+											<InputLabel htmlFor='outlined-adornment-password-1'>
 												Nhập lại mật khẩu
 											</InputLabel>
 											<OutlinedInput
-												id='outlined-adornment-password'
+												id='outlined-adornment-password-1'
 												type={showPasswordAgain ? "text" : "password"}
 												value={passwordAgain}
 												onChange={(e) => setPasswordAgain(e.target.value)}

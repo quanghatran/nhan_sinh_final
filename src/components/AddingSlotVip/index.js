@@ -21,6 +21,7 @@ const useStyles = makeStyles((theme) => ({
 		backgroundColor: theme.palette.background.paper,
 		boxShadow: theme.shadows[5],
 		padding: theme.spacing(2, 4, 3),
+		borderRadius: 8,
 	},
 }));
 
@@ -78,7 +79,7 @@ const AddingSlotVip = (props) => {
 								className={classes.field}
 								label='Số lượt VIP  '
 								variant='outlined'
-								color='secondary'
+								color='primary'
 								fullWidth
 								type='number'
 								style={{ marginBottom: "1rem" }}

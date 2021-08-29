@@ -10,9 +10,12 @@ const login = createSlice({
 		updateUser: (state, action) => {
 			state.name = action.payload;
 		},
+		verifyEmail: (state, action) => {
+			state.email = action.payload;
+		},
 	},
 });
 
 const { reducer, actions } = login;
-export const { addUser, updateUser } = actions;
+export const { addUser, updateUser, verifyEmail } = actions;
 export default reducer;

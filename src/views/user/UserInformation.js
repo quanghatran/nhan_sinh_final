@@ -15,6 +15,7 @@ import { useDispatch } from "react-redux";
 import userAPI from "../../api/userAPI";
 import { getUserProfile, updateName } from "../../app/userSlice";
 import Footer from "../../common/footer/Footer";
+import formatCash from "../../components/FormatMoney";
 import ModalDepositMoney from "../../components/modalDepositMoney/ModalDepositMoney";
 import TitleSection from "../../components/titleSection/TitleSection";
 import { updateUser } from "../../views/login/loginSlice";
@@ -208,12 +209,7 @@ const UserInformation = () => {
 								<Typography variant='subtitle1'>
 									Số tiền còn lại :{" "}
 									<span style={{ fontSize: "1.2rem", fontWeight: "bold" }}>
-										{userInfo.money
-											? userInfo.money.toLocaleString("it-IT", {
-													style: "currency",
-													currency: "VND",
-											  })
-											: "0 VND"}
+										{formatCash("" + userInfo.money)} VNĐ
 									</span>
 									<Button
 										color='secondary'

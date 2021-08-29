@@ -1,6 +1,7 @@
 // import userReducer from "./userSlice";
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import loginReducer from "../views/login/loginSlice";
+import signInReducer from "../views/signIn/sigInSlice";
 import userReducer from "./userSlice";
 // import { persistStore, persistReducer } from "redux-persist";
 // import storage from "redux-persist/lib/storage";
@@ -13,6 +14,7 @@ import userReducer from "./userSlice";
 const rootReducer = combineReducers({
 	login: loginReducer,
 	user: userReducer,
+	signIn: signInReducer,
 });
 
 // const persistedReducer = persistReducer(persistConfig, rootReducer);

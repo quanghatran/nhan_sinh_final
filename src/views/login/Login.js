@@ -17,8 +17,8 @@ import { useHistory } from "react-router-dom";
 import loginServiceApi from "../../api/loginServiceApi";
 import logo from "../../images/logo_satsi.png";
 import "./Login.scss";
-import { addUser } from "./loginSlice";
-
+import { addUser, verifyEmail } from "./loginSlice";
+import CircularProgress from "@material-ui/core/CircularProgress";
 const useStyles = makeStyles((theme) => ({
 	textField: {
 		width: "35ch",
@@ -60,6 +60,9 @@ const Login = () => {
 	const [showPassword, setShowPassword] = useState(false);
 
 	const [error, setError] = useState(false);
+	const [success, setSuccess] = useState(false);
+	const [isLoading, setIsLoading] = useState(false);
+	const [errorMessage, setErrorMessage] = useState("");
 
 	const handleClickShowPassword = () => {
 		setShowPassword(!showPassword);
@@ -78,26 +81,50 @@ const Login = () => {
 		};
 
 		const fetchLoginData = async () => {
+			setIsLoading(true);
 			try {
 				const request = await loginServiceApi.postLogin(dataSignIn);
 
-				localStorage.setItem("user", JSON.stringify(request.data));
-				localStorage.setItem("userToken", request.data.token);
-				localStorage.setItem("userName", request.data.name);
+				if (request.status === 403) {
+					const action = verifyEmail(request.data.data.email);
 
-				setTimeout(() => {
-					const action = addUser(request.data);
 					dispatch(action);
 
-					history.push("/xem-online");
-				}, 1000);
+					setTimeout(() => {
+						history.push("/xac-thuc-email");
+						setIsLoading(false);
+					}, 1500);
+
+					setErrorMessage(error);
+
+					throw request.data.message;
+				} else if (request.status === 401) {
+					setIsLoading(false);
+					setPassword("");
+					throw "Tài khoản hoặc mật khẩu không chính xác";
+				} else {
+					localStorage.setItem("user", JSON.stringify(request.data));
+					localStorage.setItem("userToken", request.data.token);
+					localStorage.setItem("userName", request.data.name);
+					setSuccess(true);
+					setTimeout(() => {
+						setIsLoading(false);
+						setSuccess(false);
+						const action = addUser(request.data);
+						dispatch(action);
+
+						history.push("/xem-online");
+					}, 2000);
+				}
 			} catch (error) {
+				console.log(error);
+
+				setErrorMessage(error);
 				setError(true);
-				setPassword("");
 
 				setTimeout(() => {
 					setError(false);
-				}, 1500);
+				}, 2000);
 			}
 		};
 
@@ -117,6 +144,7 @@ const Login = () => {
 										<img src={logo} alt='logo' />
 									</Button>
 								</Grid>
+
 								<Grid item xs={12}>
 									<Typography
 										variant='h5'
@@ -126,6 +154,7 @@ const Login = () => {
 										MINH TRIẾT NHÂN SINH
 									</Typography>
 								</Grid>
+
 								<Grid item xs={12}>
 									<Typography
 										variant='subtitle1'
@@ -144,7 +173,15 @@ const Login = () => {
 										variant='filled'
 										severity='error'
 										style={{ marginTop: "1rem", justifyContent: "center" }}>
-										Đăng nhập thất bại
+										{errorMessage}
+									</Alert>
+								)}
+								{success && (
+									<Alert
+										variant='filled'
+										severity='success'
+										style={{ marginTop: "1rem", justifyContent: "center" }}>
+										Đăng nhập thành công
 									</Alert>
 								)}
 								<Grid container direction='column'>
@@ -200,41 +237,46 @@ const Login = () => {
 										</FormControl>
 									</Grid>
 								</Grid>
-								<div className='navigateBlock signInBlock'>
-									<a
-										className='forgotPassword'
-										href='/quen-mat-khau'
-										style={{ marginRight: 10 }}>
-										Quên mật khẩu?
-									</a>
-									<a
-										className='forgotPassword'
-										href='/xac-thuc-email'
-										style={{ marginLeft: 10 }}>
-										Xác thực email
-									</a>
-								</div>
-								<Button
-									size='large'
-									type='submit'
-									color='secondary'
-									variant='contained'>
-									đăng nhập
-								</Button>
-								<div className='navigateBlock signInBlock'>
-									<a className='signIn' href='/dang-ky'>
-										Đăng ký tài khoản!
-									</a>
-								</div>
-								{/* <div className='navigateBlock signInBlock'>
-									<a className='signIn' href='/dang-ky'>
-										Quên mật khẩu?
-									</a>
-								</div> */}
+								{isLoading ? (
+									<div style={{ textAlign: "center", marginTop: "2rem" }}>
+										<CircularProgress color='secondary' />
+									</div>
+								) : (
+									<div>
+										<div className='navigateBlock signInBlock'>
+											<a
+												className='forgotPassword'
+												href='/quen-mat-khau'
+												style={{ marginRight: 10 }}>
+												Quên mật khẩu?
+											</a>
+											{/* <a
+												className='forgotPassword'
+												href='/xac-thuc-email'
+												style={{ marginLeft: 10 }}>
+												Xác thực email
+											</a> */}
+										</div>
+										<Button
+											size='large'
+											type='submit'
+											color='secondary'
+											variant='contained'>
+											đăng nhập
+										</Button>
+										<div className='navigateBlock signInBlock'>
+											<a className='signIn' href='/dang-ky'>
+												Đăng ký tài khoản!
+											</a>
+										</div>
+									</div>
+								)}
 							</form>
-							<Button href='/' startIcon={<HomeIcon />} color='secondary'>
-								Quay Về Trang Chủ
-							</Button>
+							{!isLoading && (
+								<Button href='/' startIcon={<HomeIcon />} color='secondary'>
+									Quay Về Trang Chủ
+								</Button>
+							)}
 						</div>
 					</div>
 				</div>

@@ -2,7 +2,7 @@ import axios from "axios";
 import queryString from "query-string";
 
 // create an axios object with custom config
-const axiosClient = axios.create({
+const axiosClientVerifyEmail = axios.create({
 	baseURL: process.env.REACT_APP_API_URL,
 	headers: {
 		"content-type": "application/json",
@@ -12,7 +12,7 @@ const axiosClient = axios.create({
 	paramsSerializer: (params) => queryString.stringify(params),
 });
 
-axiosClient.interceptors.request.use(async (config) => {
+axiosClientVerifyEmail.interceptors.request.use(async (config) => {
 	const token = await localStorage.getItem("userToken");
 	if (token) {
 		config.headers.Authorization = `Bearer ${token}`;
@@ -21,7 +21,7 @@ axiosClient.interceptors.request.use(async (config) => {
 	return config;
 });
 
-axiosClient.interceptors.response.use(
+axiosClientVerifyEmail.interceptors.response.use(
 	(response) => {
 		if (response && response.data) {
 			return response.data;
@@ -30,9 +30,9 @@ axiosClient.interceptors.response.use(
 	},
 	(error) => {
 		// handle error here
-		throw Error;
-		// return error.response;
+		return error.response;
+		// throw Error;
 	}
 );
 
-export default axiosClient;
+export default axiosClientVerifyEmail;

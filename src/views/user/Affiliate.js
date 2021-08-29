@@ -1,35 +1,36 @@
 import {
 	Button,
 	Dialog,
-	Grid,
-	Typography,
-	DialogTitle,
-	DialogContent,
 	DialogActions,
-	TextField,
+	DialogContent,
 	DialogContentText,
-	TableContainer,
+	DialogTitle,
+	Grid,
+	IconButton,
 	Paper,
 	Table,
-	TableHead,
-	TableRow,
 	TableBody,
 	TableCell,
+	TableContainer,
+	TableHead,
+	TableRow,
+	TextField,
 	Tooltip,
-	IconButton,
+	Typography,
 } from "@material-ui/core";
-import { Alert } from "@material-ui/lab";
 import { makeStyles } from "@material-ui/core/styles";
+import AddShoppingCartOutlinedIcon from "@material-ui/icons/AddShoppingCartOutlined";
+import { Alert } from "@material-ui/lab";
+import moment from "moment";
 import React, { useEffect, useState } from "react";
 import userAPI from "../../api/userAPI";
 import Footer from "../../common/footer/Footer";
+import AddingSlotVip from "../../components/AddingSlotVip";
+import formatCash from "../../components/FormatMoney";
+import StaticSearchChart from "../../components/StaticSearchChart";
 import TitleSection from "../../components/titleSection/TitleSection";
 import HeaderLogin from "../home/headerLogin/HeaderLogin";
 import "./UserSearchHistory.css";
-import AddShoppingCartOutlinedIcon from "@material-ui/icons/AddShoppingCartOutlined";
-import AddingSlotVip from "../../components/AddingSlotVip";
-import AddOutlinedIcon from "@material-ui/icons/AddOutlined";
-import DepositUserForm from "../../components/DepositUserForm";
 const useStyles = makeStyles((theme) => ({
 	modal: {
 		display: "flex",
@@ -61,15 +62,16 @@ const Affiliate = () => {
 	const [isDataChanged, setIsDataChanged] = useState(false);
 
 	const [clickedOpenAddingSlotVip, setClickedOpenAddingSlotVip] = useState("");
-	const [clickedOpenChangeMoneyFromID, setClickedOpenChangeMoneyFromID] =
-		useState("");
-	const [newMoney, setNewMoney] = useState("");
+	// const [clickedOpenChangeMoneyFromID, setClickedOpenChangeMoneyFromID] =
+	// 	useState("");
+	// const [newMoney, setNewMoney] = useState("");
 
 	const [newSlotVip, setNewSlotVip] = useState("");
 
-	const [openChangeMoneyForm, setOpenChangeMoneyForm] = useState(false);
+	// const [openChangeMoneyForm, setOpenChangeMoneyForm] = useState(false);
 
 	const [openChangeSlotVip, setOpenChangeSlotVip] = useState(false);
+
 	// get user info
 	useEffect(() => {
 		const fetchGetUserProfile = async () => {
@@ -115,27 +117,25 @@ const Affiliate = () => {
 		fetchPatchAddLauncher();
 	};
 
-	const handleChangeMoneyOpen = (id) => {
-		setOpenChangeMoneyForm(true);
-		setClickedOpenChangeMoneyFromID(id);
-	};
+	// const handleChangeMoneyOpen = (id) => {
+	// 	setOpenChangeMoneyForm(true);
+	// 	setClickedOpenChangeMoneyFromID(id);
+	// };
 
-	const handleChangeMoneyClose = () => {
-		setOpenChangeMoneyForm(false);
-	};
+	// const handleChangeMoneyClose = () => {
+	// 	setOpenChangeMoneyForm(false);
+	// };
 
 	const handleChangeSlotVipClose = () => {
 		setOpenChangeSlotVip(false);
 	};
 
 	const handleOpenAddingSlotVip = (id) => {
-		console.log(id);
 		setOpenChangeSlotVip(true);
 		setClickedOpenAddingSlotVip(id);
 	};
 
 	// get membership information
-	// get user info
 	useEffect(() => {
 		const fetchGetUserProfile = async () => {
 			try {
@@ -183,36 +183,36 @@ const Affiliate = () => {
 	};
 
 	// handle change money of users using async/await technique
-	const handleSubmitChangeMoney = (idUser) => {
-		if (idUser && newMoney) {
-			const dataNewMoney = {
-				number: newMoney,
-			};
+	// const handleSubmitChangeMoney = (idUser) => {
+	// 	if (idUser && newMoney) {
+	// 		const dataNewMoney = {
+	// 			number: newMoney,
+	// 		};
 
-			const fetchChangeMoney = async () => {
-				try {
-					await userAPI.postDepositMoney(dataNewMoney, idUser);
-					setIsSuccess(true);
+	// 		const fetchChangeMoney = async () => {
+	// 			try {
+	// 				await userAPI.postDepositMoney(dataNewMoney, idUser);
+	// 				setIsSuccess(true);
 
-					setTimeout(() => {
-						setIsDataChanged(!isDataChanged);
-						setOpenChangeMoneyForm(false);
-						setIsSuccess(false);
-					}, 1500);
-				} catch (error) {
-					setIsError(true);
+	// 				setTimeout(() => {
+	// 					setIsDataChanged(!isDataChanged);
+	// 					setOpenChangeMoneyForm(false);
+	// 					setIsSuccess(false);
+	// 				}, 1500);
+	// 			} catch (error) {
+	// 				setIsError(true);
 
-					setTimeout(() => {
-						setIsDataChanged(!isDataChanged);
-						setOpenChangeMoneyForm(false);
-						setIsError(false);
-					}, 1500);
-				}
-			};
+	// 				setTimeout(() => {
+	// 					setIsDataChanged(!isDataChanged);
+	// 					setOpenChangeMoneyForm(false);
+	// 					setIsError(false);
+	// 				}, 1500);
+	// 			}
+	// 		};
 
-			fetchChangeMoney();
-		}
-	};
+	// 		fetchChangeMoney();
+	// 	}
+	// };
 
 	return (
 		<div className='UserSearchHistory'>
@@ -231,12 +231,7 @@ const Affiliate = () => {
 								<Typography variant='subtitle1'>
 									Số tiền còn lại :{" "}
 									<span style={{ fontSize: "1.2rem", fontWeight: "bold" }}>
-										{userInfo.money
-											? userInfo.money.toLocaleString("it-IT", {
-													style: "currency",
-													currency: "VND",
-											  })
-											: "0 VND"}
+										{formatCash("" + userInfo.money)} VNĐ
 									</span>
 								</Typography>
 							</Grid>
@@ -245,7 +240,9 @@ const Affiliate = () => {
 									Số lượt tra cứu VIP :{" "}
 									<span style={{ fontSize: "1.2rem", fontWeight: "bold" }}>
 										{userInfo.slotVip}
-									</span>
+									</span>{" "}
+									- Được sử dụng tới ngày{" "}
+									<b>{moment(userInfo.expirySlotVIP).format("DD/MM/YYYY")}</b>
 								</Typography>
 							</Grid>
 							<Grid item container>
@@ -279,83 +276,86 @@ const Affiliate = () => {
 						</Grid>
 
 						<Grid item container>
-							<Typography variant='subtitle1' style={{ margin: "1rem 0" }}>
+							<Typography
+								variant='subtitle1'
+								style={{ margin: "1rem 0", fontWeight: "bold" }}>
 								Danh sách thành viên cấp dưới
 							</Typography>
 						</Grid>
 
 						{listMembers.length > 0 ? (
-							<TableContainer component={Paper}>
-								<Table className={classes.table} aria-label='simple table'>
-									<TableHead
-										style={{
-											backgroundColor: "#3f51b5",
-											textTransform: "upperCase",
-										}}>
-										<TableRow>
-											<TableCell style={{ color: "#fff" }}>STT</TableCell>
-											<TableCell style={{ color: "#fff" }}>SĐT</TableCell>
-											<TableCell style={{ color: "#fff" }}>Họ tên</TableCell>
-											<TableCell style={{ color: "#fff" }}>
-												Dịch vụ đã mua
-											</TableCell>
-											<TableCell style={{ color: "#fff" }}>
-												Lượt tra cứu VIP
-											</TableCell>
-											<TableCell style={{ color: "#fff" }}>
-												Số tiền còn lại
-											</TableCell>
-										</TableRow>
-									</TableHead>
-									<TableBody>
-										{listMembers.map((member, index) => (
-											<TableRow key={member._id}>
-												<TableCell>{index + 1}</TableCell>
-												<TableCell>{member.phone}</TableCell>
-												<TableCell>{member.name}</TableCell>
-												<TableCell>{member.serviceBought}</TableCell>
-												{/* <TableCell>{member.slotVip}</TableCell> */}
-												<TableCell>
-													<Grid container alignItems='center'>
-														<Grid item style={{ paddingRight: "5px" }}>
-															{member.slotVip}
-														</Grid>
-														<Grid item>
-															<Tooltip title='Thêm lượt tra cứu VIP cho thành viên'>
-																<IconButton
-																	aria-label='deposit'
-																	type='button'
-																	onClick={() =>
-																		handleOpenAddingSlotVip(member._id)
-																	}>
-																	<AddShoppingCartOutlinedIcon color='secondary' />
-																</IconButton>
-															</Tooltip>
-														</Grid>
-													</Grid>
-													{member._id === clickedOpenAddingSlotVip ? (
-														<AddingSlotVip
-															nameUserChange={member.name}
-															idUserChange={member._id}
-															isOpenForm={openChangeSlotVip}
-															onCloseForm={handleChangeSlotVipClose}
-															onChangeVipSearch={handleSubmitChangeSlotVip}
-															onFormChange={(e) =>
-																setNewSlotVip(e.target.value)
-															}
-															onSuccess={isSuccess}
-															onError={isError}
-														/>
-													) : (
-														""
-													)}
+							<div>
+								<TableContainer component={Paper}>
+									<Table className={classes.table} aria-label='simple table'>
+										<TableHead
+											style={{
+												backgroundColor: "#3f51b5",
+												textTransform: "upperCase",
+											}}>
+											<TableRow>
+												<TableCell style={{ color: "#fff" }}>STT</TableCell>
+												<TableCell style={{ color: "#fff" }}>SĐT</TableCell>
+												<TableCell style={{ color: "#fff" }}>Họ tên</TableCell>
+												<TableCell style={{ color: "#fff" }}>
+													Dịch vụ đã mua
 												</TableCell>
-												<TableCell>
-													<Grid container alignItems='center'>
-														<Grid item style={{ paddingRight: "5px" }}>
-															{member.money}
+												<TableCell style={{ color: "#fff" }}>
+													Lượt tra cứu VIP
+												</TableCell>
+												<TableCell style={{ color: "#fff" }}>
+													Số tiền còn lại
+												</TableCell>
+											</TableRow>
+										</TableHead>
+										<TableBody>
+											{listMembers.map((member, index) => (
+												<TableRow key={member._id}>
+													<TableCell>{index + 1}</TableCell>
+													<TableCell>{member.phone}</TableCell>
+													<TableCell>{member.name}</TableCell>
+													<TableCell>{member.serviceBought}</TableCell>
+													{/* <TableCell>{member.slotVip}</TableCell> */}
+													<TableCell>
+														<Grid container alignItems='center'>
+															<Grid item style={{ paddingRight: "5px" }}>
+																{member.slotVip}
+															</Grid>
+															<Grid item>
+																<Tooltip title='Thêm lượt tra cứu VIP cho thành viên'>
+																	<IconButton
+																		aria-label='deposit'
+																		type='button'
+																		onClick={() =>
+																			handleOpenAddingSlotVip(member._id)
+																		}>
+																		<AddShoppingCartOutlinedIcon color='secondary' />
+																	</IconButton>
+																</Tooltip>
+															</Grid>
 														</Grid>
-														<Grid item>
+														{member._id === clickedOpenAddingSlotVip ? (
+															<AddingSlotVip
+																nameUserChange={member.name}
+																idUserChange={member._id}
+																isOpenForm={openChangeSlotVip}
+																onCloseForm={handleChangeSlotVipClose}
+																onChangeVipSearch={handleSubmitChangeSlotVip}
+																onFormChange={(e) =>
+																	setNewSlotVip(e.target.value)
+																}
+																onSuccess={isSuccess}
+																onError={isError}
+															/>
+														) : (
+															""
+														)}
+													</TableCell>
+													<TableCell>
+														<Grid container alignItems='center'>
+															<Grid item style={{ paddingRight: "5px" }}>
+																{formatCash("" + member.money)} VNĐ
+															</Grid>
+															{/* <Grid item>
 															<Tooltip title='Nạp thêm tiền cho thành viên'>
 																<IconButton
 																	aria-label='deposit'
@@ -366,9 +366,9 @@ const Affiliate = () => {
 																	<AddOutlinedIcon color='secondary' />
 																</IconButton>
 															</Tooltip>
+														</Grid> */}
 														</Grid>
-													</Grid>
-													{member._id === clickedOpenChangeMoneyFromID ? (
+														{/* {member._id === clickedOpenChangeMoneyFromID ? (
 														<DepositUserForm
 															nameUserChange={member.name}
 															idUserChange={member._id}
@@ -381,13 +381,22 @@ const Affiliate = () => {
 														/>
 													) : (
 														""
-													)}
-												</TableCell>
-											</TableRow>
-										))}
-									</TableBody>
-								</Table>
-							</TableContainer>
+													)} */}
+													</TableCell>
+												</TableRow>
+											))}
+										</TableBody>
+									</Table>
+								</TableContainer>
+								<Grid item container>
+									<Typography
+										variant='subtitle1'
+										style={{ margin: "1rem 0", fontWeight: "bold" }}>
+										Thống kê hoạt động thành viên
+									</Typography>
+								</Grid>
+								<StaticSearchChart />
+							</div>
 						) : (
 							<Alert severity='info' style={{ textAlign: "center" }}>
 								Bạn chưa có thành viên cấp dưới

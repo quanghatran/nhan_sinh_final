@@ -10465,7 +10465,7 @@
     "regenerator-runtime" "^0.13.7"
     "whatwg-fetch" "^3.4.1"
 
-"react-chartjs-2@2.9.0":
+"react-chartjs-2@^2.9.0", "react-chartjs-2@2.9.0":
   "integrity" "sha512-IYwqUUnQRAJ9SNA978vxulHJTcUFTJk2LDVfbAyk0TnJFZZG7+6U/2flsE4MCw6WCbBjTTypy8T82Ch7XrPtRw=="
   "resolved" "https://registry.npmjs.org/react-chartjs-2/-/react-chartjs-2-2.9.0.tgz"
   "version" "2.9.0"
@@ -10609,6 +10609,15 @@
   "integrity" "sha512-1tKOwxFn3dXVomH6pM9IkLkq2Y8oh+fh/lYW3MJ/B03URswUTqttgckOlbxY2XHF3vPG6uanSc4dVsLW/wk3wQ=="
   "resolved" "https://registry.npmjs.org/react-property/-/react-property-1.0.1.tgz"
   "version" "1.0.1"
+
+"react-ratings-declarative@^3.4.1":
+  "integrity" "sha512-zL3d5PNcDcF/+KNcZlP2KVE5UIp53yLk7EJkbM9bXpvrqUp/S91lp7SkFsWPqv+q8dUg3BOdfEX1RWNQs1ocVw=="
+  "resolved" "https://registry.npmjs.org/react-ratings-declarative/-/react-ratings-declarative-3.4.1.tgz"
+  "version" "3.4.1"
+  dependencies:
+    "classnames" "^2.2.5"
+    "prop-types" "^15.6.0"
+    "react" "^16.2.0"
 
 "react-redux@^7.2.1", "react-redux@^7.2.4":
   "integrity" "sha512-hOQ5eOSkEJEXdpIKbnRyl04LhaWabkDPV+Ix97wqQX3T3d2NQ8DUblNXXtNMavc7DpswyQM6xfaN4HQDKNY2JA=="
@@ -10825,6 +10834,15 @@
   dependencies:
     "loose-envify" "^1.1.0"
     "object-assign" "^4.1.1"
+
+"react@^16.2.0":
+  "integrity" "sha512-0X2CImDkJGApiAlcf0ODKIneSwBPhqJawOa5wCtKbu7ZECrmS26NvtSILynQ66cgkT/RJ4LidJOc3bUESwmU8g=="
+  "resolved" "https://registry.npmjs.org/react/-/react-16.14.0.tgz"
+  "version" "16.14.0"
+  dependencies:
+    "loose-envify" "^1.1.0"
+    "object-assign" "^4.1.1"
+    "prop-types" "^15.6.2"
 
 "read-pkg-up@^1.0.1":
   "integrity" "sha1-nWPBMnbAZZGNV/ACpX9AobZD+wI="

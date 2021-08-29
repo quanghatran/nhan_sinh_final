@@ -18,6 +18,7 @@ import moment from "moment";
 import React, { useEffect, useState } from "react";
 import servicesApi from "../../api/servicesApi";
 import Footer from "../../common/footer/Footer";
+import formatCash from "../../components/FormatMoney";
 import ModalConfirm from "../../components/modalConfirm/ModalConfirm";
 import TitleSection from "../../components/titleSection/TitleSection";
 import HeaderLogin from "../home/headerLogin/HeaderLogin";
@@ -168,7 +169,7 @@ const UserPurchased = () => {
 																{data.service == null ? (
 																	<div>NULL</div>
 																) : (
-																	data.service.price
+																	formatCash("" + data.service.price) + " VNĐ"
 																)}
 															</TableCell>
 															<TableCell style={{ fontWeight: "bold" }}>
@@ -203,6 +204,7 @@ const UserPurchased = () => {
 																	)}
 																</Tooltip>
 															</TableCell>
+
 															{data.service == null ? (
 																""
 															) : clickedIdService === data.service._id &&
