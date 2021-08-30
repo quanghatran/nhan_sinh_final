@@ -61,6 +61,10 @@ const userAPI = {
 		const url = `/api/users/danh-gia-gap-truc-tiep/${idUser}`;
 		return axiosClient.post(url, params);
 	},
+	getTreeUsers: (params) => {
+		const url = "/api/users/get-tree-user";
+		return axiosClient.get(url, params);
+	},
 };
 
 export default userAPI;

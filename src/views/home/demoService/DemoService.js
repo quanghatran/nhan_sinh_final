@@ -172,8 +172,7 @@ const DemoService = () => {
 										color='primary'
 										type='submit'
 										endIcon={<SearchIcon />}
-										className={classes.mtBtn}
-									>
+										className={classes.mtBtn}>
 										Tra Cứu Miễn Phí
 									</Button>
 								</div>

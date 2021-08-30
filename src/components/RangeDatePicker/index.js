@@ -50,8 +50,10 @@ const RangeDatePicker = (props) => {
 				label='Ngày kết thúc'
 				type='date'
 				defaultValue={endDay}
+				format='dd/MM/yyyy'
 				className={classes.textField}
 				onChange={onEndDayChange}
+				style={{ marginLeft: "30px" }}
 				InputLabelProps={{
 					shrink: true,
 				}}
@@ -60,7 +62,7 @@ const RangeDatePicker = (props) => {
 				color='primary'
 				variant='contained'
 				size='small'
-				style={{ marginLeft: "0.3rem" }}
+				style={{ marginLeft: "30px" }}
 				onClick={(e) => {
 					handleClick();
 				}}>

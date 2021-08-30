@@ -29,6 +29,7 @@ import AddingSlotVip from "../../components/AddingSlotVip";
 import formatCash from "../../components/FormatMoney";
 import StaticSearchChart from "../../components/StaticSearchChart";
 import TitleSection from "../../components/titleSection/TitleSection";
+import TreeNodeChild from "../../components/TreeNodeChild";
 import HeaderLogin from "../home/headerLogin/HeaderLogin";
 import "./UserSearchHistory.css";
 const useStyles = makeStyles((theme) => ({
@@ -62,6 +63,9 @@ const Affiliate = () => {
 	const [isDataChanged, setIsDataChanged] = useState(false);
 
 	const [clickedOpenAddingSlotVip, setClickedOpenAddingSlotVip] = useState("");
+
+	const [listTree, setListTree] = useState([]);
+
 	// const [clickedOpenChangeMoneyFromID, setClickedOpenChangeMoneyFromID] =
 	// 	useState("");
 	// const [newMoney, setNewMoney] = useState("");
@@ -140,7 +144,6 @@ const Affiliate = () => {
 		const fetchGetUserProfile = async () => {
 			try {
 				const response = await userAPI.getListMemberShip();
-				// console.log(response.data);
 				setListMembers(response.data);
 			} catch (error) {
 				console.log("failed to update name", error);
@@ -149,6 +152,20 @@ const Affiliate = () => {
 
 		fetchGetUserProfile();
 	}, [isDataChanged]);
+
+	useEffect(() => {
+		const fetchStatisticDeposit = () => {
+			userAPI
+				.getTreeUsers()
+				.then((response) => {
+					setListTree(response.data);
+				})
+				.catch((error) => {
+					console.log(error);
+				});
+		};
+		fetchStatisticDeposit();
+	}, []);
 
 	// adding new slot vip for user by admin
 	const handleSubmitChangeSlotVip = (idUser) => {
@@ -396,6 +413,8 @@ const Affiliate = () => {
 									</Typography>
 								</Grid>
 								<StaticSearchChart />
+
+								<TreeNodeChild listTree={listTree} userInfo={userInfo} />
 							</div>
 						) : (
 							<Alert severity='info' style={{ textAlign: "center" }}>
