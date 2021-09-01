@@ -79,139 +79,125 @@ const useStyles = makeStyles(() => ({
 const Welcome = () => {
   const classes = useStyles();
   return (
-    <React.Fragment>
-      <Container maxWidth="lg" style={{ marginTop: "100px" }}>
-        <Grid container>
-          <Grid item md={12} sm={12} xs={12}>
-            <Typography variant="h1" className={classes.heading}>
-              Xin chào!
+    <Container maxWidth="lg" style={{ marginTop: "100px" }}>
+      <Grid container>
+        <Grid item md={12} sm={12} xs={12}>
+          <Typography variant="h1" className={classes.heading}>
+            Xin chào!
+          </Typography>
+        </Grid>
+        <Grid
+          item
+          container
+          md={12}
+          alignItems="center"
+          justify="center"
+          className={classes.item}
+        >
+          <Grid item md={8}>
+            <Typography variant="body2" className={classes.para1}>
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Porro,
+              officiis aut dolore tempore rem molestiae suscipit provident iste,
+              quis laboriosam quaerat dolorum doloribus atque ducimus molestias
+              cumque veritatis consequuntur iusto quasi quod voluptates.
+              Veritatis, sit expedita facere dolore officia ad.
             </Typography>
           </Grid>
-          <Grid
-            item
-            container
-            md={12}
-            alignItems="center"
-            justify="center"
-            className={classes.item}
-          >
-            <Grid item md={8}>
-              <Typography variant="body2" className={classes.para1}>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Porro,
-                officiis aut dolore tempore rem molestiae suscipit provident
-                iste, quis laboriosam quaerat dolorum doloribus atque ducimus
-                molestias cumque veritatis consequuntur iusto quasi quod
-                voluptates. Veritatis, sit expedita facere dolore officia ad.
-              </Typography>
-            </Grid>
+        </Grid>
+        <Grid
+          item
+          container
+          md={12}
+          alignItems="center"
+          justify="center"
+          className={classes.item}
+        >
+          <Grid item md={8}>
+            <Typography variant="body1" className={classes.para2}>
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Earum
+              non culpa ut ad pariatur eos quae reprehenderit illo modi sint?
+            </Typography>
           </Grid>
-          <Grid
-            item
-            container
-            md={12}
-            alignItems="center"
-            justify="center"
-            className={classes.item}
-          >
-            <Grid item md={8}>
-              <Typography variant="body1" className={classes.para2}>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Earum
-                non culpa ut ad pariatur eos quae reprehenderit illo modi sint?
-              </Typography>
+        </Grid>
+        <Grid
+          item
+          md={12}
+          container
+          alignItems="center"
+          justify="center"
+          className={classes.item}
+        >
+          <Grid item container md={8}>
+            <Grid item md={3} sm={6} xs={12} className={classes.gridItem}>
+              <div>
+                <Typography variant="h1" className={classes.number}>
+                  12
+                </Typography>
+              </div>
+              <div>
+                <Typography variant="subtitle1" className={classes.description}>
+                  Năm kinh nghiệm
+                </Typography>
+              </div>
             </Grid>
-          </Grid>
-          <Grid
-            item
-            md={12}
-            container
-            alignItems="center"
-            justify="center"
-            className={classes.item}
-          >
-            <Grid item container md={8}>
-              <Grid item md={3} sm={6} xs={12} className={classes.gridItem}>
-                <div>
-                  <Typography variant="h1" className={classes.number}>
-                    12
-                  </Typography>
-                </div>
-                <div>
-                  <Typography
-                    variant="subtitle1"
-                    className={classes.description}
-                  >
-                    Năm kinh nghiệm
-                  </Typography>
-                </div>
-              </Grid>
-              <Grid item md={3} sm={6} xs={12} className={classes.gridItem}>
-                <div>
-                  <Typography variant="h1" className={classes.number}>
-                    12
-                  </Typography>
-                </div>
-                <div>
-                  <Typography
-                    variant="subtitle1"
-                    className={classes.description}
-                  >
-                    Năm kinh nghiệm
-                  </Typography>
-                </div>
-              </Grid>
-              <Grid item md={3} sm={6} xs={12} className={classes.gridItem}>
-                <div>
-                  <Typography variant="h1" className={classes.number}>
-                    12
-                  </Typography>
-                </div>
-                <div>
-                  <Typography
-                    variant="subtitle1"
-                    className={classes.description}
-                  >
-                    Năm kinh nghiệm
-                  </Typography>
-                </div>
-              </Grid>
-              <Grid item md={3} sm={6} xs={12} className={classes.gridItem}>
-                <div>
-                  <Typography variant="h1" className={classes.number}>
-                    12
-                  </Typography>
-                </div>
-                <div>
-                  <Typography
-                    variant="subtitle1"
-                    className={classes.description}
-                  >
-                    Năm kinh nghiệm
-                  </Typography>
-                </div>
-              </Grid>
+            <Grid item md={3} sm={6} xs={12} className={classes.gridItem}>
+              <div>
+                <Typography variant="h1" className={classes.number}>
+                  12
+                </Typography>
+              </div>
+              <div>
+                <Typography variant="subtitle1" className={classes.description}>
+                  Năm kinh nghiệm
+                </Typography>
+              </div>
             </Grid>
-          </Grid>
-          <Grid
-            item
-            md={12}
-            container
-            alignItems="center"
-            justify="center"
-            className={classes.item}
-          >
-            <Grid item md={3} className={classes.btnContainer}>
-              <Button
-                fullWidth
-                variant="contained"
-                className={classes.btnSubscribe}
-              >
-                Đăng ký thành viên ngay
-              </Button>
+            <Grid item md={3} sm={6} xs={12} className={classes.gridItem}>
+              <div>
+                <Typography variant="h1" className={classes.number}>
+                  12
+                </Typography>
+              </div>
+              <div>
+                <Typography variant="subtitle1" className={classes.description}>
+                  Năm kinh nghiệm
+                </Typography>
+              </div>
+            </Grid>
+            <Grid item md={3} sm={6} xs={12} className={classes.gridItem}>
+              <div>
+                <Typography variant="h1" className={classes.number}>
+                  12
+                </Typography>
+              </div>
+              <div>
+                <Typography variant="subtitle1" className={classes.description}>
+                  Năm kinh nghiệm
+                </Typography>
+              </div>
             </Grid>
           </Grid>
         </Grid>
-      </Container>
-    </React.Fragment>
+        <Grid
+          item
+          md={12}
+          container
+          alignItems="center"
+          justify="center"
+          className={classes.item}
+        >
+          <Grid item md={3} className={classes.btnContainer}>
+            <Button
+              fullWidth
+              variant="contained"
+              className={classes.btnSubscribe}
+            >
+              Đăng ký thành viên ngay
+            </Button>
+          </Grid>
+        </Grid>
+      </Grid>
+    </Container>
   );
 };
 

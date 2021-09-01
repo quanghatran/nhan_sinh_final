@@ -23,21 +23,19 @@ const AppHome = () => {
   return (
     <React.Fragment>
       <ThemeProvider theme={theme}>
-        <div>
-          <Particles
-            params={particlesConfig}
-            style={{
-              backgroundImage: `url(${logo})`,
-              height: "100%",
-              position: "fixed",
-              zIndex: -10,
-              top: 0,
-              left: 0,
-            }}
-          ></Particles>
-        </div>
-
+        <Particles
+          params={particlesConfig}
+          style={{
+            backgroundImage: `url(${logo})`,
+            height: "100%",
+            position: "fixed",
+            zIndex: -10,
+            top: 0,
+            left: 0,
+          }}
+        />
         <Header />
+
         <Welcome />
         <Prices />
         <News />

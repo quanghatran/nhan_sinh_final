@@ -8,11 +8,15 @@ import LocationOnIcon from "@material-ui/icons/LocationOn";
 import PhoneIcon from "@material-ui/icons/Phone";
 import EmailIcon from "@material-ui/icons/Email";
 import LanguageIcon from "@material-ui/icons/Language";
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   para1: {
     color: "#a0a2ad",
     textAlign: "right",
     padding: "2px 0",
+    [theme.breakpoints.up("xs")]: {
+      textAlign: "justify",
+      fontSize: "1.25rem",
+    },
   },
   para2: {
     color: "#fff",
@@ -23,12 +27,19 @@ const useStyles = makeStyles(() => ({
     width: "70%",
     height: "70%",
   },
+  aboutSection: {
+    marginBottom: "20px",
+  },
   logoSection: {
     textAlign: "center",
+    marginBottom: "20px",
   },
   title: {
     fontSize: 25,
     textAlign: "right",
+    [theme.breakpoints.up("xs")]: {
+      textAlign: "center",
+    },
     fontWeight: "bold",
     color: "#f69320",
     marginBottom: "20px",
@@ -41,6 +52,7 @@ const useStyles = makeStyles(() => ({
     color: "white",
     fontSize: "1rem",
     padding: 10,
+    transform: "translateY(5px)",
   },
 }));
 
@@ -54,16 +66,26 @@ const NewFooter = () => {
     >
       <Container maxWidth="lg">
         <Grid container>
-          <Grid item md={4} sm={6} xs={12}>
-            <Typography variant="subtitle1" className={classes.title}>
-              Về chúng tôi
-            </Typography>
-            <Typography variant="body1" className={classes.para1}>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto,
-              placeat accusamus quod perspiciatis itaque omnis voluptates, eaque
-              minus minima numquam blanditiis doloribus laborum fugit! Nihil
-              tempora consequuntur eligendi iste quas.
-            </Typography>
+          <Grid
+            item
+            container
+            md={4}
+            sm={6}
+            xs={12}
+            justify="center"
+            className={classes.aboutSection}
+          >
+            <Grid item md={12} sm={12} xs={9}>
+              <Typography variant="subtitle1" className={classes.title}>
+                Về chúng tôi
+              </Typography>
+              <Typography variant="body1" className={classes.para1}>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto,
+                placeat accusamus quod perspiciatis itaque omnis voluptates,
+                eaque minus minima numquam blanditiis doloribus laborum fugit!
+                Nihil tempora consequuntur eligendi iste quas.
+              </Typography>
+            </Grid>
           </Grid>
           <Grid item md={4} sm={6} xs={12} className={classes.logoSection}>
             <img src={logo} alt="" className={classes.img} />
@@ -82,12 +104,27 @@ const NewFooter = () => {
               Bản quyền thuộc về thương hiệu SATSI
             </Typography>
           </Grid>
-          <Grid item container md={4} sm={6} xs={12}>
-            <Grid item container md={12} style={{ marginBottom: "15px" }}>
-              <Grid item md={2}>
+          <Grid
+            item
+            container
+            md={4}
+            sm={12}
+            xs={12}
+            className={classes.infoSection}
+            justify="center"
+          >
+            <Grid
+              item
+              container
+              md={12}
+              sm={6}
+              xs={9}
+              style={{ marginBottom: "15px" }}
+            >
+              <Grid item md={2} sm={2} xs={2} style={{ marginRight: 5 }}>
                 <LocationOnIcon className={classes.icon} />
               </Grid>
-              <Grid item md={10}>
+              <Grid item md={9} sm={9} xs={8}>
                 <Typography
                   variant="body1"
                   className={classes.para1}
@@ -96,15 +133,22 @@ const NewFooter = () => {
                   Địa chỉ :
                 </Typography>
                 <Typography variant="subtitle1" className={classes.para2}>
-                  01- BT9 KĐT Văn Khê, Hà Đông, Hà Nội
+                  01- BT9 Văn Khê, Hà Đông, Hà Nội
                 </Typography>
               </Grid>
             </Grid>
-            <Grid item container md={12} style={{ marginBottom: "15px" }}>
-              <Grid item md={2}>
+            <Grid
+              item
+              container
+              md={12}
+              sm={6}
+              xs={9}
+              style={{ marginBottom: "15px" }}
+            >
+              <Grid item md={2} sm={2} xs={2} style={{ marginRight: 5 }}>
                 <PhoneIcon className={classes.icon} />
               </Grid>
-              <Grid item md={10}>
+              <Grid item md={9} sm={9} xs={8}>
                 <Typography
                   variant="body1"
                   className={classes.para1}
@@ -117,11 +161,18 @@ const NewFooter = () => {
                 </Typography>
               </Grid>
             </Grid>
-            <Grid item container md={12} style={{ marginBottom: "15px" }}>
-              <Grid item md={2}>
+            <Grid
+              item
+              container
+              md={12}
+              sm={6}
+              xs={9}
+              style={{ marginBottom: "15px" }}
+            >
+              <Grid item md={2} sm={2} xs={2} style={{ marginRight: 5 }}>
                 <EmailIcon className={classes.icon} />
               </Grid>
-              <Grid item md={10}>
+              <Grid item md={9} sm={9} xs={8}>
                 <Typography
                   variant="body1"
                   className={classes.para1}
@@ -134,11 +185,18 @@ const NewFooter = () => {
                 </Typography>
               </Grid>
             </Grid>
-            <Grid item container md={12} style={{ marginBottom: "15px" }}>
-              <Grid item md={2}>
+            <Grid
+              item
+              container
+              md={12}
+              sm={6}
+              xs={9}
+              style={{ marginBottom: "15px" }}
+            >
+              <Grid item md={2} sm={2} xs={2} style={{ marginRight: 5 }}>
                 <LanguageIcon className={classes.icon} />
               </Grid>
-              <Grid item md={10}>
+              <Grid item md={9} sm={9} xs={8}>
                 <Typography
                   variant="body1"
                   className={classes.para1}

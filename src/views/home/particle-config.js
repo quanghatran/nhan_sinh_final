@@ -1,7 +1,8 @@
+import logo from "../../images/celeb1.jpg";
 const particlesConfig = {
   particles: {
     number: {
-      value: 60,
+      value: 80,
       density: {
         enable: true,
         value_area: 800,
@@ -39,27 +40,27 @@ const particlesConfig = {
       value: 3,
       random: true,
       anim: {
-        enable: false,
-        speed: 40,
+        enable: true,
+        speed: 20,
         size_min: 0.1,
-        sync: false,
+        sync: true,
       },
     },
     line_linked: {
       enable: true,
       distance: 150,
-      color: "#ffffff",
+      color: "#f69320",
       opacity: 0.4,
       width: 1,
     },
     move: {
       enable: true,
-      speed: 6,
+      speed: 4,
       direction: "none",
-      random: false,
+      random: true,
       straight: false,
       out_mode: "out",
-      bounce: false,
+      bounce: true,
       attract: {
         enable: false,
         rotateX: 600,

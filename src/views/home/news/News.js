@@ -116,10 +116,17 @@ const News = () => {
               fugiat.
             </Typography>
           </Grid>
-          <Grid item md={4} sm={6} xs={12}>
+          <Grid item md={4} sm={6} xs={12} style={{ height: "300px" }}>
             <img src={news3} alt="" className={classes.img} />
           </Grid>
-          <Grid item md={4} sm={6} xs={12} className={classes.box}>
+          <Grid
+            item
+            md={4}
+            sm={6}
+            xs={12}
+            className={classes.box}
+            style={{ height: "300px" }}
+          >
             <CreateIcon className={classes.icon} />
             <Link to="">
               <Typography variant="subtitle1" className={classes.title}>
