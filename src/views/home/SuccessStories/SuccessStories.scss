@@ -1,0 +1,87 @@
+.successStoriesBlock {
+	background-image: url(../../../images/banner1nhap.png);
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	color: #fff;
+	margin-bottom: 60px;
+	padding: 0 !important;
+
+	.successStoriesBlockWrapper {
+		background-color: rgba(0, 0, 0, 0.75);
+		width: 100%;
+		height: 100%;
+		color: #fff;
+
+		.titleHolder {
+			.title {
+				color: #fff !important;
+			}
+			.subTitle {
+				color: #ddd;
+			}
+
+			&:after {
+				background: #fff !important;
+			}
+		}
+
+		.contentWrapper {
+			padding: 0 15px !important;
+			width: 60%;
+			text-align: center;
+			margin: auto;
+			.titleContent {
+				margin-bottom: 1rem;
+				font-size: 1.3rem;
+			}
+			.mainContent {
+				margin-bottom: 1rem;
+				font-size: 0.95rem;
+				color: #bdc3c7;
+			}
+			.avatarContent {
+				width: 12rem;
+				height: 12rem;
+				object-fit: cover;
+				border-radius: 50%;
+				box-shadow: 0.3rem 0.2rem 3rem rgba(255, 255, 255, 0.3);
+			}
+			.nameCharacter {
+				margin-top: 1rem;
+				margin-bottom: 0.5rem;
+				cursor: pointer;
+				font-weight: bold;
+				transition: all 0.3s ease-in-out;
+				&:hover {
+					color: #f69320 !important;
+				}
+			}
+		}
+	}
+
+	.swiper-button-next,
+	.swiper-button-prev {
+		color: #fff;
+		right: 10px;
+		padding: 5rem 10rem;
+	}
+}
+
+@media only screen and (max-width: 599px) {
+	.contentWrapper {
+		width: 90% !important;
+		.titleContent {
+			font-size: 1.15rem;
+		}
+	}
+	.swiper-button-next,
+	.swiper-button-prev {
+		display: none;
+	}
+
+	.avatarContent {
+		width: 8.5rem !important;
+		height: 8.5rem !important;
+	}
+}

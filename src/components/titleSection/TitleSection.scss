@@ -1,44 +1,45 @@
 .titleHolder {
-    text-align: center;
-    position: relative;
-    padding: 0 0 10px;
-    margin: 0 0 40px;
-    
-    &:after {
-        transform: translateX(-50%);
-        content: '';
-        background: #303952;
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        height: 3px;
-        width: 100px;
-    }
-    
-    h1 {
-        font-size: 2rem;
-        margin: 0;
-        text-transform: uppercase;
-        color: #303952;
-        font-weight: 500;
-    }
+	text-align: center;
+	position: relative;
+	padding: 0 0 10px;
+	margin: 0 0 40px;
 
-    p {
-        color: #596275;
-        font-size: 1rem;
-    }
+	&:after {
+		transform: translateX(-50%);
+		content: "";
+		background: #303952;
+		position: absolute;
+		bottom: 0;
+		left: 50%;
+		height: 3px;
+		width: 100px;
+	}
 
-}  
+	h1 {
+		font-size: 2.7rem;
+		margin: 0;
+		text-transform: uppercase;
+		color: #303952;
+		font-weight: 500;
+		font-family: "Sedgwick Ave", cursive;
+	}
 
+	p {
+		color: #596275;
+		font-size: 1rem;
+		font-weight: 500;
+		letter-spacing: 0.5px;
+	}
+}
 
 @media only screen and (max-width: 959px) {
-    .titleHolder {
-        h1 {
-            font-size: 1.6rem;
-        }
+	.titleHolder {
+		h1 {
+			font-size: 2rem;
+		}
 
-        p {
-            font-size: 0.9rem;
-        }
-    }
+		p {
+			font-size: 0.9rem;
+		}
+	}
 }

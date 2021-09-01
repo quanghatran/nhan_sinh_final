@@ -1,70 +1,67 @@
 .meaningsBlock {
-    background-image: url(../../../images/image4.jpg);
-    background-position:bottom center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    color: #fff;
-    background-attachment: fixed;
+	background-image: url(../../../images/image4.jpg);
+	background-position: bottom center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	color: #fff;
+	background-attachment: fixed;
 
-    .meaningsBlockWrapper {
-        background-color: rgba(0, 0, 0, 0.75);
-        width: 100%;
-        height: 100%;
-        color: #fff;
-        
-        .titleHolder {
-            .title {
-                color: #fff!important;
-            }
-            .subTitle {
-                color: #ddd;
-            }
-            
-            &:after {
-                background: #fff!important;
-            }
-        }  
-        
-        .meaningContent {
-            .meaningRight {
-                & p {
-                    margin: 0;
-                    line-height: 1.6;
-                    font-size: 1.2rem;
-                    font-weight: 200;
-                    text-align: justify;
-                    font-style: italic;
-                }
+	.meaningsBlockWrapper {
+		background-color: rgba(0, 0, 0, 0.75);
+		width: 100%;
+		height: 100%;
+		color: #fff;
 
-            }
+		.titleHolder {
+			.title {
+				color: #fff !important;
+			}
+			.subTitle {
+				color: #ddd;
+			}
 
-            .meaningBottom {
-                & p {
-                    margin: 0;
-                    line-height: 1.4;
-                    font-size: 1rem;
-                    font-weight: 200;
-                    text-align: justify;
-                    font-style: italic;
-                }
+			&:after {
+				background: #fff !important;
+			}
+		}
 
-            }
-        }
-    }
+		.meaningContent {
+			.meaningRight {
+				& p {
+					margin: 0;
+					line-height: 1.6;
+					font-size: 1.2rem;
+					font-weight: 200;
+					text-align: justify;
+					font-style: italic;
+				}
+			}
+
+			.meaningBottom {
+				& p {
+					margin: 0;
+					line-height: 1.4;
+					font-size: 1rem;
+					font-weight: 200;
+					text-align: justify;
+					font-style: italic;
+				}
+			}
+		}
+	}
 }
 
-.MuiTab-root{
-    width: 100% !important;
+.MuiTab-root {
+	width: 100% !important;
 }
 
 @media only screen and (max-width: 599px) {
-    .meaningsBlock {
-        .meaningBottom {
-            & p {
-                line-height: 1.3!important;
-                font-size: 0.9rem!important;    
-            }
-
-        }
-    }
+	.meaningsBlock {
+		.meaningBottom {
+			& p {
+				line-height: 1.3 !important;
+				font-size: 0.9rem !important;
+			}
+		}
+	}
 }
