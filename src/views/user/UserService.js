@@ -169,7 +169,7 @@ const UserService = (props) => {
 							}}>
 							Bạn có <b style={{ color: "#f69320" }}>{userInfo.slotVip}</b> lượt
 							tra vip
-							<Button size='large' color='secondary' href='#meaningNumerology'>
+							<Button size='large' color='primary' href='#meaningNumerology'>
 								Mua thêm lượt tra VIP
 							</Button>
 						</Typography>
@@ -186,7 +186,7 @@ const UserService = (props) => {
 						<div className='serviceFiled'>
 							{pending && (
 								<div>
-									<CircularProgress color='secondary' />
+									<CircularProgress color='primary' />
 									<p>Đang tra cứu - vui lòng chờ trong giây lát</p>
 								</div>
 							)}

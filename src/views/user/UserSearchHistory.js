@@ -20,7 +20,7 @@ import moment from "moment";
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import servicesApi from "../../api/servicesApi";
-import Footer from "../../common/footer/Footer";
+import NewFooter from "../../common/newfooter/NewFooter";
 import TitleSection from "../../components/titleSection/TitleSection";
 import HeaderLogin from "../home/headerLogin/HeaderLogin";
 import "./UserSearchHistory.css";
@@ -91,7 +91,7 @@ const UserSearchHistory = () => {
 				<div className='container-fluid'>
 					<TitleSection
 						titleHeader='Lịch sử tra cứu'
-						style={{ marginTop: "1rem" }}
+						style={{ marginTop: "1rem", color: "#000" }}
 					/>
 					<div className='UserSearchHistory__content'>
 						{freeSearch.length <= 0 && vipSearch <= 0 ? (
@@ -102,7 +102,7 @@ const UserSearchHistory = () => {
 								<div style={{ textAlign: "center", margin: "1rem" }}>
 									<Button
 										variant='contained'
-										color='secondary'
+										color='primary'
 										href='/xem-online'
 										size='medium'
 										endIcon={<SearchIcon />}>
@@ -115,7 +115,7 @@ const UserSearchHistory = () => {
 								<Table className={classes.table} aria-label='simple table'>
 									<TableHead
 										style={{
-											backgroundColor: "#3f51b5",
+											backgroundColor: "#f69320",
 											textTransform: "upperCase",
 										}}>
 										<TableRow>
@@ -156,8 +156,7 @@ const UserSearchHistory = () => {
 												<TableCell>
 													{moment(data.createdAt).format("MM/DD/YYYY")}
 												</TableCell>
-												<TableCell
-													style={{ color: "#3f51b5", fontWeight: "bold" }}>
+												<TableCell style={{ fontWeight: "bold" }}>
 													Free
 												</TableCell>
 												<TableCell>
@@ -195,8 +194,7 @@ const UserSearchHistory = () => {
 												<TableCell>
 													{moment(data.createdAt).format("MM/DD/YYYY")}
 												</TableCell>
-												<TableCell
-													style={{ color: "#f50057", fontWeight: "bold" }}>
+												<TableCell style={{ fontWeight: "bold" }}>
 													VIP
 												</TableCell>
 												<TableCell>
@@ -215,7 +213,7 @@ const UserSearchHistory = () => {
 					</div>
 				</div>
 			</div>
-			<Footer />
+			<NewFooter />
 		</div>
 	);
 };

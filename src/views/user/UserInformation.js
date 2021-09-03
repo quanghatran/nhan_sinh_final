@@ -14,7 +14,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import userAPI from "../../api/userAPI";
 import { getUserProfile, updateName } from "../../app/userSlice";
-import Footer from "../../common/footer/Footer";
+import NewFooter from "../../common/newfooter/NewFooter";
 import formatCash from "../../components/FormatMoney";
 import ModalDepositMoney from "../../components/modalDepositMoney/ModalDepositMoney";
 import TitleSection from "../../components/titleSection/TitleSection";
@@ -185,7 +185,7 @@ const UserInformation = () => {
 				<div className='container-fluid'>
 					<TitleSection
 						titleHeader='Thông tin người dùng'
-						style={{ marginTop: "1rem" }}
+						style={{ marginTop: "1rem", color: "#000" }}
 					/>
 					<div className='UserInformation__content'>
 						<Grid container spacing={3}>
@@ -212,7 +212,7 @@ const UserInformation = () => {
 										{formatCash("" + userInfo.money)} VNĐ
 									</span>
 									<Button
-										color='secondary'
+										color='primary'
 										size='large'
 										onClick={handleOpenDepositInfo}>
 										Nạp thêm tiền
@@ -250,9 +250,9 @@ const UserInformation = () => {
 									) : (
 										""
 									)}
-									<Button color='secondary' href='/xem-online' size='large'>
+									{/* <Button color='primary' href='/xem-online' size='large'>
 										Mua lượt tra VIP
-									</Button>
+									</Button> */}
 								</Typography>
 							</Grid>
 						</Grid>
@@ -275,7 +275,7 @@ const UserInformation = () => {
 							<Grid item>
 								<Button
 									variant='contained'
-									color='secondary'
+									color='primary'
 									startIcon={<LockIcon />}
 									onClick={handleClickOpenPassword}
 									style={{ margin: "5px" }}>
@@ -434,7 +434,7 @@ const UserInformation = () => {
 					</form>
 				</Dialog>
 			</div>
-			<Footer />
+			<NewFooter />
 		</div>
 	);
 };

@@ -137,11 +137,11 @@ const ForgotPassword = () => {
 								</Grid>
 								<Grid item xs={12}>
 									<Typography
-										variant='h5'
+										variant='h3'
 										component='h1'
 										align='center'
 										style={{ margin: "1rem 0" }}>
-										MINH TRIẾT NHÂN SINH
+										Minh triết nhân sinh
 									</Typography>
 								</Grid>
 								<Grid item xs={12}>
@@ -161,7 +161,7 @@ const ForgotPassword = () => {
 								onSubmit={
 									!hasOtp ? handleSubmitGetOtp : handleSubmitChangePassword
 								}>
-								{isLoading && <CircularProgress color='secondary' />}
+								{isLoading && <CircularProgress color='primary' />}
 								{errorOtp && (
 									<Alert
 										variant='filled'
@@ -247,7 +247,7 @@ const ForgotPassword = () => {
 											<Button
 												size='large'
 												type='submit'
-												color='secondary'
+												color='primary'
 												variant='contained'
 												style={{ marginTop: "2rem" }}>
 												XÁC NHẬN
@@ -259,7 +259,7 @@ const ForgotPassword = () => {
 										<Button
 											size='large'
 											type='submit'
-											color='secondary'
+											color='primary'
 											variant='contained'
 											disabled={isLoading ? true : false}
 											style={{ marginTop: "2rem" }}>

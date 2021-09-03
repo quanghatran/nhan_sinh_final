@@ -24,7 +24,7 @@ import { Alert } from "@material-ui/lab";
 import moment from "moment";
 import React, { useEffect, useState } from "react";
 import userAPI from "../../api/userAPI";
-import Footer from "../../common/footer/Footer";
+import NewFooter from "../../common/newfooter/NewFooter";
 import AddingSlotVip from "../../components/AddingSlotVip";
 import formatCash from "../../components/FormatMoney";
 import StaticSearchChart from "../../components/StaticSearchChart";
@@ -239,8 +239,8 @@ const Affiliate = () => {
 				style={{ marginBottom: "3rem" }}>
 				<div className='container-fluid'>
 					<TitleSection
-						titleHeader='ĐĂNG KÝ HỢP TÁC'
-						style={{ marginTop: "1rem" }}
+						titleHeader='Đăng ký hợp tác'
+						style={{ marginTop: "1rem", color: "#000" }}
 					/>
 					<div className='UserInformation__content'>
 						<Grid container spacing={3}>
@@ -275,7 +275,7 @@ const Affiliate = () => {
 									<Typography variant='subtitle1'>
 										Bạn chưa có mã người giới thiệu:{" "}
 										<Button
-											color='secondary'
+											color='primary'
 											size='large'
 											onClick={() => setOpenDialog(true)}>
 											Nhập mã người giới thiệu
@@ -306,7 +306,7 @@ const Affiliate = () => {
 									<Table className={classes.table} aria-label='simple table'>
 										<TableHead
 											style={{
-												backgroundColor: "#3f51b5",
+												backgroundColor: "#f69320",
 												textTransform: "upperCase",
 											}}>
 											<TableRow>
@@ -345,7 +345,7 @@ const Affiliate = () => {
 																		onClick={() =>
 																			handleOpenAddingSlotVip(member._id)
 																		}>
-																		<AddShoppingCartOutlinedIcon color='secondary' />
+																		<AddShoppingCartOutlinedIcon color='primary' />
 																	</IconButton>
 																</Tooltip>
 															</Grid>
@@ -489,7 +489,7 @@ const Affiliate = () => {
 					</div>
 				</div>
 			</div>
-			<Footer />
+			<NewFooter />
 		</div>
 	);
 };

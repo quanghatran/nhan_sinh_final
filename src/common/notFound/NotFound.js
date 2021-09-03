@@ -7,7 +7,7 @@ const NotFund = () => {
 		<div className='notFound'>
 			<h1>Oopss ... Not found</h1>
 
-			<Button href='/' startIcon={<HomeIcon />} color='secondary'>
+			<Button href='/' startIcon={<HomeIcon />} color='primary'>
 				Quay Về Trang Chủ
 			</Button>
 		</div>

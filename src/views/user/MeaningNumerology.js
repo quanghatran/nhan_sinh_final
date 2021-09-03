@@ -114,7 +114,7 @@ const MeaningNumerology = (props) => {
 
 											<Button
 												variant='contained'
-												color='secondary'
+												color='primary'
 												size='small'
 												style={{ marginTop: "0.7rem" }}
 												onClick={(e) => {

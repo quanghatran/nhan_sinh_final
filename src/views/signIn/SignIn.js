@@ -151,11 +151,11 @@ const SignIn = () => {
 								</Grid>
 								<Grid item xs={12}>
 									<Typography
-										variant='h5'
+										variant='h3'
 										component='h1'
 										align='center'
 										style={{ margin: "1rem 0" }}>
-										MINH TRIẾT NHÂN SINH
+										Minh triết nhân sinh
 									</Typography>
 								</Grid>
 								<Grid item xs={12}>
@@ -315,7 +315,7 @@ const SignIn = () => {
 								</Grid>
 								<Button
 									size='large'
-									color='secondary'
+									color='primary'
 									variant='contained'
 									type='submit'
 									style={{ marginTop: "2rem" }}>
@@ -327,7 +327,7 @@ const SignIn = () => {
 									</a>
 								</div>
 							</form>
-							<Button href='/' startIcon={<HomeIcon />} color='secondary'>
+							<Button href='/' startIcon={<HomeIcon />} color='primary'>
 								Quay Về Trang Chủ
 							</Button>
 						</div>

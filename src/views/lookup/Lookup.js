@@ -179,7 +179,7 @@ const Lookup = () => {
 													fontSize: "2.2rem",
 													fontWeight: "bold",
 													letterSpacing: "1px",
-													color: "#f50057",
+													color: "#f69320",
 												}}
 												variants={childVariants}
 												initial='hidden'

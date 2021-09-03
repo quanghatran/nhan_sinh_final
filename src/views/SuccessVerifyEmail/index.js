@@ -39,11 +39,11 @@ const SuccessVerifyEmail = () => {
 								</Grid>
 								<Grid item xs={12}>
 									<Typography
-										variant='h5'
+										variant='h3'
 										component='h1'
 										align='center'
 										style={{ margin: "1rem 0" }}>
-										MINH TRIẾT NHÂN SINH
+										Minh triết nhân sinh
 									</Typography>
 								</Grid>
 								<Grid item xs={12}>
@@ -74,7 +74,7 @@ const SuccessVerifyEmail = () => {
 								href='/dang-nhap'
 								style={{ marginTop: "1rem" }}
 								startIcon={<KeyboardBackspaceOutlinedIcon />}
-								color='secondary'>
+								color='primary'>
 								Quay Về Trang đăng nhập
 							</Button>
 						</div>

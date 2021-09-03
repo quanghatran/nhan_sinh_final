@@ -17,7 +17,7 @@ import Alert from "@material-ui/lab/Alert";
 import moment from "moment";
 import React, { useEffect, useState } from "react";
 import servicesApi from "../../api/servicesApi";
-import Footer from "../../common/footer/Footer";
+import NewFooter from "../../common/newfooter/NewFooter";
 import formatCash from "../../components/FormatMoney";
 import ModalConfirm from "../../components/modalConfirm/ModalConfirm";
 import TitleSection from "../../components/titleSection/TitleSection";
@@ -108,8 +108,8 @@ const UserPurchased = () => {
 				style={{ marginBottom: "3rem" }}>
 				<div className='container-fluid'>
 					<TitleSection
-						titleHeader='dịch vụ đã mua'
-						style={{ marginTop: "1rem" }}
+						titleHeader='Dịch vụ đã mua'
+						style={{ marginTop: "1rem", color: "#000" }}
 					/>
 					<div className='UserPurchased__content'>
 						<div>
@@ -119,7 +119,7 @@ const UserPurchased = () => {
 										<Table className={classes.table} aria-label='simple table'>
 											<TableHead
 												style={{
-													backgroundColor: "#3f51b5",
+													backgroundColor: "#f69320",
 													textTransform: "upperCase",
 												}}>
 												<TableRow>
@@ -184,14 +184,14 @@ const UserPurchased = () => {
 																<Tooltip title='Mua lại dịch vụ này'>
 																	{data.service == null ? (
 																		<IconButton
-																			color='secondary'
+																			color='primary'
 																			aria-label='add an alarm'
 																			disabled>
 																			<AddShoppingCartIcon />
 																		</IconButton>
 																	) : (
 																		<IconButton
-																			color='secondary'
+																			color='primary'
 																			aria-label='add an alarm'
 																			onClick={(e) => {
 																				handleOpenDialog(
@@ -238,7 +238,7 @@ const UserPurchased = () => {
 									<div style={{ textAlign: "center", margin: "1rem" }}>
 										<Button
 											variant='contained'
-											color='secondary'
+											color='primary'
 											href='/xem-online'
 											size='medium'
 											endIcon={<AddShoppingCartIcon />}>
@@ -251,7 +251,7 @@ const UserPurchased = () => {
 					</div>
 				</div>
 			</div>
-			<Footer />
+			<NewFooter />
 		</div>
 	);
 };

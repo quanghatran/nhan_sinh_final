@@ -18,18 +18,18 @@ import {
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import AddIcon from "@material-ui/icons/Add";
+import AnnouncementOutlinedIcon from "@material-ui/icons/AnnouncementOutlined";
+import CheckBoxOutlinedIcon from "@material-ui/icons/CheckBoxOutlined";
 import { Alert } from "@material-ui/lab";
 import moment from "moment";
 import React, { useEffect, useState } from "react";
 import userAPI from "../../api/userAPI";
-import Footer from "../../common/footer/Footer";
+import NewFooter from "../../common/newfooter/NewFooter";
 import ListCoacher from "../../components/ListCoacher";
+import ModalRatingCoaching from "../../components/ModalRatingCoaching";
 import TitleSection from "../../components/titleSection/TitleSection";
 import HeaderLogin from "../home/headerLogin/HeaderLogin";
 import "./UserSearchHistory.css";
-import AnnouncementOutlinedIcon from "@material-ui/icons/AnnouncementOutlined";
-import ModalRatingCoaching from "../../components/ModalRatingCoaching";
-import CheckBoxOutlinedIcon from "@material-ui/icons/CheckBoxOutlined";
 const useStyles = makeStyles((theme) => ({
 	modal: {
 		display: "flex",
@@ -173,8 +173,8 @@ const BookCoachingService = () => {
 				style={{ marginBottom: "3rem" }}>
 				<div className='container-fluid'>
 					<TitleSection
-						titleHeader='ĐẶT LỊCH TƯ VẤN TRỰC TIẾP'
-						style={{ marginTop: "1rem" }}
+						titleHeader='Đặt lịch tư vấn trực tiếp'
+						style={{ marginTop: "1rem", color: "#000" }}
 					/>
 					<div className='UserInformation__content'>
 						<Grid item container>
@@ -190,7 +190,7 @@ const BookCoachingService = () => {
 								<Table className={classes.table} aria-label='simple table'>
 									<TableHead
 										style={{
-											backgroundColor: "#3f51b5",
+											backgroundColor: "#f69320",
 											textTransform: "upperCase",
 										}}>
 										<TableRow>
@@ -352,7 +352,7 @@ const BookCoachingService = () => {
 							<Grid item>
 								<Button
 									variant='contained'
-									color='secondary'
+									color='primary'
 									startIcon={<AddIcon />}
 									style={{ marginTop: "2rem" }}
 									onClick={handleOpenCoachingDialog}>
@@ -363,7 +363,7 @@ const BookCoachingService = () => {
 					</div>
 				</div>
 			</div>
-			<Footer />
+			<NewFooter />
 		</div>
 	);
 };
