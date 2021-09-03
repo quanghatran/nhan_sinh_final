@@ -15,40 +15,42 @@ import DirectMeetInfo from "./directMeetInfo/DirectMeetInfo";
 import SuccessStories from "./SuccessStories";
 import Numbers from "./Numbers";
 import CardSlide from "./CardSlide";
-
+import NumberMeaning from "./numbermeaning/NumberMeaning";
 const AppHome = () => {
-	return (
-		<React.Fragment>
-			<Header />
-			<Particles
-				params={particlesConfig}
-				style={{
-					backgroundImage: `url(${logo})`,
-					height: "100%",
-					position: "fixed",
-					zIndex: -10,
-					top: 0,
-					left: 0,
-				}}
-			/>
+  return (
+    <React.Fragment>
+      <Header />
+      <Particles
+        params={particlesConfig}
+        style={{
+          backgroundImage: `url(${logo})`,
+          height: "100%",
+          position: "fixed",
+          zIndex: -10,
+          top: 0,
+          left: 0,
+        }}
+      />
 
-			{/* <CardSlide /> */}
+      {/* <CardSlide /> */}
 
-			{/* <Footer /> */}
+      {/* <Footer /> */}
 
-			<Banners />
-			<DemoService />
-			<MeaningNumbers />
-			<DirectMeetInfo />
-			{/* <Numbers /> */}
-			<SuccessStories />
+      <Banners />
+      <Welcome />
 
-			<Welcome />
-			<Prices />
-			<News />
-			<NewFooter />
-		</React.Fragment>
-	);
+      <DemoService />
+      <NumberMeaning />
+      <MeaningNumbers />
+      {/* <Numbers /> */}
+      <SuccessStories />
+
+      <Prices />
+      <DirectMeetInfo />
+      <News />
+      <NewFooter />
+    </React.Fragment>
+  );
 };
 
 export default AppHome;
