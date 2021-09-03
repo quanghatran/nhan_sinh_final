@@ -1,0 +1,26 @@
+.NewNavBar {
+	background-color: #fff;
+
+	.navList {
+		margin: 0;
+		padding: 0;
+		display: flex;
+		justify-content: space-between;
+
+		color: #fff;
+		list-style: none;
+
+		.navLogo {
+			.logoImg {
+				width: 100px;
+				animation: App-logo-spin 20s linear;
+			}
+		}
+	}
+}
+
+@keyframes App-logo-spin {
+	100% {
+		transform: rotate(180deg);
+	}
+}
