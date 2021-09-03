@@ -1,20 +1,27 @@
+import { Container, Grid, Typography } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
 import React from "react";
-import TitleSection from "../../../components/titleSection/TitleSection";
 
+const useStyles = makeStyles(() => ({
+	heading: {
+		textAlign: "center",
+		color: "#fff",
+	},
+}));
 const Numbers = () => {
+	const classes = useStyles();
 	return (
-		<React.Fragment>
-			<div id='numbers' className='block numbersBlock'>
-				<div className='container-fluid'>
-					<TitleSection titleHeader='Ý NGHĨA CỦA CÁC CON SỐ' />
-					<div className='numbersContent'>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit veniam
-						laboriosam non! Velit est necessitatibus cumque veniam. Laborum, qui
-						distinctio.
-					</div>
-				</div>
-			</div>
-		</React.Fragment>
+		<div>
+			<Container maxWidth='lg' style={{ marginTop: "50px" }}>
+				<Grid container>
+					<Grid item md={12} sm={12} xs={12}>
+						<Typography variant='h1' className={classes.heading}>
+							Ý nghĩa các con số
+						</Typography>
+					</Grid>
+				</Grid>
+			</Container>
+		</div>
 	);
 };
 

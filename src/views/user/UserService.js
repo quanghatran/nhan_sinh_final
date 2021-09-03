@@ -167,7 +167,7 @@ const UserService = (props) => {
 								color: "white",
 								fontSize: "1.2rem",
 							}}>
-							Bạn có <b style={{ color: "#ff5656" }}>{userInfo.slotVip}</b> lượt
+							Bạn có <b style={{ color: "#f69320" }}>{userInfo.slotVip}</b> lượt
 							tra vip
 							<Button size='large' color='secondary' href='#meaningNumerology'>
 								Mua thêm lượt tra VIP

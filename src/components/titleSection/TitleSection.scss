@@ -7,7 +7,7 @@
 	&:after {
 		transform: translateX(-50%);
 		content: "";
-		background: #303952;
+		background: #fff;
 		position: absolute;
 		bottom: 0;
 		left: 50%;
@@ -19,13 +19,13 @@
 		font-size: 2.7rem;
 		margin: 0;
 		text-transform: uppercase;
-		color: #303952;
+		color: #fff;
 		font-weight: 500;
 		font-family: "Sedgwick Ave", cursive;
 	}
 
 	p {
-		color: #596275;
+		color: #bdc3c7;
 		font-size: 1rem;
 		font-weight: 500;
 		letter-spacing: 0.5px;

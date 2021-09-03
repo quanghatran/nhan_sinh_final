@@ -54,33 +54,32 @@ const IntroVIPSearch = () => {
 
 	return (
 		<React.Fragment>
-			<Typography variant='h5' component='h3' className='titleVIP'>
+			<Typography variant='h4' component='h3' className='titleVIP'>
 				Giá trị của bản tra cứu VIP
 			</Typography>
 			<ul className='listValue'>
 				{listValue.map((value) => (
 					<li key={value.id}>
-						<p style={{ fontSize: "1.2rem", margin: "0px" }}>
+						<div style={{ fontSize: "1.2rem", margin: "0px" }}>
 							<CheckIcon
 								style={{
 									paddingTop: "5px",
 									marginRight: "10px",
-									color: "#f50057",
+									color: "#f69320",
 								}}
-							/>{" "}
-							{value.content}
-						</p>
+							/>
+							<span className='content'>{value.content}</span>
+						</div>
 					</li>
 				))}
 			</ul>
 			<Button
 				variant='contained'
-				color='secondary'
+				color='primary'
 				type='submit'
 				className={classes.mtBtn}
 				href='/xem-online'
-				endIcon={<NearMeOutlinedIcon />}
-			>
+				endIcon={<NearMeOutlinedIcon />}>
 				Tra Cứu VIP NGAY
 			</Button>
 		</React.Fragment>

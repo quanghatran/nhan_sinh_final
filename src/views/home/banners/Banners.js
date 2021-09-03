@@ -11,6 +11,7 @@ import "swiper/swiper.min.css";
 import banner1 from "../../../images/banner1nhap.png";
 import banner2 from "../../../images/image7.jpg";
 import "./Banners.scss";
+import { Container, Typography } from "@material-ui/core";
 
 SwiperCore.use([EffectFade, Navigation, Pagination]);
 
@@ -52,12 +53,19 @@ const Banners = () => {
 		},
 	];
 	return (
-		<div>
+		<Container>
 			<Swiper
 				spaceBetween={30}
-				effect={"fade"}
+				effect={"cube"}
 				pagination={{
 					clickable: true,
+				}}
+				grabCursor={true}
+				cubeEffect={{
+					shadow: true,
+					slideShadows: true,
+					shadowOffset: 20,
+					shadowScale: 0.94,
 				}}
 				className='mySwiper'
 				loop={true}
@@ -72,7 +80,9 @@ const Banners = () => {
 							style={{ backgroundImage: `url(${banner.image})` }}>
 							<div className='introduceWrapper'>
 								<div className='introduceBanner'>
-									<h1 className='title'>Tổng quan minh triết nhân sinh</h1>
+									<Typography variant='h2' component='h2' className='title'>
+										Tổng quan minh triết nhân sinh
+									</Typography>
 									<div className='contentWrapper'>
 										<div
 											className='content'
@@ -92,7 +102,7 @@ const Banners = () => {
 					</SwiperSlide>
 				))}
 			</Swiper>
-		</div>
+		</Container>
 	);
 };
 

@@ -49,7 +49,10 @@ ScrollTop.propTypes = {
 const MoveTop = (props) => {
 	return (
 		<ScrollTop {...props}>
-			<Fab color='secondary' size='small' aria-label='scroll back to top'>
+			<Fab
+				style={{ backgroundColor: "#f69320" }}
+				size='small'
+				aria-label='scroll back to top'>
 				<KeyboardArrowUpIcon />
 			</Fab>
 		</ScrollTop>

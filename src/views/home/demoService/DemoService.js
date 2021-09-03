@@ -13,6 +13,7 @@ import TitleSection from "../../../components/titleSection/TitleSection";
 import { useHistory } from "react-router-dom";
 
 import "./DemoService.scss";
+import { Container } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -25,11 +26,15 @@ const useStyles = makeStyles((theme) => ({
 		margin: "0 auto",
 		marginTop: "8px",
 	},
+	heading: {
+		textAlign: "center",
+		color: "#fff",
+		marginBottom: "1.5rem",
+	},
 }));
 
 const DemoService = () => {
 	const classes = useStyles();
-	const history = useHistory();
 
 	// const formatYmd = (date) => date.toISOString().slice(0, 10);
 
@@ -62,7 +67,7 @@ const DemoService = () => {
 						const idFreeSearch = response.data._id;
 
 						localStorage.setItem("idFreeSearch", idFreeSearch);
-						history.push("/tra-cuu");
+						//history.push("/tra-cuu");
 					})
 					.catch(function (error) {
 						// setName("");
@@ -80,13 +85,19 @@ const DemoService = () => {
 	};
 
 	return (
-		<div id='demoServiceBlock' className='block demoServiceBlock'>
-			<div className='container-fluid'>
-				<TitleSection titleHeader='dịch vụ của chúng tôi' />
+		<Container>
+			<div id='demoServiceBlock' className='block demoServiceBlock'>
+				{/* <div className="container-fluid"> */}
+				{/* <TitleSection titleHeader="dịch vụ của chúng tôi" /> */}
+				<Grid item md={12} sm={12} xs={12}>
+					<Typography variant='h1' className={classes.heading}>
+						Dịch vụ của chúng tôi
+					</Typography>
+				</Grid>
 				<div className='demoServiceContent'>
-					<Grid container spacing={3}>
+					<Grid container spacing={8}>
 						<Grid item container xs={12} sm={6}>
-							<Typography variant='h5' component='h3' className='titleVIP'>
+							<Typography variant='h4' component='h3' className='titleVIP'>
 								Tra cứu miễn phí
 							</Typography>
 							<form className={classes.root} onSubmit={handleSubmit}>
@@ -95,11 +106,9 @@ const DemoService = () => {
 										<TextField
 											label='Họ tên'
 											variant='outlined'
-											color='primary'
 											name='fullName'
 											type='text'
 											required={true}
-											size='medium'
 											value={name}
 											onChange={(e) => setName(e.target.value)}
 											fullWidth
@@ -110,11 +119,9 @@ const DemoService = () => {
 										<TextField
 											label='Email'
 											variant='outlined'
-											color='primary'
 											name='email'
 											type='email'
 											required={true}
-											size='medium'
 											value={email}
 											onChange={(e) => setEmail(e.target.value)}
 											fullWidth
@@ -125,9 +132,7 @@ const DemoService = () => {
 										<DatePicker
 											label='Ngày sinh'
 											variant='outlined'
-											color='primary'
 											name='birthDay'
-											size='medium'
 											value={birthDay}
 											onChange={(e) => setBirthDay(e.target.value)}
 											fullWidth
@@ -137,11 +142,9 @@ const DemoService = () => {
 										<TextField
 											label='Số điện thoại'
 											variant='outlined'
-											color='primary'
 											name='phoneNumber'
 											type='number'
 											required={true}
-											size='medium'
 											value={phoneNumber}
 											onChange={(e) => setPhoneNumber(e.target.value)}
 											fullWidth
@@ -152,11 +155,9 @@ const DemoService = () => {
 										<TextField
 											label='Địa chỉ'
 											variant='outlined'
-											color='primary'
 											name='address'
 											type='text'
 											required={true}
-											size='medium'
 											value={address}
 											onChange={(e) => setAddress(e.target.value)}
 											fullWidth
@@ -165,8 +166,7 @@ const DemoService = () => {
 									</Grid>
 								</Grid>
 
-								<div style={{ textAlign: "center" }}>
-									{" "}
+								<div style={{ textAlign: "center", marginTop: "2rem" }}>
 									<Button
 										variant='contained'
 										color='primary'
@@ -185,7 +185,7 @@ const DemoService = () => {
 					</Grid>
 				</div>
 			</div>
-		</div>
+		</Container>
 	);
 };
 

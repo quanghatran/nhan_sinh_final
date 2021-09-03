@@ -1,16 +1,30 @@
-.demoServiceBlock  {
-    .demoServiceContent {
-        // margin: 0 auto;
-        // max-width: 40%;
+.demoServiceBlock {
+	.demoServiceContent {
+		.MuiInputBase-input {
+			&::placeholder {
+				color: #fff !important;
+			}
+		}
 
-        input{
-            // color: #fff;
-            
-        }
+		.MuiInputBase-root,
+		.MuiFormLabel-root,
+		.MuiOutlinedInput-notchedOutline,
+		.MuiIconButton-edgeEnd,
+		.MuiIconButton-root {
+			border-color: #fff !important;
+			color: #fff !important;
+		}
 
-       
+		.navigateBlock {
+			margin: 1rem 0;
 
-    }
-
-
+			a {
+				color: #d4d4d4;
+				text-decoration: none;
+				&:hover {
+					color: #fff;
+				}
+			}
+		}
+	}
 }

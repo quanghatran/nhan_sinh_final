@@ -1,4 +1,4 @@
-import { Grid, Hidden, Typography } from "@material-ui/core";
+import { Container, Grid, Hidden, Typography } from "@material-ui/core";
 import Accordion from "@material-ui/core/Accordion";
 import AccordionDetails from "@material-ui/core/AccordionDetails";
 import AccordionSummary from "@material-ui/core/AccordionSummary";
@@ -10,7 +10,6 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import parse from "html-react-parser";
 import PropTypes from "prop-types";
 import React, { useState } from "react";
-import TitleSection from "../../../components/titleSection/TitleSection";
 import "./MeaningNumbers.scss";
 
 const useStyles = makeStyles((theme) => ({
@@ -20,17 +19,22 @@ const useStyles = makeStyles((theme) => ({
 			margin: "8px 0",
 		},
 	},
-	heading: {
-		fontSize: theme.typography.pxToRem(15),
-		fontWeight: theme.typography.fontWeightRegular,
-	},
+	// heading: {
+	// 	fontSize: theme.typography.pxToRem(15),
+	// 	fontWeight: theme.typography.fontWeightRegular,
+	// },
 	tabs: {
 		width: "100%",
 	},
 	tab: {
 		maxWidth: "100%",
-		backgroundColor: "#f50057",
+		backgroundColor: "#f69320",
 		color: "#fff",
+	},
+	heading: {
+		textAlign: "center",
+		color: "#fff",
+		marginBottom: "1.5rem",
 	},
 }));
 
@@ -171,11 +175,16 @@ const MeaningNumbers = () => {
 	};
 
 	return (
-		<div id='meaningsBlock' className='meaningsBlock'>
-			<div className='block meaningsBlockWrapper'>
-				<div className='container-fluid'>
-					<TitleSection titleHeader='ý nghĩa của các con số' />
-
+		<Container>
+			<div id='meaningsBlock' className='meaningsBlock'>
+				<div className='block meaningsBlockWrapper'>
+					{/* <div className='container-fluid'> */}
+					{/* <TitleSection titleHeader='ý nghĩa của các con số' /> */}
+					<Grid item md={12} sm={12} xs={12}>
+						<Typography variant='h1' className={classes.heading}>
+							Ý nghĩa của các con số
+						</Typography>
+					</Grid>
 					<div className='meaningContent'>
 						<Hidden smDown>
 							<Grid container spacing={3}>
@@ -185,6 +194,7 @@ const MeaningNumbers = () => {
 										variant='scrollable'
 										value={value}
 										onChange={handleChange}
+										indicatorColor='primary'
 										aria-label='Vertical tabs example'
 										className={classes.tabs}>
 										{listMeaning.map((meaning, index) => {
@@ -248,7 +258,8 @@ const MeaningNumbers = () => {
 					</div>
 				</div>
 			</div>
-		</div>
+			{/* </div> */}
+		</Container>
 	);
 };
 

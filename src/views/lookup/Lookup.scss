@@ -1,61 +1,53 @@
 .lookup-wrapper {
-    width: 100vw;
-    color: #fff;
-    min-height: 100vh;
-    
-    background-image: url(../../images/image1.jpg);
-    background-position: center;
-    background-size: cover;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
+	width: 100vw;
+	color: #fff;
+	min-height: 100vh;
 
-    
-    .lookupCover {
-        background: rgba(0, 0, 0, 0.75);
-        width: 100vw;
-        min-height: 100vh;
+	background-image: url(../../images/image1.jpg);
+	background-position: center;
+	background-size: cover;
+	background-attachment: fixed;
+	background-repeat: no-repeat;
 
+	.lookupCover {
+		background: rgba(0, 0, 0, 0.75);
+		width: 100vw;
+		min-height: 100vh;
 
-        .contentLookup {
-            .header_lookUp {
-                text-align: center;
-                display: block;
-                .img_lookup {
-                    // border: 5px solid rgba(52, 73, 94, 0.7);
-                    // display: block-inline;
-                    & img {
-                        width: 200px;
-                        height: 200px;
-                        object-fit: cover;
-                        text-align: center;
-                        margin: 0 auto;
-    
-                        border-radius: 50%;
-                        border: 5px solid rgba(52, 73, 94, 0.7);
-                        box-shadow: 0px 0px 40px rgba(216, 216, 216, 0.5)!important;
-                    }
-                }
-            }
-        }
+		.contentLookup {
+			.header_lookUp {
+				text-align: center;
+				display: block;
+				.img_lookup {
+					// border: 5px solid rgba(52, 73, 94, 0.7);
+					// display: block-inline;
+					& img {
+						width: 200px;
+						height: 200px;
+						object-fit: cover;
+						text-align: center;
+						margin: 0 auto;
 
-      
-    }
+						border-radius: 50%;
+						border: 5px solid rgba(52, 73, 94, 0.7);
+						box-shadow: 0px 0px 40px rgba(216, 216, 216, 0.5) !important;
+					}
+				}
+			}
+		}
+	}
 
-    .header_lookUp {
-        padding: 3rem 0;
+	.header_lookUp {
+		padding: 3rem 0;
 
-        .titleContentFreeLookUp {
-            margin-right: 10px;
-            font-weight: bold;
-            font-size: 1.5rem;
-            text-decoration: underline;
-            cursor: pointer;
-            display: inline-block;
-            transition-delay: 0.2;
-
-        }
-    }
-
-
-
+		.titleContentFreeLookUp {
+			margin-right: 10px;
+			font-weight: bold;
+			font-size: 1.5rem;
+			text-decoration: underline;
+			cursor: pointer;
+			display: inline-block;
+			transition-delay: 0.2;
+		}
+	}
 }

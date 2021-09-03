@@ -83,7 +83,10 @@ const MeaningNumerology = (props) => {
 		<div id='meaningNumerology' className='meaningNumerology'>
 			<div className='block meaningsBlockWrapper'>
 				<div className='container-fluid'>
-					<TitleSection titleHeader='Danh sách các dịch vụ' />
+					<TitleSection
+						titleHeader='Danh sách các dịch vụ'
+						style={{ color: "#000" }}
+					/>
 					<div className='listService'>
 						<Grid container spacing={3} justifyContent='center'>
 							{dataServices.map((data) => (
@@ -145,7 +148,7 @@ const MeaningNumerology = (props) => {
 					<div
 						className='contentMeaningNumerology'
 						style={{ marginTop: "3rem" }}>
-						<TitleSection titleHeader='Lời ngỏ' />
+						<TitleSection titleHeader='Lời ngỏ' style={{ color: "#000" }} />
 						<div>
 							{listContent.map((content) => (
 								<div

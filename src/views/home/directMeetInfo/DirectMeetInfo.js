@@ -1,7 +1,8 @@
-import { Typography } from "@material-ui/core";
+import { Container, Grid, Typography } from "@material-ui/core";
 import CheckIcon from "@material-ui/icons/Check";
 import React from "react";
-import TitleSection from "../../../components/titleSection/TitleSection";
+import { makeStyles } from "@material-ui/core/styles";
+
 import "./DirectMeetInfo.scss";
 const listValueDirectMeet = [
 	{
@@ -35,22 +36,37 @@ const listValueDirectMeet = [
 	},
 ];
 
+const useStyles = makeStyles((theme) => ({
+	heading: {
+		textAlign: "center",
+		color: "#fff",
+		marginBottom: "1.5rem",
+	},
+}));
+
 const DirectMeetInfo = () => {
+	const classes = useStyles();
 	return (
 		<React.Fragment>
-			<div id='directMeetInfoBlock' className='block directMeetInfoBlock'>
-				<div className='container-fluid'>
-					<TitleSection titleHeader='Lợi ích khi gặp trực tiếp' />
+			<Container>
+				<div id='directMeetInfoBlock' className='block directMeetInfoBlock'>
+					{/* <div className='container-fluid'> */}
+					{/* <TitleSection titleHeader='Lợi ích khi gặp trực tiếp' /> */}
+					<Grid item md={12} sm={12} xs={12}>
+						<Typography variant='h1' className={classes.heading}>
+							Lợi ích khi gặp trực tiếp
+						</Typography>
+					</Grid>
 					<div className='directMeetInfoContent'>
 						<ul className='listValueDirectMeet'>
 							{listValueDirectMeet.map((value) => (
 								<li key={value.id}>
-									<p style={{ fontSize: "1.2rem", margin: "0px" }}>
+									<p>
 										<CheckIcon
 											style={{
 												paddingTop: "5px",
 												marginRight: "10px",
-												color: "#f50057",
+												color: "#f69320",
 											}}
 										/>{" "}
 										{value.content}
@@ -60,34 +76,35 @@ const DirectMeetInfo = () => {
 						</ul>
 					</div>
 					<div className='infoTransfer'>
-						<Typography variant='h5' component='h3' className=''>
-							THÔNG TIN CHUYỂN KHOẢN THANH TOÁN
+						<Typography
+							variant='h3'
+							component='h3'
+							className='infoTransferTitle'>
+							Thông tin chuyển khoản thanh toán
 						</Typography>
-						<div className='infoAccount' style={{ fontSize: "1.2rem" }}>
+						<div className='infoAccount'>
 							<p>Ngân hàng VietcomBank</p>
 							<p>Số tài khoản: 1020603988</p>
 							<p>Chủ tài khoản: Nguyễn Văn Thanh</p>
 							<p
 								style={{
-									color: "#f50057",
+									color: "#f69320",
 									fontWeight: "bold",
-								}}
-							>
+								}}>
 								Nội dung chuyển khoản: GAP TRUC TIEP - SĐT (Trong đó: SĐT là số
 								điện thoại liên hệ của bạn)
 							</p>
 							<p
 								style={{
 									fontWeight: "bold",
-								}}
-							>
+								}}>
 								Sau khi nhận được tiền, chúng tôi sẽ liên hệ trong vòng 30 phút
 								(từ 8h30 sáng đến 18h chiều)
 							</p>
 						</div>
 					</div>
 				</div>
-			</div>
+			</Container>
 		</React.Fragment>
 	);
 };
