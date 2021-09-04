@@ -1,69 +1,67 @@
 .appBarWrapper {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    z-index: 101;
-    min-height: 64px;
-    line-height:64px;
-    color: #fff;
-    
-    ul {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-    
-        li {
-        
-            .MuiButton-label {
-                font-size: 1rem;
-                color: #fff;   
-            }
-        }
-    }
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  z-index: 101;
+  min-height: 64px;
+  line-height: 64px;
+  color: #fff;
 
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    li {
+      .MuiButton-label {
+        font-size: 1rem;
+        color: #fff;
+      }
+    }
+  }
 }
 
-.MuiDrawer-paper  {
-    background-image: linear-gradient(to right, #1e272e, #2C3A47)!important;
-    position: relative;
+.MuiDrawer-paper {
+  background-image: linear-gradient(to right, #1e272e, #2c3a47) !important;
+  position: relative;
 
-    .MuiButton-label {
-        color: #fff!important;
-    }
+  .MuiButton-label {
+    color: #fff !important;
+  }
 
-    .logo {
-        text-align: center;
-        margin-top: 1.5rem;
-        img {
-            width: 150px;
-        }
+  .logo {
+    text-align: center;
+    margin-top: 1.5rem;
+    img {
+      width: 150px;
     }
+  }
 
-    .closeButton {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        
-        .MuiIconButton-label {
-            color: #fff;
-        }
-    }
+  .closeButton {
+    position: absolute;
+    top: 10px;
+    right: 10px;
 
-    .MuiDivider-root{
-        background: #717171;
-        margin: 0 auto;
-        margin-top: 2rem;
-        margin-bottom: 2rem;
-        width: 80%;
-        text-align: center;
+    .MuiIconButton-label {
+      color: #fff;
     }
+  }
+
+  .MuiDivider-root {
+    background: #717171;
+    margin: 0 auto;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    width: 80%;
+    text-align: center;
+  }
 }
- 
-.MuiToolbar-root  {
-    display: block!important;
-    background-color: #000;
+
+.MuiToolbar-root {
+  display: block !important;
+  background-color: rgb(36, 41, 73);
 }
