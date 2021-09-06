@@ -16,6 +16,7 @@ import SuccessStories from "./SuccessStories";
 import Numbers from "./Numbers";
 import CardSlide from "./CardSlide";
 import NumberMeaning from "./numbermeaning/NumberMeaning";
+import NewBanner from "./newBanner/NewBanner";
 const AppHome = () => {
   return (
     <React.Fragment>
@@ -36,17 +37,17 @@ const AppHome = () => {
 
       {/* <Footer /> */}
 
-      <Banners />
+      <NewBanner />
+      <NumberMeaning />
+      <MeaningNumbers />
       <Welcome />
 
       <DemoService />
-      <NumberMeaning />
-      <MeaningNumbers />
       {/* <Numbers /> */}
-      <SuccessStories />
 
       <Prices />
       <DirectMeetInfo />
+      <SuccessStories />
       <News />
       <NewFooter />
     </React.Fragment>
