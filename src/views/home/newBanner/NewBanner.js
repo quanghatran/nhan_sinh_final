@@ -31,7 +31,11 @@ const useStyles = makeStyles((theme) => ({
       background: "rgba(0, 0, 0, 0.4)",
       zIndex: 0,
     },
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down("md")]: {
+      height: "70vw",
+      width: "90vw",
+    },
+    [theme.breakpoints.down("xs")]: {
       width: "95vw",
       height: "100vw",
     },
@@ -43,6 +47,7 @@ const useStyles = makeStyles((theme) => ({
     position: "relative",
     [theme.breakpoints.down("sm")]: {
       height: "100vw",
+      width: "80vw",
     },
   },
   textField: {

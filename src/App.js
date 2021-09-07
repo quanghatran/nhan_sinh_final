@@ -54,7 +54,12 @@ const theme = createTheme({
     },
     h2: { fontFamily: ["Dancing Script", "cursive"].join(",") },
     h3: { fontFamily: ["Dancing Script", "cursive"].join(",") },
-    h4: { fontFamily: ["Dancing Script", "cursive"].join(",") },
+    h4: {
+      fontFamily: ["Dancing Script", "cursive"].join(","),
+      "@media (max-width:600px)": {
+        fontSize: "1rem",
+      },
+    },
     h5: {
       fontFamily: ["Dancing Script", "cursive"].join(","),
       "@media (max-width:600px)": {
