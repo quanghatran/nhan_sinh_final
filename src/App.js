@@ -27,6 +27,7 @@ const BookCoachingService = React.lazy(() =>
 const UserSearchHistory = React.lazy(() =>
   import("./views/user/UserSearchHistory")
 );
+const Blog = React.lazy(() => import("./views/blog/Blog"));
 const UserPurchased = React.lazy(() => import("./views/user/UserPurchased"));
 const Affiliate = React.lazy(() => import("./views/user/Affiliate"));
 
@@ -87,6 +88,7 @@ function App() {
               <Route exact path="/dang-ky" component={SignIn}></Route>
               <Route exact path="/tra-cuu" component={Lookup}></Route>
 
+              <Route exact path="/blog" component={Blog}></Route>
               <Route
                 exact
                 path="/verify/:token"

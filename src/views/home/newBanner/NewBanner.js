@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
       right: 0,
       bottom: 0,
       left: 0,
-      background: "rgba(0, 0, 0, 0.4)",
+      background: "rgba(0, 0, 0, 0.2)",
       zIndex: 0,
     },
     [theme.breakpoints.down("md")]: {
