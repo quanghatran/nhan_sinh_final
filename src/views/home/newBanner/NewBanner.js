@@ -32,8 +32,8 @@ const useStyles = makeStyles((theme) => ({
       zIndex: 0,
     },
     [theme.breakpoints.down("sm")]: {
-      width: "50vw",
-      height: "50vw",
+      width: "95vw",
+      height: "100vw",
     },
   },
   sliderContainer: {
@@ -42,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
     margin: "100px auto",
     position: "relative",
     [theme.breakpoints.down("sm")]: {
-      height: "60vw",
+      height: "100vw",
     },
   },
   textField: {
@@ -82,11 +82,11 @@ const NewBanner = () => {
           className={classes.sliderImg + " sliderDistinguish"}
         >
           <div className={classes.textField}>
-            <Typography variant="h3" gutterBottom className="heading">
+            <Typography variant="h4" gutterBottom className="heading">
               Tổng quan minh triết nhân sinh
             </Typography>
 
-            <Typography variant="h6" className="paragraph">
+            <Typography variant="h5" className="paragraph">
               ‘’Minh triết nhân sinh’’ là một trong các dự án mang giá trị tinh
               thần to lớn, với mong muốn được cống hiến các dòng giá trị minh
               triết của chính cá nhân tích luỹ qua các trải nghiệm cá nhân,
@@ -107,20 +107,12 @@ const NewBanner = () => {
           className={classes.sliderImg + " sliderDistinguish"}
         >
           <div className={classes.textField}>
-            <Typography variant="h3" gutterBottom className="heading">
+            <Typography variant="h4" gutterBottom className="heading">
               Tổng quan minh triết nhân sinh
             </Typography>
-            <Typography variant="subtitle1" className="paragraph">
+            <Typography variant="h5" className="paragraph">
               Định hướng minh triết, tương lai minh triết là những gì tôi ấp ủ
-              qua năm tháng mong được truyền tải tới mọi người. Chúc cho các
-              bạn, nhờ vào công cụ khoa học tôi dành thời gian nghiên cứu nói
-              riêng, Viên Đào tạo khởi nghiệp và Ứng Dụng khoa học công nghệ cao
-              SATSi nói chung, tìm thấy cho mình ngọn đèn dẫn dắt, soi sáng
-              những khoảnh khắc mập mờ khi mường tượng tới tương lai, cuộc sống
-              của mình sau này. Sự hài lòng của các bạn sau khi trải nghiệm sản
-              phẩm và dịch vụ tư vấn của tôi, là động lực và niềm hạnh phúc lớn
-              lao đỡ bước tôi thêm quyết liệt trên hành trình phụng sự cộng
-              đồng.
+              qua năm tháng mong được truyền tải tới mọi người.
             </Typography>
           </div>
         </div>
@@ -136,19 +128,15 @@ const NewBanner = () => {
           className={classes.sliderImg + " sliderDistinguish"}
         >
           <div className={classes.textField}>
-            <Typography variant="h3" gutterBottom className="heading">
+            <Typography variant="h4" gutterBottom className="heading">
               Tổng quan minh triết nhân sinh
             </Typography>
-            <Typography variant="subtitle1" className="paragraph">
+            <Typography variant="h5" className="paragraph">
               Đây là một công trình nghiên cứu của phương Tây được áp dụng vào
               việc định hướng cuộc sống cho bất cứ ai đang chênh vênh trên nẻo
-              đường đi tìm sứ mệnh cá nhân. Thông qua các con số với các dạng
-              năng lượng đi kèm được tính theo công thức riêng, các bạn sẽ thấy
-              rõ con đường tương lai bao gồm công danh, đời sống tinh thần, tính
-              cách, ...v...v...Bức tranh toàn cảnh cuộc đời bạn hiện ra đầy sắc
-              nét. Sự sắp xếp của vũ trụ dành cho nằm toàn bộ ở đây.
+              đường đi tìm sứ mệnh cá nhân.
             </Typography>
-            <Typography variant="subtitle1" className="author">
+            <Typography variant="h5" className="author">
               Tác giả: Hà Nguyễn (Tuệ Hương)
             </Typography>
           </div>

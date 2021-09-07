@@ -25,6 +25,11 @@ const useStyles = makeStyles((theme) => ({
   mtBtn: {
     margin: "0 auto",
     marginTop: "8px",
+    color: "white",
+    opacity: 0.8,
+    "&:hover": {
+      opacity: 1,
+    },
   },
   heading: {
     textAlign: "center",
