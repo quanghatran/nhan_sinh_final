@@ -124,6 +124,7 @@ const News = () => {
             >
               <Grid
                 item
+                container
                 md={4}
                 sm={6}
                 xs={12}
@@ -136,10 +137,12 @@ const News = () => {
                     Love & Astrology
                   </Typography>
                 </Link> */}
-                <Typography variant="body1" className={classes.para1}>
-                  Con số 1 thể hiện sự độc lập, lãnh đạo và tiên phong. Bạn đang
-                  mang trong mình tố chất ...
-                </Typography>
+                <Grid item md={12} sm={12} xs={12}>
+                  <Typography variant="body1" className={classes.para1}>
+                    Con số 1 thể hiện sự độc lập, lãnh đạo và tiên phong. Bạn
+                    đang mang trong mình tố chất ...
+                  </Typography>
+                </Grid>
                 <Grid item md={12} sm={12} xs={12}>
                   <Typography variant="body1" className={classes.link}>
                     <a href="/blog">Xem thêm</a>
@@ -152,6 +155,7 @@ const News = () => {
 
               <Grid
                 item
+                container
                 md={4}
                 sm={6}
                 xs={12}
@@ -165,10 +169,12 @@ const News = () => {
                     Love & Astrology
                   </Typography>
                 </Link> */}
-                <Typography variant="body1" className={classes.para1}>
-                  Trong ngày sinh có 3 con số 7-8-9 - Bạn là 1 người rất năng
-                  động, thể hiện sự nhanh nhẹn tháo vát trong ...
-                </Typography>
+                <Grid item md={12} sm={12} xs={12}>
+                  <Typography variant="body1" className={classes.para1}>
+                    Trong ngày sinh có 3 con số 7-8-9 - Bạn là 1 người rất năng
+                    động, thể hiện sự nhanh nhẹn tháo vát trong ...
+                  </Typography>
+                </Grid>
                 <Grid item md={12} sm={12} xs={12}>
                   <Typography variant="body1" className={classes.link}>
                     <a href="/blog">Xem thêm</a>
@@ -181,6 +187,7 @@ const News = () => {
 
               <Grid
                 item
+                container
                 md={4}
                 sm={6}
                 xs={12}
@@ -193,10 +200,12 @@ const News = () => {
                     Love & Astrology
                   </Typography>
                 </Link> */}
-                <Typography variant="body1" className={classes.para1}>
-                  Số chủ đạo là 9 nói lên điều gì - Số 9 là người lãnh đạo với
-                  lý tưởng cho đi và trách nhiệm. Số 9 luôn ...
-                </Typography>
+                <Grid item md={12} sm={12} xs={12}>
+                  <Typography variant="body1" className={classes.para1}>
+                    Số chủ đạo là 9 nói lên điều gì - Số 9 là người lãnh đạo với
+                    lý tưởng cho đi và trách nhiệm. Số 9 luôn ...
+                  </Typography>
+                </Grid>
                 <Grid item md={12} sm={12} xs={12}>
                   <Typography variant="body1" className={classes.link}>
                     <a href="/blog">Xem thêm</a>
@@ -253,6 +262,7 @@ const News = () => {
               </Grid>
               <Grid
                 item
+                container
                 md={4}
                 sm={6}
                 xs={12}
@@ -266,11 +276,13 @@ const News = () => {
                     Love & Astrology
                   </Typography>
                 </Link> */}
-                <Typography variant="body1" className={classes.para1}>
-                  Top 4 ngày sinh có tài năng lãnh đạo thiên bẩm - Đây là những
-                  người có tính cách mạnh mẽ, óc sáng tạo và có cá tính độc lập.
-                  Họ dám nghĩ,
-                </Typography>
+                <Grid item md={12} sm={12} xs={12}>
+                  <Typography variant="body1" className={classes.para1}>
+                    Top 4 ngày sinh có tài năng lãnh đạo thiên bẩm - Đây là
+                    những người có tính cách mạnh mẽ, óc sáng tạo và có cá tính
+                    độc lập. Họ dám nghĩ,
+                  </Typography>
+                </Grid>
                 <Grid item md={12} sm={12} xs={12}>
                   <Typography variant="body1" className={classes.link}>
                     <a href="/blog">Xem thêm</a>
@@ -282,6 +294,7 @@ const News = () => {
               </Grid>
               <Grid
                 item
+                container
                 md={4}
                 sm={6}
                 xs={12}
@@ -294,10 +307,12 @@ const News = () => {
                     Love & Astrology
                   </Typography>
                 </Link> */}
-                <Typography variant="body1" className={classes.para1}>
-                  Ngày sinh của bạn thiếu hoàn toàn con số 8 - Con số 8 là con
-                  số mang tính chủ động nhất về
-                </Typography>
+                <Grid item md={12} sm={12} xs={12}>
+                  <Typography variant="body1" className={classes.para1}>
+                    Ngày sinh của bạn thiếu hoàn toàn con số 8 - Con số 8 là con
+                    số mang tính chủ động nhất về
+                  </Typography>
+                </Grid>
                 <Grid item md={12} sm={12} xs={12}>
                   <Typography variant="body1" className={classes.link}>
                     <a href="/blog">Xem thêm</a>

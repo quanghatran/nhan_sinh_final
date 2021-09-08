@@ -25,7 +25,7 @@ import Button from "@material-ui/core/Button";
 const useStyles = makeStyles((theme) => ({
   banner: {
     background: `url(${bannerImg}) center no-repeat`,
-    marginTop: "100px",
+    marginTop: "75px",
     width: "100vw",
     height: "370px",
     backgroundSize: "cover",
@@ -182,13 +182,20 @@ const Blog = () => {
                     <Typography
                       variant="h2"
                       gutterBottom
-                      style={{ color: "#f69320", padding: "20px 0" }}
+                      style={{
+                        color: "#f69320",
+                        padding: "20px 0",
+                        textAlign: "center",
+                      }}
                     >
                       {item.title}
                     </Typography>
                   </Grid>
                   <Grid item md={12}>
-                    <Typography variant="subtitle1" style={{ color: "#fff" }}>
+                    <Typography
+                      variant="subtitle1"
+                      style={{ color: "#fff", textAlign: "justify" }}
+                    >
                       {item.content}
                     </Typography>
                   </Grid>
