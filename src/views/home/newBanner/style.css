@@ -1,0 +1,40 @@
+.animate .heading {
+  animation: slideDown 0.8s ease-in-out;
+}
+.animate .paragraph {
+  animation: slideUp 0.8s ease-in-out;
+}
+.animate .author {
+  animation: slideLeft 0.8s ease-in-out;
+}
+@keyframes slideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-200%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(200%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes slideLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-200%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
