@@ -50,7 +50,7 @@ const useStyles = makeStyles(() => ({
     width: "70%",
     background: "#f69320",
     padding: "12px 30px",
-    transition: "0.4 all ease-in-out",
+    transition: " all .5s ease-in-out",
     opacity: 0.8,
     "&:hover": {
       background: "#f69320",

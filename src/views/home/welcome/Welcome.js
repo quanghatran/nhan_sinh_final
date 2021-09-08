@@ -49,7 +49,7 @@ const useStyles = makeStyles(() => ({
     borderRadius: "50px",
     borderWidth: "2px",
     fontWeight: 700,
-    transition: ".3s ease-out",
+    transition: "all .5s ease-in-out",
     opacity: 0.8,
     "&:hover": {
       backgroundColor: "#f69320",

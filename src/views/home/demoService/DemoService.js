@@ -27,6 +27,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "8px",
     color: "white",
     opacity: 0.8,
+    transition: "all .5s ease-in-out",
     "&:hover": {
       opacity: 1,
     },
