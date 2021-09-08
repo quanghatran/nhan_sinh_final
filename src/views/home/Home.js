@@ -2,7 +2,7 @@ import React from "react";
 import NewFooter from "../../common/newfooter/NewFooter";
 import Header from "../../common/header/Header";
 import DemoService from "./demoService/DemoService";
-
+import Background from "../../common/background/Background";
 import logo from "../../images/body-bg.jpg";
 import Particles from "react-particles-js";
 import particlesConfig from "./particle-config";
@@ -21,7 +21,8 @@ const AppHome = () => {
   return (
     <React.Fragment>
       <Header />
-      <Particles
+      <Background />
+      {/* <Particles
         params={particlesConfig}
         style={{
           backgroundImage: `url(${logo})`,
@@ -31,7 +32,7 @@ const AppHome = () => {
           top: 0,
           left: 0,
         }}
-      />
+      /> */}
 
       {/* <CardSlide /> */}
 

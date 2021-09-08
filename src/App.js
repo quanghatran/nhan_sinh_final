@@ -29,7 +29,7 @@ const UserSearchHistory = React.lazy(() =>
 );
 const UserPurchased = React.lazy(() => import("./views/user/UserPurchased"));
 const Affiliate = React.lazy(() => import("./views/user/Affiliate"));
-
+const Blog = React.lazy(() => import("./views/blog/Blog"));
 const theme = createTheme({
   palette: {
     primary: {
@@ -132,6 +132,7 @@ function App() {
                 path="/xem-online/dang-ky-hop-tac"
                 component={Affiliate}
               ></Route>
+              <Route exact path="/blog" component={Blog}></Route>
 
               <Route path="*" component={NotFound} />
             </Switch>
