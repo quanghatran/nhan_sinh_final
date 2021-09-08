@@ -1,81 +1,129 @@
-import React from "react";
-import Container from "@material-ui/core/Container";
-import Grid from "@material-ui/core/Grid";
-import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
-import { makeStyles } from "@material-ui/core/styles";
-import CircleLogo from "../../../images/CircleLogo.png";
-import "./NumberMeaning.scss";
+import React from 'react';
+import Container from '@material-ui/core/Container';
+import Grid from '@material-ui/core/Grid';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
+import CircleLogo from '../../../images/logorotate3.png';
+import './NumberMeaning.scss';
 const useStyles = makeStyles((theme) => ({
-  number: {
-    fontSize: "2.5rem",
-    color: "white",
-    borderRadius: "50%",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    width: 53,
-    height: 53,
+  '@keyframes logo': {
+    '100%': {
+      transform: 'rotate(3600deg)',
+    },
   },
+
   title: {
-    fontSize: "30px",
-    fontWeight: "bold",
-    color: "#fff",
+    color: '#a0a2ad',
+    textAlign: 'center',
+    margin: '10px auto 0',
   },
 
   numberWrapper: {
-    border: "8px solid white",
-    borderRadius: "50%",
-    marginRight: "30px",
-    backgroundColor: "#f69320",
-    "&:hover ": {
-      backgroundColor: "#37a4dd",
+    border: '7px solid #fff',
+    borderRadius: '50px',
+
+    backgroundColor: '#f69320',
+    width: '60px',
+    height: '60px',
+    '& .number': {
+      textAlign: 'center',
+      color: '#fff',
+      fontSize: '30px',
+      fontWeight: 'bold',
+      margin: '0 auto',
+    },
+    '&:hover ': {
+      cursor: 'pointer',
+      backgroundColor: '#242949',
+      transform: 'scale(1.05)',
+      borderColor: '#f69320',
+      '& .number': {
+        color: '#f69320',
+        transition: 'all .3s ease-in-out',
+      },
+      transition: 'all .3s ease-in-out',
     },
   },
-  numberWrapper2: {
-    marginLeft: "30px",
-    border: "8px solid white",
-    borderRadius: "50%",
-    backgroundColor: "#f69320",
-    "&:hover ": {
-      backgroundColor: "#37a4dd",
-    },
-  },
+
   gridItem: {
-    marginBottom: "60px",
+    marginBottom: '20px',
   },
   titleWrapper: {
-    textAlign: "left",
-    "&:hover a": {
-      color: "#37a4dd",
+    textAlign: 'left',
+    '&:hover a': {
+      color: '#37a4dd',
     },
   },
   titleWrapper2: {
-    textAlign: "right",
-    [theme.breakpoints.down("sm")]: {
-      textAlign: "left",
+    textAlign: 'right',
+    [theme.breakpoints.down('sm')]: {
+      textAlign: 'left',
     },
-    "&:hover a": {
-      color: "#37a4dd",
+    '&:hover a': {
+      color: '#37a4dd',
     },
   },
 
   heading: {
-    textAlign: "center",
-    color: "#fff",
+    textAlign: 'center',
+    color: '#fff',
+    marginBottom: '50px',
   },
-  centerDisplaySM: {
-    display: "none",
-    [theme.breakpoints.down("sm")]: {
-      display: "block",
-      height: 450,
-      marginBottom: 50,
-    },
-    position: "relative",
-  },
+
   centerDisplayMD: {
-    [theme.breakpoints.down("sm")]: {
-      display: "none",
+    [theme.breakpoints.down('sm')]: {
+      display: 'none',
+    },
+  },
+  circleLogo: {
+    width: '500px',
+    height: 'auto',
+    marginTop: '50px',
+    animation: '90s linear infinite $logo',
+    [theme.breakpoints.down('sm')]: {
+      display: 'none',
+    },
+    [theme.breakpoints.down('md')]: {
+      width: '450px ',
+      height: 'auto',
+    },
+  },
+  circleLogoSm: {
+    display: 'none',
+    width: '300px',
+    height: 'auto',
+    margin: '50px auto ',
+    animation: '90s linear infinite $logo',
+    [theme.breakpoints.down('sm')]: {
+      display: 'block',
+    },
+    [theme.breakpoints.only('sm')]: {
+      width: '350px',
+      height: 'auto',
+    },
+  },
+  loadMore: {
+    margin: '0 auto',
+    color: '#a09fb0',
+    fontSize: '20px',
+  },
+  numberSix: {
+    width: '50%',
+    marginBottom: '20px',
+    [theme.breakpoints.down('xs')]: {
+      width: '100%',
+    },
+    [theme.breakpoints.only('sm')]: {
+      display: 'none',
+    },
+  },
+  numberSixIpad: {
+    width: '50%',
+    marginBottom: '20px',
+    display: 'none',
+    [theme.breakpoints.only('sm')]: {
+      display: 'block',
     },
   },
 }));
@@ -83,111 +131,149 @@ const numbers1 = [
   {
     id: 1,
     number: 1,
-    title: "Số 1",
+    title: `Độc lập, mạnh mẽ, tự tin, quyết tâm
+    chiến thắng mọi “cuộc chơi”`,
   },
   {
     id: 2,
     number: 2,
-    title: "Số 2",
+    title: `Được ví như “Sứ giả của hòa bình
+    nhân loại”. Bạn ấm áp, vị tha 
+     `,
   },
   {
     id: 3,
     number: 3,
-    title: "Số 3",
+    title: `Bạn như một vầng trăng giữa bầu
+    trời đêm vực dậy linh hồn vạn vật.
+    `,
   },
   {
     id: 4,
     number: 4,
-    title: "Số 4",
+    title: `Bạn như một vầng trăng giữa bầu
+    trời đêm vực dậy linh hồn vạn vật.`,
   },
   {
     id: 5,
     number: 5,
-    title: "Số 5",
-  },
-  {
-    id: 6,
-    number: 6,
-    title: "Số 6",
+    title: `Bạn là hình mẫu đại diện cho năng
+    lượng sáng tạo không ngừng.
+    `,
   },
 ];
 const numbers2 = [
   {
     id: 7,
     number: 7,
-    title: "Số 7",
+    title: `Bạn sâu sắc, thích chiêm nghiệm, ưa
+    thu mình, một mình, thích làm việc`,
   },
   {
     id: 8,
     number: 8,
-    title: "Số 8",
+    title: `Bạn đại điện cho sắc đẹp và tiền
+    bạc. Hướng đến tham vọng,`,
   },
   {
     id: 9,
     number: 9,
-    title: "Số 9",
+    title: `Bạn là một người lấy hào phóng để
+    thiện đãi chúng sinh, lấy rộng lượng`,
   },
 
   {
     id: 11,
     number: 11,
-    title: "Số 11",
+    title: `Bạn là một người có kết nối tâm linh
+    và trí tuệ tâm linh mạnh mẽ.`,
   },
   {
     id: 22,
     number: 22,
-    title: "Số 22",
+    title: `Bạn sống theo chuẩn mực, tôn
+    trọng các giá trị truyền thống.`,
   },
 ];
 
 const NumberMeaning = () => {
   const classes = useStyles();
   return (
-    <Container maxWidth="lg" style={{ marginTop: "50px" }}>
-      <Typography variant="h1" className={classes.heading}>
+    <Container maxWidth='lg' style={{ marginTop: '50px' }}>
+      <Typography variant='h1' className={classes.heading}>
         Lựa chọn con số chủ đạo của bạn
       </Typography>
-      <Grid container style={{ marginTop: 100 }}>
-        <Grid item sm={12} xs={12} className={classes.centerDisplaySM}>
-          <img src={CircleLogo} alt="" className="circleLogo" />
+      <Grid container justifyContent='center'>
+        <Grid
+          item
+          sm={12}
+          xs={12}
+          justifyContent='center'
+          className={classes.centerDisplaySM}
+        >
+          <img src={CircleLogo} alt='' className={classes.circleLogoSm} />
         </Grid>
-        <Grid item md={4} sm={6} xs={12}>
+        <Grid item md={3} sm={5} xs={12}>
           <Grid container>
             {numbers1.map((number) => (
               <Grid
                 key={number.id}
                 item
                 container
-                md={12}
                 className={classes.gridItem}
+                direction='column'
+                alignItems='center'
               >
-                <Grid item md={2} className={classes.numberWrapper}>
-                  <a href="#meaningsBlock" className={classes.number}>
-                    {number.number}
-                  </a>
+                <Grid item className={classes.numberWrapper}>
+                  <p className='number'>{number.number}</p>
                 </Grid>
-                <Grid item md={8} className={classes.titleWrapper}>
-                  <a href="#meaningsBlock" className={classes.title}>
-                    {number.title}
-                  </a>
+                <Grid item className={classes.titleWrapper}>
+                  <p className={classes.title}>{number.title}</p>
+                </Grid>
+                <Grid>
+                  {' '}
+                  <p className={classes.loadMore}>...</p>
                 </Grid>
               </Grid>
             ))}
           </Grid>
         </Grid>
         <Grid
+          direction='column'
           item
           container
-          md={4}
-          className={classes.centerDisplayMD}
-          alignItems="start"
-          justify="center"
+          md={6}
+          sm={1}
+          // className={classes.centerDisplayMD}
+          alignItems='center'
+          justify='space-between'
         >
-          <Grid item md={12} style={{ position: "relative" }}>
-            <img src={CircleLogo} alt="" className="circleLogo" />
+          <Grid item>
+            <img src={CircleLogo} alt='' className={classes.circleLogo} />
+          </Grid>
+          <Grid
+            key={6}
+            item
+            container
+            className={classes.numberSix}
+            alignItems='center'
+            direction='column'
+          >
+            <Grid item className={classes.numberWrapper}>
+              <p className='number'>6</p>
+            </Grid>
+            <Grid item className={classes.titleWrapper2}>
+              <p className={classes.title}>
+                Bạn yêu hòa bình, có tấm lòng nhân ái, ghét sự bất công, cưỡng
+                ép vô lý.
+              </p>
+            </Grid>
+            <Grid>
+              <p className={classes.loadMore}>...</p>
+            </Grid>
           </Grid>
         </Grid>
-        <Grid item md={4} sm={6} xs={12}>
+        <Grid item md={3} sm={5} xs={12}>
           <Grid container>
             {numbers2.map((number) => (
               <Grid
@@ -196,19 +282,47 @@ const NumberMeaning = () => {
                 container
                 md={12}
                 className={classes.gridItem}
+                direction='column'
+                alignItems='center'
               >
-                <Grid item md={8} className={classes.titleWrapper2}>
-                  <a href="#meaningsBlock" className={classes.title}>
-                    {number.title}
-                  </a>
+                <Grid item className={classes.numberWrapper}>
+                  <p className='number'>{number.number}</p>
                 </Grid>
-                <Grid item md={2} className={classes.numberWrapper2}>
-                  <a href="#meaningsBlock" className={classes.number}>
-                    {number.number}
-                  </a>
+                <Grid item className={classes.titleWrapper2}>
+                  <p className={classes.title}>{number.title}</p>
+                </Grid>
+                <Grid>
+                  <p className={classes.loadMore}>...</p>
                 </Grid>
               </Grid>
             ))}
+          </Grid>
+        </Grid>
+        <Grid
+          key={6}
+          item
+          container
+          className={classes.numberSixIpad}
+          // alignItems='center'
+          direction='column'
+        >
+          <Grid
+            item
+            className={classes.numberWrapper}
+            style={{ margin: '0 auto' }}
+          >
+            <p className='number'>6</p>
+          </Grid>
+          <Grid item className={classes.titleWrapper2}>
+            <p className={classes.title}>
+              Bạn yêu hòa bình, có tấm lòng nhân ái, ghét sự bất công, cưỡng ép
+              vô lý.
+            </p>
+          </Grid>
+          <Grid>
+            <p className={classes.loadMore} style={{ textAlign: 'center' }}>
+              ...
+            </p>
           </Grid>
         </Grid>
       </Grid>

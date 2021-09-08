@@ -62,7 +62,7 @@ const NewFooter = () => {
   return (
     <div
       className="footer"
-      style={{ marginTop: "50px", background: "#242949", padding: "95px 0" }}
+      style={{  background: "#242949", padding: "95px 0" }}
     >
       <Container maxWidth="lg">
         <Grid container>
