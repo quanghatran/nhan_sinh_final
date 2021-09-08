@@ -95,7 +95,7 @@ const useStyles = makeStyles((theme) => ({
 const listNav1 = [
   {
     id: 1,
-    href: "#",
+    href: "/",
     name: "trang chủ",
     color: "default",
     variant: "text",
