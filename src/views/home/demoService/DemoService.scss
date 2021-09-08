@@ -1,30 +1,32 @@
 .demoServiceBlock {
-	.demoServiceContent {
-		.MuiInputBase-input {
-			&::placeholder {
-				color: #fff !important;
-			}
-		}
+  position: relative;
+  z-index: 2;
+  .demoServiceContent {
+    .MuiInputBase-input {
+      &::placeholder {
+        color: #fff !important;
+      }
+    }
 
-		.MuiInputBase-root,
-		.MuiFormLabel-root,
-		.MuiOutlinedInput-notchedOutline,
-		.MuiIconButton-edgeEnd,
-		.MuiIconButton-root {
-			border-color: #fff !important;
-			color: #fff !important;
-		}
+    .MuiInputBase-root,
+    .MuiFormLabel-root,
+    .MuiOutlinedInput-notchedOutline,
+    .MuiIconButton-edgeEnd,
+    .MuiIconButton-root {
+      border-color: #fff !important;
+      color: #fff !important;
+    }
 
-		.navigateBlock {
-			margin: 1rem 0;
+    .navigateBlock {
+      margin: 1rem 0;
 
-			a {
-				color: #d4d4d4;
-				text-decoration: none;
-				&:hover {
-					color: #fff;
-				}
-			}
-		}
-	}
+      a {
+        color: #d4d4d4;
+        text-decoration: none;
+        &:hover {
+          color: #fff;
+        }
+      }
+    }
+  }
 }

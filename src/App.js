@@ -52,8 +52,24 @@ const theme = createTheme({
         fontSize: "3rem",
       },
     },
-    h2: { fontFamily: ["Dancing Script", "cursive"].join(",") },
-    h3: { fontFamily: ["Dancing Script", "cursive"].join(",") },
+    h2: {
+      fontFamily: ["Dancing Script", "cursive"].join(","),
+      "@media (max-width:600px)": {
+        fontSize: "2rem",
+      },
+      "@media (max-width:1200px) and (min-width:601px)": {
+        fontSize: "3rem",
+      },
+    },
+    h3: {
+      fontFamily: ["Dancing Script", "cursive"].join(","),
+      "@media (max-width:600px)": {
+        fontSize: "2rem",
+      },
+      "@media (max-width:1200px) and (min-width:601px)": {
+        fontSize: "3rem",
+      },
+    },
     h4: {
       fontFamily: ["Dancing Script", "cursive"].join(","),
       "@media (max-width:600px)": {

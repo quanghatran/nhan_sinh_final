@@ -11,7 +11,7 @@ import DatePicker from "../../../components/controls/DatePicker";
 import IntroVIPSearch from "../../../components/introVIPSearch/IntroVIPSearch";
 import TitleSection from "../../../components/titleSection/TitleSection";
 import { useHistory } from "react-router-dom";
-
+import BackgroundImage from "../../../images/bg2.jpg";
 import "./DemoService.scss";
 import { Container } from "@material-ui/core";
 
@@ -38,6 +38,22 @@ const useStyles = makeStyles((theme) => ({
   },
   gridItem: {
     padding: "12px 8px !important",
+  },
+  container: {
+    backgroundImage: `url(${BackgroundImage})`,
+    backgroundRepeat: " no-repeat",
+    backgroundSize: "cover",
+    position: "relative",
+    "&:after": {
+      content: "''",
+      position: "absolute",
+      top: 0,
+      left: 0,
+      bottom: 0,
+      right: 0,
+      background: "rgba(0,0,0,0.4)",
+      zIndex: 0,
+    },
   },
 }));
 
@@ -93,7 +109,7 @@ const DemoService = () => {
   };
 
   return (
-    <Container>
+    <Container className={classes.container}>
       <div id="demoServiceBlock" className="block demoServiceBlock">
         {/* <div className="container-fluid"> */}
         {/* <TitleSection titleHeader="dịch vụ của chúng tôi" /> */}
