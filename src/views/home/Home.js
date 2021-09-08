@@ -40,7 +40,6 @@ const AppHome = () => {
 
       <NewBanner />
       <NumberMeaning />
-      <MeaningNumbers />
       <Welcome />
 
       <DemoService />

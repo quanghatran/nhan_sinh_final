@@ -57,8 +57,8 @@ const useStyles = makeStyles((theme) => ({
   },
   navButton: {
     color: "white",
-    width: "70px",
-    height: "70px",
+    width: "50px",
+    height: "50px",
     position: "absolute",
     top: "50%",
     transform: "translateY(-50%)",
@@ -229,7 +229,7 @@ const NewBanner = () => {
       />
       <ArrowForwardIosIcon
         style={{
-          right: "-15px",
+          right: "-10px",
         }}
         className={classes.navButton}
       />
