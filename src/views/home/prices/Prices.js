@@ -4,7 +4,9 @@ import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
+import { HashLink as Link } from "react-router-hash-link";
 
+import CheckIcon from "@material-ui/icons/Check";
 const useStyles = makeStyles(() => ({
   heading: {
     textAlign: "center",
@@ -42,7 +44,7 @@ const useStyles = makeStyles(() => ({
       paddingLeft: "20px",
     },
     "& li": {
-      padding: "15px 0",
+      padding: "3px 0",
     },
   },
   packageDetail: {
@@ -97,13 +99,74 @@ const Prices = () => {
                 </div>
                 <div className="exp-pricing-plans-mid">
                   <ul className={classes.packageDetail}>
-                    <li>Daily Horoscope</li>
-                    <li>Face Reading</li>
-                    <li>Zodiac Consultant</li>
-                    <li>Vastu Shastra</li>
+                    <li>
+                      <p style={{ display: "flex", alignItems: "center" }}>
+                        <CheckIcon
+                          style={{
+                            padding: "5px 0",
+                            marginRight: "10px",
+                            color: "#f69320",
+                          }}
+                        />
+                        Tra cứu VIP 15 lần
+                      </p>
+                    </li>
+                    <li>
+                      <p style={{ display: "flex", alignItems: "center" }}>
+                        <CheckIcon
+                          style={{
+                            padding: "5px 0",
+                            marginRight: "10px",
+                            color: "#f69320",
+                          }}
+                        />
+                        Chuyển VIP giới hạn
+                      </p>
+                    </li>
+                    <li>
+                      <p
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                        }}
+                      >
+                        <CheckIcon
+                          style={{
+                            padding: "5px 0",
+                            marginRight: "10px",
+                            color: "#f69320",
+                          }}
+                        />
+                        Tham vấn tâm lý online
+                      </p>
+                    </li>
+                    <li>
+                      <p
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                        }}
+                      >
+                        <CheckIcon
+                          style={{
+                            padding: "5px 0",
+                            marginRight: "10px",
+                            color: "#f69320",
+                          }}
+                        />
+                        Giải đáp thắc mắc chu đáo
+                      </p>
+                    </li>
                   </ul>
                 </div>
-                <Button className={classes.btnPurchase}>Mua ngay</Button>
+                <Button className={classes.btnPurchase}>
+                  <Link
+                    to="/xem-online#meaningNumerology"
+                    style={{ width: "100%" }}
+                  >
+                    Mua ngay
+                  </Link>
+                </Button>
               </div>
             </Grid>
             <Grid item md={3} sm={7} xs={12} className={classes.priceTable}>
@@ -116,13 +179,74 @@ const Prices = () => {
                 </div>
                 <div className="exp-pricing-plans-mid">
                   <ul className={classes.packageDetail}>
-                    <li>Daily Horoscope</li>
-                    <li>Face Reading</li>
-                    <li>Zodiac Consultant</li>
-                    <li>Vastu Shastra</li>
+                    <li>
+                      <p style={{ display: "flex", alignItems: "center" }}>
+                        <CheckIcon
+                          style={{
+                            padding: "5px 0",
+                            marginRight: "10px",
+                            color: "#f69320",
+                          }}
+                        />
+                        Tra cứu VIP 100 lần
+                      </p>
+                    </li>
+                    <li>
+                      <p style={{ display: "flex", alignItems: "center" }}>
+                        <CheckIcon
+                          style={{
+                            padding: "5px 0",
+                            marginRight: "10px",
+                            color: "#f69320",
+                          }}
+                        />
+                        Chuyển VIP giới hạn ngày nghỉ
+                      </p>
+                    </li>
+                    <li>
+                      <p
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                        }}
+                      >
+                        <CheckIcon
+                          style={{
+                            padding: "5px 0",
+                            marginRight: "10px",
+                            color: "#f69320",
+                          }}
+                        />
+                        Tham vấn tâm lý offline
+                      </p>
+                    </li>
+                    <li>
+                      <p
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                        }}
+                      >
+                        <CheckIcon
+                          style={{
+                            padding: "5px 0",
+                            marginRight: "10px",
+                            color: "#f69320",
+                          }}
+                        />
+                        Giải đáp thắc mặc tận tình
+                      </p>
+                    </li>
                   </ul>
                 </div>
-                <Button className={classes.btnPurchase}>Mua ngay</Button>
+                <Button className={classes.btnPurchase}>
+                  <Link
+                    to="/xem-online#meaningNumerology"
+                    style={{ width: "100%" }}
+                  >
+                    Mua ngay
+                  </Link>
+                </Button>
               </div>
             </Grid>
             <Grid item md={3} sm={7} xs={12} className={classes.priceTable}>
@@ -135,13 +259,75 @@ const Prices = () => {
                 </div>
                 <div className="exp-pricing-plans-mid">
                   <ul className={classes.packageDetail}>
-                    <li>Daily Horoscope</li>
-                    <li>Face Reading</li>
-                    <li>Zodiac Consultant</li>
-                    <li>Vastu Shastra</li>
+                    <li>
+                      <p style={{ display: "flex", alignItems: "center" }}>
+                        <CheckIcon
+                          style={{
+                            padding: "5px 0",
+                            marginRight: "10px",
+                            color: "#f69320",
+                          }}
+                        />
+                        Tra cứu VIP 300 lần
+                      </p>
+                    </li>
+                    <li>
+                      <p style={{ display: "flex", alignItems: "center" }}>
+                        <CheckIcon
+                          style={{
+                            padding: "5px 0",
+                            marginRight: "10px",
+                            color: "#f69320",
+                          }}
+                        />
+                        Chuyển VIP không giới hạn
+                      </p>
+                    </li>
+                    <li>
+                      <p
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                        }}
+                      >
+                        <CheckIcon
+                          style={{
+                            padding: "5px 0",
+                            marginRight: "10px",
+                            color: "#f69320",
+                          }}
+                        />
+                        Tham vấn tâm lý
+                      </p>
+                    </li>
+                    <li>
+                      <p
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                        }}
+                      >
+                        <CheckIcon
+                          style={{
+                            padding: "5px 0",
+                            marginRight: "10px",
+                            color: "#f69320",
+                          }}
+                        />
+                        Giải đáp thắc mặc tận tình
+                      </p>
+                    </li>
                   </ul>
                 </div>
-                <Button className={classes.btnPurchase}>Mua ngay</Button>
+
+                <Button className={classes.btnPurchase}>
+                  <Link
+                    to="/xem-online#meaningNumerology"
+                    style={{ width: "100%" }}
+                  >
+                    Mua ngay
+                  </Link>
+                </Button>
               </div>
             </Grid>
           </Grid>

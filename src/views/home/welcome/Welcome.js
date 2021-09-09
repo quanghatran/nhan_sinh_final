@@ -25,11 +25,12 @@ const useStyles = makeStyles(() => ({
     color: "#f69320",
     fontSize: "4rem",
     textAlign: "center",
+    marginBottom: "5px",
   },
   description: {
     color: "#f69320",
     textAlign: "center",
-    fontSize: "18px",
+    fontSize: "22px",
     lineHeight: "28px",
     fontWeight: "bold",
   },
@@ -103,29 +104,15 @@ const Welcome = () => {
         >
           <Grid item md={8}>
             <Typography variant="body2" className={classes.para1}>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Porro,
-              officiis aut dolore tempore rem molestiae suscipit provident iste,
-              quis laboriosam quaerat dolorum doloribus atque ducimus molestias
-              cumque veritatis consequuntur iusto quasi quod voluptates.
-              Veritatis, sit expedita facere dolore officia ad.
+              ‘’Minh triết nhân sinh’’ là một trong các dự án mang giá trị tinh
+              thần to lớn, với mong muốn được cống hiến các dòng giá trị minh
+              triết của chính cá nhân tích luỹ qua các trải nghiệm cá nhân,
+              nghiên cứu khoa học để tìm ra công cụ áp dụng vào việc cho mọi
+              người một định hướng minh triết nhất.
             </Typography>
           </Grid>
         </Grid>
-        <Grid
-          item
-          container
-          md={12}
-          alignItems="center"
-          justify="center"
-          className={classes.item}
-        >
-          <Grid item md={8}>
-            <Typography variant="body1" className={classes.para2}>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Earum
-              non culpa ut ad pariatur eos quae reprehenderit illo modi sint?
-            </Typography>
-          </Grid>
-        </Grid>
+
         <Grid
           item
           md={12}
@@ -134,15 +121,15 @@ const Welcome = () => {
           justify="center"
           className={classes.item}
         >
-          <Grid item container md={8}>
+          <Grid item container md={10}>
             <Grid item md={3} sm={6} xs={12} className={classes.gridItem}>
               <div>
                 <Typography variant="h1" className={classes.number}>
-                  12
+                  2
                 </Typography>
               </div>
               <div>
-                <Typography variant="subtitle1" className={classes.description}>
+                <Typography variant="h4" className={classes.description}>
                   Năm kinh nghiệm
                 </Typography>
               </div>
@@ -150,36 +137,36 @@ const Welcome = () => {
             <Grid item md={3} sm={6} xs={12} className={classes.gridItem}>
               <div>
                 <Typography variant="h1" className={classes.number}>
-                  12
+                  11
                 </Typography>
               </div>
               <div>
-                <Typography variant="subtitle1" className={classes.description}>
-                  Năm kinh nghiệm
-                </Typography>
-              </div>
-            </Grid>
-            <Grid item md={3} sm={6} xs={12} className={classes.gridItem}>
-              <div>
-                <Typography variant="h1" className={classes.number}>
-                  12
-                </Typography>
-              </div>
-              <div>
-                <Typography variant="subtitle1" className={classes.description}>
-                  Năm kinh nghiệm
+                <Typography variant="h4" className={classes.description}>
+                  Con số đường đời
                 </Typography>
               </div>
             </Grid>
             <Grid item md={3} sm={6} xs={12} className={classes.gridItem}>
               <div>
                 <Typography variant="h1" className={classes.number}>
-                  12
+                  5
                 </Typography>
               </div>
               <div>
-                <Typography variant="subtitle1" className={classes.description}>
-                  Năm kinh nghiệm
+                <Typography variant="h4" className={classes.description}>
+                  Nhà tư vấn kinh nghiệm
+                </Typography>
+              </div>
+            </Grid>
+            <Grid item md={3} sm={6} xs={12} className={classes.gridItem}>
+              <div>
+                <Typography variant="h1" className={classes.number}>
+                  500
+                </Typography>
+              </div>
+              <div>
+                <Typography variant="h4" className={classes.description}>
+                  Giờ tư vấn khách hàng
                 </Typography>
               </div>
             </Grid>
@@ -199,7 +186,7 @@ const Welcome = () => {
               variant="contained"
               className={classes.btnSubscribe}
             >
-              Đăng ký thành viên ngay
+              <a href="/dang-ky">Đăng ký thành viên ngay</a>
             </Button>
           </Grid>
         </Grid>

@@ -34,6 +34,7 @@
 		"react-ratings-declarative": "^3.4.1",
 		"react-redux": "^7.2.4",
 		"react-router-dom": "^5.2.0",
+		"react-router-hash-link": "^2.4.3",
 		"react-scripts": "^4.0.3",
 		"react-spring-3d-carousel": "^1.2.1",
 		"react-swipeable-views": "^0.14.0",
