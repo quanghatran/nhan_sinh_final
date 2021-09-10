@@ -266,9 +266,11 @@ const NewBanner = () => {
       /*most significant*/
       if (xDiff > 0) {
         /* left swipe */
+        handleAnimation(state.goToSlide + 1);
         setState({ goToSlide: state.goToSlide + 1 });
       } else {
         /* right swipe */
+        handleAnimation(state.goToSlide - 1);
         setState({ goToSlide: state.goToSlide - 1 });
       }
     } else {
