@@ -4,6 +4,7 @@ import { config } from "react-spring";
 import banner1 from "../../../images/imgSlider1.jpg";
 import banner2 from "../../../images/imgSlider2.jpg";
 import banner3 from "../../../images/imgSlider3.jpg";
+import IconButton from "@material-ui/core/IconButton";
 
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
@@ -45,9 +46,52 @@ const useStyles = makeStyles((theme) => ({
     height: "600px",
     margin: "100px auto",
     position: "relative",
+    "&>div:nth-child(2)": {
+      display: "none",
+    },
+    [theme.breakpoints.down("md")]: {
+      height: "100vw",
+      width: "80vw",
+      "&>div:nth-child(2)": {
+        display: "flex",
+        position: "absolute",
+        top: "50%",
+        left: "-5%",
+        width: "110%",
+        zIndex: "2",
+        "& img": {
+          width: 35,
+          height: 60,
+        },
+      },
+    },
     [theme.breakpoints.down("sm")]: {
       height: "100vw",
       width: "80vw",
+      "&>div:nth-child(2)": {
+        display: "flex",
+        position: "absolute",
+        top: "50%",
+        left: "-5%",
+        width: "110%",
+        zIndex: "2",
+        "& img": {
+          width: 35,
+          height: 60,
+        },
+      },
+    },
+    [theme.breakpoints.down("xs")]: {
+      height: "100vw",
+      width: "80vw",
+      "&>div:nth-child(2)": {
+        display: "flex",
+        position: "absolute",
+        top: "40%",
+        left: "-7%",
+        width: "112%",
+        zIndex: "2",
+      },
     },
   },
   textField: {
@@ -55,15 +99,37 @@ const useStyles = makeStyles((theme) => ({
     zIndex: 1,
     margin: "0 50px",
   },
-  navButton: {
+  navButton: {},
+  forwardButton: {
     color: "white",
     width: "50px",
     height: "50px",
     position: "absolute",
     top: "50%",
+    zIndex: 3,
+    transform: "translateY(-50%)",
+    right: 0,
+    [theme.breakpoints.down("sm")]: {
+      right: "-8%",
+    },
+    [theme.breakpoints.down("md")]: {
+      right: "-8%",
+    },
+  },
+  backwardButton: {
+    color: "white",
+    width: "50px",
+    height: "50px",
+    position: "absolute",
+    top: "50%",
+    zIndex: 3,
+    left: 0,
     transform: "translateY(-50%)",
     [theme.breakpoints.down("sm")]: {
-      display: "none",
+      left: "-8%",
+    },
+    [theme.breakpoints.down("md")]: {
+      left: "-7%",
     },
   },
 }));
@@ -227,13 +293,18 @@ const NewBanner = () => {
         showNavigation={false}
         animationConfig={state.config}
       />
-      <ArrowForwardIosIcon
-        style={{
-          right: "-10px",
-        }}
-        className={classes.navButton}
-      />
-      <ArrowBackIosIcon style={{ left: 0 }} className={classes.navButton} />
+      <IconButton
+        className={classes.forwardButton}
+        onClick={() => setState({ ...state, goToSlide: state.goToSlide + 1 })}
+      >
+        <ArrowForwardIosIcon style={{ width: 40, height: 40 }} />
+      </IconButton>
+      <IconButton
+        onClick={() => setState({ ...state, goToSlide: state.goToSlide - 1 })}
+        className={classes.backwardButton}
+      >
+        <ArrowBackIosIcon style={{ width: "40px", height: "40px" }} />
+      </IconButton>
     </div>
   );
 };

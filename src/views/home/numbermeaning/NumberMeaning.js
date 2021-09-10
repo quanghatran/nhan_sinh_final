@@ -111,10 +111,7 @@ const useStyles = makeStyles((theme) => ({
   numberSix: {
     width: "50%",
     marginBottom: "20px",
-    [theme.breakpoints.down("xs")]: {
-      width: "100%",
-    },
-    [theme.breakpoints.only("sm")]: {
+    [theme.breakpoints.down("sm")]: {
       display: "none",
     },
   },
@@ -122,8 +119,13 @@ const useStyles = makeStyles((theme) => ({
     width: "50%",
     marginBottom: "20px",
     display: "none",
-    [theme.breakpoints.only("sm")]: {
+    [theme.breakpoints.down("sm")]: {
       display: "block",
+    },
+  },
+  hideInXS: {
+    [theme.breakpoints.down("sm")]: {
+      display: "none",
     },
   },
 }));
@@ -213,7 +215,7 @@ const NumberMeaning = () => {
         >
           <img src={CircleLogo} alt="" className={classes.circleLogoSm} />
         </Grid>
-        <Grid item md={3} sm={5} xs={12}>
+        <Grid item md={3} sm={5} xs={5}>
           <Grid container>
             {numbers1.map((number) => (
               <Grid
@@ -244,7 +246,9 @@ const NumberMeaning = () => {
           container
           md={6}
           sm={1}
+          xs={12}
           // className={classes.centerDisplayMD}
+          className={classes.hideInXS}
           alignItems="center"
           justify="space-between"
         >
@@ -273,7 +277,7 @@ const NumberMeaning = () => {
             </Grid>
           </Grid>
         </Grid>
-        <Grid item md={3} sm={5} xs={12}>
+        <Grid item md={3} sm={5} xs={5}>
           <Grid container>
             {numbers2.map((number) => (
               <Grid
@@ -301,6 +305,7 @@ const NumberMeaning = () => {
         <Grid
           key={6}
           item
+          xs={6}
           container
           className={classes.numberSixIpad}
           // alignItems='center'
