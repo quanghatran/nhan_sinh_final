@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Carousel from "react-spring-3d-carousel";
 import { config } from "react-spring";
 import banner1 from "../../../images/imgSlider1.jpg";
@@ -141,16 +141,44 @@ const NewBanner = () => {
 
     config: config.gentle,
   });
-
+  const animationRef0 = useRef(null);
+  const animationRef1 = useRef(null);
+  const animationRef2 = useRef(null);
+  const handleAnimation = (index) => {
+    const pos = index % 3;
+    switch (pos) {
+      case 0:
+        animationRef0.current.classList.add("animate");
+        setTimeout(() => {
+          animationRef0.current.classList.remove("animate");
+        }, 2000);
+        break;
+      case 1:
+        animationRef1.current.classList.add("animate");
+        setTimeout(() => {
+          animationRef1.current.classList.remove("animate");
+        }, 2000);
+        break;
+      case 2:
+        animationRef2.current.classList.add("animate");
+        setTimeout(() => {
+          animationRef2.current.classList.remove("animate");
+        }, 2000);
+        break;
+      default:
+        break;
+    }
+  };
   let slides = [
     {
       key: 1,
       content: (
         <div
+          ref={animationRef0}
           style={{
             backgroundImage: `url(${banner1})`,
           }}
-          className={classes.sliderImg + " sliderDistinguish"}
+          className={classes.sliderImg}
         >
           <div className={classes.textField}>
             <Typography variant="h4" gutterBottom className="heading">
@@ -172,10 +200,11 @@ const NewBanner = () => {
       key: 2,
       content: (
         <div
+          ref={animationRef1}
           style={{
             backgroundImage: `url(${banner2})`,
           }}
-          className={classes.sliderImg + " sliderDistinguish"}
+          className={classes.sliderImg}
         >
           <div className={classes.textField}>
             <Typography variant="h4" gutterBottom className="heading">
@@ -193,10 +222,11 @@ const NewBanner = () => {
       key: 3,
       content: (
         <div
+          ref={animationRef2}
           style={{
             backgroundImage: `url(${banner3})`,
           }}
-          className={classes.sliderImg + " sliderDistinguish"}
+          className={classes.sliderImg}
         >
           <div className={classes.textField}>
             <Typography variant="h4" gutterBottom className="heading">
@@ -217,11 +247,8 @@ const NewBanner = () => {
   ].map((slide, index) => {
     return {
       ...slide,
-      onClick: (e) => {
-        e.target.classList.add("animate");
-        setTimeout(() => {
-          e.target.classList.remove("animate");
-        }, 2000);
+      onClick: () => {
+        handleAnimation(index);
         setState({ goToSlide: index });
       },
     };
@@ -273,13 +300,7 @@ const NewBanner = () => {
     xDown = null;
     yDown = null;
   };
-  // React.useEffect(() => {
-  //   setTimeout(() => {
-  //     document.querySelectorAll(".sliderDistinguish").forEach((item, index) => {
-  //       item.classList.remove("animate");
-  //     });
-  //   }, 5000);
-  // });
+
   return (
     <div
       className={classes.sliderContainer}
@@ -295,12 +316,18 @@ const NewBanner = () => {
       />
       <IconButton
         className={classes.forwardButton}
-        onClick={() => setState({ ...state, goToSlide: state.goToSlide + 1 })}
+        onClick={() => {
+          handleAnimation(state.goToSlide + 1);
+          setState({ ...state, goToSlide: state.goToSlide + 1 });
+        }}
       >
         <ArrowForwardIosIcon style={{ width: 40, height: 40 }} />
       </IconButton>
       <IconButton
-        onClick={() => setState({ ...state, goToSlide: state.goToSlide - 1 })}
+        onClick={() => {
+          handleAnimation(state.goToSlide - 1);
+          setState({ ...state, goToSlide: state.goToSlide - 1 });
+        }}
         className={classes.backwardButton}
       >
         <ArrowBackIosIcon style={{ width: "40px", height: "40px" }} />
