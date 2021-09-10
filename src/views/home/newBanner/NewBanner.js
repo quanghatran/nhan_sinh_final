@@ -141,40 +141,22 @@ const NewBanner = () => {
 
     config: config.gentle,
   });
-  const animationRef0 = useRef(null);
-  const animationRef1 = useRef(null);
-  const animationRef2 = useRef(null);
+  const animationRef = useRef([]);
+
   const handleAnimation = (index) => {
     const pos = index % 3;
-    switch (pos) {
-      case 0:
-        animationRef0.current.classList.add("animate");
-        setTimeout(() => {
-          animationRef0.current.classList.remove("animate");
-        }, 2000);
-        break;
-      case 1:
-        animationRef1.current.classList.add("animate");
-        setTimeout(() => {
-          animationRef1.current.classList.remove("animate");
-        }, 2000);
-        break;
-      case 2:
-        animationRef2.current.classList.add("animate");
-        setTimeout(() => {
-          animationRef2.current.classList.remove("animate");
-        }, 2000);
-        break;
-      default:
-        break;
-    }
+
+    animationRef.current[pos].classList.add("animate");
+    setTimeout(() => {
+      animationRef.current[pos].classList.remove("animate");
+    }, 2000);
   };
   let slides = [
     {
       key: 1,
       content: (
         <div
-          ref={animationRef0}
+          ref={(el) => (animationRef.current[0] = el)}
           style={{
             backgroundImage: `url(${banner1})`,
           }}
@@ -200,7 +182,7 @@ const NewBanner = () => {
       key: 2,
       content: (
         <div
-          ref={animationRef1}
+          ref={(el) => (animationRef.current[1] = el)}
           style={{
             backgroundImage: `url(${banner2})`,
           }}
@@ -222,7 +204,7 @@ const NewBanner = () => {
       key: 3,
       content: (
         <div
-          ref={animationRef2}
+          ref={(el) => (animationRef.current[2] = el)}
           style={{
             backgroundImage: `url(${banner3})`,
           }}
