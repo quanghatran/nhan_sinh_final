@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
 
   title: {
     color: "#a0a2ad",
-    textAlign: "center",
+    textAlign: "justify",
     margin: "10px auto 0",
   },
 
@@ -48,6 +48,9 @@ const useStyles = makeStyles((theme) => ({
 
   gridItem: {
     marginBottom: "20px",
+    [theme.breakpoints.down("sm")]: {
+      height: "200px",
+    },
   },
   titleWrapper: {
     textAlign: "left",
@@ -126,6 +129,11 @@ const useStyles = makeStyles((theme) => ({
   hideInXS: {
     [theme.breakpoints.down("sm")]: {
       display: "none",
+    },
+  },
+  mtLeftMobile: {
+    [theme.breakpoints.down("sm")]: {
+      marginLeft: "20px",
     },
   },
 }));
@@ -215,7 +223,7 @@ const NumberMeaning = () => {
         >
           <img src={CircleLogo} alt="" className={classes.circleLogoSm} />
         </Grid>
-        <Grid item md={3} sm={5} xs={5}>
+        <Grid item md={3} sm={5} xs={4}>
           <Grid container>
             {numbers1.map((number) => (
               <Grid
@@ -277,7 +285,7 @@ const NumberMeaning = () => {
             </Grid>
           </Grid>
         </Grid>
-        <Grid item md={3} sm={5} xs={5}>
+        <Grid item md={3} sm={5} xs={4} className={classes.mtLeftMobile}>
           <Grid container>
             {numbers2.map((number) => (
               <Grid

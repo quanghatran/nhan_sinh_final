@@ -59,7 +59,7 @@ const IntroVIPSearch = () => {
 
   return (
     <React.Fragment>
-      <Typography variant="h4" component="h3" className="titleVIP">
+      <Typography variant="h3" component="h3" className="titleVIP">
         Giá trị của bản tra cứu VIP
       </Typography>
       <ul className="listValue">

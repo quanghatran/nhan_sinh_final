@@ -71,11 +71,21 @@ const useStyles = makeStyles((theme) => ({
       display: "none",
     },
   },
+  ads: {
+    width: "100%",
+    height: "70%",
+  },
+  stickyBar: {
+    maxHeight: "100vh",
+    position: "sticky",
+    top: 20,
+    zIndex: -1,
+  },
 }));
 const content = [
   {
     id: 1,
-    title: "Trong ngày sinh có 3 con số 7-8-9 ",
+    title: "Ngày sinh có 3 con số 7-8-9 ",
     content:
       "Bạn là 1 người rất năng động, thể hiện sự nhanh nhẹn tháo vát trong tất cả các công việc. Thường làm các công việc hay đi lại nhiều, chủ động trong tất cả các lĩnh vực, công việc của mình. Nếu cùng giao công việc như nhau, bạn sẽ là người hoàn thành công việc của mình nhanh nhất, sớm nhất bởi vì bạn có chỉ số hành động cực cao. Sự độc lập, có ý tưởng, có ước mơ hoài bão có trách nhiệm với bản thân, gia đình và xã hội.",
     img: post1,
@@ -209,7 +219,7 @@ const Blog = () => {
             md={3}
             sm={3}
             xs={3}
-            style={{ maxHeight: "500px" }}
+            className={classes.stickyBar}
           >
             <Grid item md={12}>
               <TextField
@@ -287,9 +297,7 @@ const Blog = () => {
                   />
                 </Grid>
                 <Grid item md={6}>
-                  <Typography variant="subtitle1">
-                    {content[0].title}
-                  </Typography>
+                  <Typography variant="body1">{content[0].title}</Typography>
                 </Grid>
               </Grid>
               <Grid
@@ -307,9 +315,7 @@ const Blog = () => {
                   />
                 </Grid>
                 <Grid item md={6}>
-                  <Typography variant="subtitle1">
-                    {content[5].title}
-                  </Typography>
+                  <Typography variant="body1">{content[5].title}</Typography>
                 </Grid>
               </Grid>
               <Grid
@@ -327,14 +333,30 @@ const Blog = () => {
                   />
                 </Grid>
                 <Grid item md={6}>
-                  <Typography variant="subtitle1">
-                    {content[3].title}
-                  </Typography>
+                  <Typography variant="body1">{content[3].title}</Typography>
+                </Grid>
+              </Grid>
+              <Grid
+                item
+                container
+                md={12}
+                justifyContent="space-between"
+                style={{ marginBottom: 20 }}
+              >
+                <Grid item md={4}>
+                  <img
+                    src={post6}
+                    alt=""
+                    style={{ width: "100%", height: "100%" }}
+                  />
+                </Grid>
+                <Grid item md={6}>
+                  <Typography variant="body1">{content[4].title}</Typography>
                 </Grid>
               </Grid>
             </Grid>
             <Grid item md={12}>
-              <img src={ads} alt="" style={{ width: "100%", height: "100%" }} />
+              <img src={ads} alt="" className={classes.ads} />
             </Grid>
           </Grid>
         </Grid>

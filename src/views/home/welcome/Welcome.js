@@ -10,10 +10,10 @@ const useStyles = makeStyles(() => ({
     color: "#fff",
   },
   para1: {
-    textAlign: "center",
+    textAlign: "justify",
     marginBottom: "1rem",
     fontSize: "0.95rem",
-    color: "#bdc3c7",
+    color: "#a0a2ad",
   },
   para2: {
     color: "#fff",

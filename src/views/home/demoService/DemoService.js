@@ -121,7 +121,7 @@ const DemoService = () => {
         <div className="demoServiceContent">
           <Grid container spacing={8}>
             <Grid item container xs={12} sm={6}>
-              <Typography variant="h4" component="h3" className="titleVIP">
+              <Typography variant="h3" component="h3" className="titleVIP">
                 Tra cứu miễn phí
               </Typography>
               <form className={classes.root} onSubmit={handleSubmit}>

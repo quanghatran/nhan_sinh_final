@@ -1,25 +1,25 @@
 .titleVIP {
-	margin: 0 auto;
-	color: #fff;
+  margin: 0 auto;
+  color: #f69320;
 }
 
 .listValue {
-	flex-direction: row;
-	text-align: justify;
-	margin: 0;
-	padding: 0;
-	text-align: justify;
-	list-style: none;
-	margin-top: 1rem;
-	li {
-		margin-bottom: 10px;
-	}
+  flex-direction: row;
+  text-align: justify;
+  margin: 0;
+  padding: 0;
+  text-align: justify;
+  list-style: none;
+  margin-top: 1rem;
+  li {
+    margin-bottom: 10px;
+  }
 
-	.content {
-		line-height: 1.6;
-		text-align: justify;
-		margin-bottom: 1rem;
-		font-size: 1.1rem;
-		color: #fff;
-	}
+  .content {
+    line-height: 1.6;
+    text-align: justify;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    color: #fff;
+  }
 }
