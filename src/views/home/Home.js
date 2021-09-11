@@ -22,28 +22,12 @@ const AppHome = () => {
     <React.Fragment>
       <Header />
       <Background />
-      {/* <Particles
-        params={particlesConfig}
-        style={{
-          backgroundImage: `url(${logo})`,
-          height: "100%",
-          position: "fixed",
-          zIndex: -10,
-          top: 0,
-          left: 0,
-        }}
-      /> */}
-
-      {/* <CardSlide /> */}
-
-      {/* <Footer /> */}
 
       <NewBanner />
       <NumberMeaning />
       <Welcome />
 
       <DemoService />
-      {/* <Numbers /> */}
 
       <Prices />
       <DirectMeetInfo />

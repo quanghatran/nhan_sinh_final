@@ -76,10 +76,9 @@ const useStyles = makeStyles((theme) => ({
     height: "70%",
   },
   stickyBar: {
-    maxHeight: "100vh",
+    maxHeight: "120vh",
     position: "sticky",
     top: 20,
-    zIndex: -1,
   },
 }));
 const content = [
