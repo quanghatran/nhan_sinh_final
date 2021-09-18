@@ -35,7 +35,7 @@ const AppHome = () => {
     <React.Fragment>
       <Header />
       <Background />
-      <NewBanner />
+      <NewBanner data={data.banner} />
       <NumberMeaning data={data.numberMeaning} />
       <Welcome data={data.info} />
       <DemoService data={data?.serviceInfo[0]} />

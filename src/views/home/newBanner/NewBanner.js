@@ -1,9 +1,7 @@
 import React, { useState, useRef } from "react";
 import Carousel from "react-spring-3d-carousel";
 import { config } from "react-spring";
-import banner1 from "../../../images/imgSlider1.jpg";
-import banner2 from "../../../images/imgSlider2.jpg";
-import banner3 from "../../../images/imgSlider3.jpg";
+
 import IconButton from "@material-ui/core/IconButton";
 
 import Typography from "@material-ui/core/Typography";
@@ -133,108 +131,53 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 }));
-const NewBanner = () => {
+const NewBanner = ({ data }) => {
   const classes = useStyles();
   const [state, setState] = useState({
     goToSlide: 0,
-    offsetRadius: 3,
+    offsetRadius: 1,
 
     config: config.gentle,
   });
   const animationRef = useRef([]);
 
   const handleAnimation = (index) => {
-    const pos = index % 3;
-
-    animationRef.current[pos].classList.add("animate");
+    const pos = Math.abs(index % data.length);
+    const target = animationRef.current[pos];
+    target.classList.add("animate");
     setTimeout(() => {
-      animationRef.current[pos].classList.remove("animate");
+      target.classList.remove("animate");
     }, 2000);
   };
-  let slides = [
-    {
-      key: 1,
+  let slides = [];
+  for (let i = 0; i < data.length; i++) {
+    slides.push({
+      key: i + 1,
       content: (
         <div
-          ref={(el) => (animationRef.current[0] = el)}
+          ref={(el) => (animationRef.current[i] = el)}
           style={{
-            backgroundImage: `url(${banner1})`,
+            backgroundImage: `url(${data[i].linkImage})`,
           }}
           className={classes.sliderImg}
         >
           <div className={classes.textField}>
             <Typography variant="h4" gutterBottom className="heading">
-              Tổng quan minh triết nhân sinh
+              {data[i].title}
             </Typography>
 
             <Typography variant="h5" className="paragraph">
-              ‘’Minh triết nhân sinh’’ là một trong các dự án mang giá trị tinh
-              thần to lớn, với mong muốn được cống hiến các dòng giá trị minh
-              triết của chính cá nhân tích luỹ qua các trải nghiệm cá nhân,
-              nghiên cứu khoa học để tìm ra công cụ áp dụng vào việc cho mọi
-              người một định hướng minh triết nhất.
+              {data[i].detail}
             </Typography>
           </div>
         </div>
       ),
-    },
-    {
-      key: 2,
-      content: (
-        <div
-          ref={(el) => (animationRef.current[1] = el)}
-          style={{
-            backgroundImage: `url(${banner2})`,
-          }}
-          className={classes.sliderImg}
-        >
-          <div className={classes.textField}>
-            <Typography variant="h4" gutterBottom className="heading">
-              Tổng quan minh triết nhân sinh
-            </Typography>
-            <Typography variant="h5" className="paragraph">
-              Định hướng minh triết, tương lai minh triết là những gì tôi ấp ủ
-              qua năm tháng mong được truyền tải tới mọi người.
-            </Typography>
-          </div>
-        </div>
-      ),
-    },
-    {
-      key: 3,
-      content: (
-        <div
-          ref={(el) => (animationRef.current[2] = el)}
-          style={{
-            backgroundImage: `url(${banner3})`,
-          }}
-          className={classes.sliderImg}
-        >
-          <div className={classes.textField}>
-            <Typography variant="h4" gutterBottom className="heading">
-              Tổng quan minh triết nhân sinh
-            </Typography>
-            <Typography variant="h5" className="paragraph">
-              Đây là một công trình nghiên cứu của phương Tây được áp dụng vào
-              việc định hướng cuộc sống cho bất cứ ai đang chênh vênh trên nẻo
-              đường đi tìm sứ mệnh cá nhân.
-            </Typography>
-            <Typography variant="h5" className="author">
-              Tác giả: Hà Nguyễn (Tuệ Hương)
-            </Typography>
-          </div>
-        </div>
-      ),
-    },
-  ].map((slide, index) => {
-    return {
-      ...slide,
       onClick: () => {
-        handleAnimation(index);
-        setState({ goToSlide: index });
+        handleAnimation(i);
+        setState({ ...state, goToSlide: i });
       },
-    };
-  });
+    });
+  }
 
   let xDown = null;
   let yDown = null;
@@ -267,11 +210,11 @@ const NewBanner = () => {
       if (xDiff > 0) {
         /* left swipe */
         handleAnimation(state.goToSlide + 1);
-        setState({ goToSlide: state.goToSlide + 1 });
+        setState({ ...state, goToSlide: state.goToSlide + 1 });
       } else {
         /* right swipe */
         handleAnimation(state.goToSlide - 1);
-        setState({ goToSlide: state.goToSlide - 1 });
+        setState({ ...state, goToSlide: state.goToSlide - 1 });
       }
     } else {
       if (yDiff > 0) {

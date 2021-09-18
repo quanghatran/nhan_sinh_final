@@ -1,11 +1,11 @@
 .animate .heading {
-  animation: slideDown 0.8s ease-in-out;
+  animation: slideDown 1.3s ease-in-out;
 }
 .animate .paragraph {
-  animation: slideUp 0.8s ease-in-out;
+  animation: slideUp 1.3s ease-in-out;
 }
 .animate .author {
-  animation: slideLeft 0.8s ease-in-out;
+  animation: slideLeft 1.3s ease-in-out;
 }
 @keyframes slideDown {
   0% {
