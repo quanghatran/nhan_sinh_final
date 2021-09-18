@@ -137,76 +137,15 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 }));
-const numbers1 = [
-  {
-    id: 1,
-    number: 1,
-    title: `Độc lập, mạnh mẽ, tự tin, quyết tâm
-    chiến thắng mọi “cuộc chơi”`,
-  },
-  {
-    id: 2,
-    number: 2,
-    title: `Được ví như “Sứ giả của hòa bình
-    nhân loại”. Bạn ấm áp, vị tha 
-     `,
-  },
-  {
-    id: 3,
-    number: 3,
-    title: `Bạn như một vầng trăng giữa bầu
-    trời đêm vực dậy linh hồn vạn vật.
-    `,
-  },
-  {
-    id: 4,
-    number: 4,
-    title: `Bạn như một vầng trăng giữa bầu
-    trời đêm vực dậy linh hồn vạn vật.`,
-  },
-  {
-    id: 5,
-    number: 5,
-    title: `Bạn là hình mẫu đại diện cho năng
-    lượng sáng tạo không ngừng.
-    `,
-  },
-];
-const numbers2 = [
-  {
-    id: 7,
-    number: 7,
-    title: `Bạn sâu sắc, thích chiêm nghiệm, ưa
-    thu mình, một mình, thích làm việc`,
-  },
-  {
-    id: 8,
-    number: 8,
-    title: `Bạn đại điện cho sắc đẹp và tiền
-    bạc. Hướng đến tham vọng,`,
-  },
-  {
-    id: 9,
-    number: 9,
-    title: `Bạn là một người lấy hào phóng để
-    thiện đãi chúng sinh, lấy rộng lượng`,
-  },
 
-  {
-    id: 11,
-    number: 11,
-    title: `Bạn là một người có kết nối tâm linh
-    và trí tuệ tâm linh mạnh mẽ.`,
-  },
-  {
-    id: 22,
-    number: 22,
-    title: `Bạn sống theo chuẩn mực, tôn
-    trọng các giá trị truyền thống.`,
-  },
-];
-
-const NumberMeaning = () => {
+const NumberMeaning = ({ data }) => {
+  const numbers1 = [];
+  const numbers2 = [];
+  for (let i = 0; i < 5; i++) {
+    numbers1.push(data[i]);
+    numbers2.push(data[i + 6]);
+  }
+  console.log(data);
   const classes = useStyles();
   return (
     <Container maxWidth="lg" style={{ marginTop: "50px" }}>
@@ -225,9 +164,9 @@ const NumberMeaning = () => {
         </Grid>
         <Grid item md={3} sm={5} xs={4}>
           <Grid container>
-            {numbers1.map((number) => (
+            {numbers1.map((number, index) => (
               <Grid
-                key={number.id}
+                key={index}
                 item
                 container
                 className={classes.gridItem}
@@ -235,10 +174,10 @@ const NumberMeaning = () => {
                 alignItems="center"
               >
                 <Grid item className={classes.numberWrapper}>
-                  <p className="number">{number.number}</p>
+                  <p className="number">{number?.number}</p>
                 </Grid>
                 <Grid item className={classes.titleWrapper}>
-                  <p className={classes.title}>{number.title}</p>
+                  <p className={classes.title}>{number?.meaning}</p>
                 </Grid>
                 <Grid>
                   {" "}
@@ -272,13 +211,10 @@ const NumberMeaning = () => {
             direction="column"
           >
             <Grid item className={classes.numberWrapper}>
-              <p className="number">6</p>
+              <p className="number">{data[5]?.number}</p>
             </Grid>
             <Grid item className={classes.titleWrapper2}>
-              <p className={classes.title}>
-                Bạn yêu hòa bình, có tấm lòng nhân ái, ghét sự bất công, cưỡng
-                ép vô lý.
-              </p>
+              <p className={classes.title}>{data[5]?.meaning}</p>
             </Grid>
             <Grid>
               <p className={classes.loadMore}>...</p>
@@ -287,9 +223,9 @@ const NumberMeaning = () => {
         </Grid>
         <Grid item md={3} sm={5} xs={4} className={classes.mtLeftMobile}>
           <Grid container>
-            {numbers2.map((number) => (
+            {numbers2.map((number, index) => (
               <Grid
-                key={number.id}
+                key={index}
                 item
                 container
                 md={12}
@@ -298,10 +234,10 @@ const NumberMeaning = () => {
                 alignItems="center"
               >
                 <Grid item className={classes.numberWrapper}>
-                  <p className="number">{number.number}</p>
+                  <p className="number">{number?.number}</p>
                 </Grid>
                 <Grid item className={classes.titleWrapper2}>
-                  <p className={classes.title}>{number.title}</p>
+                  <p className={classes.title}>{number?.meaning}</p>
                 </Grid>
                 <Grid>
                   <p className={classes.loadMore}>...</p>
@@ -324,13 +260,10 @@ const NumberMeaning = () => {
             className={classes.numberWrapper}
             style={{ margin: "0 auto" }}
           >
-            <p className="number">6</p>
+            <p className="number">{data[5]?.number}</p>
           </Grid>
           <Grid item className={classes.titleWrapper2}>
-            <p className={classes.title}>
-              Bạn yêu hòa bình, có tấm lòng nhân ái, ghét sự bất công, cưỡng ép
-              vô lý.
-            </p>
+            <p className={classes.title}>{data[5]?.meaning}</p>
           </Grid>
           <Grid>
             <p className={classes.loadMore} style={{ textAlign: "center" }}>

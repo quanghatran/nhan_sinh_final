@@ -84,7 +84,7 @@ const useStyles = makeStyles(() => ({
     },
   },
 }));
-const Welcome = () => {
+const Welcome = ({ data }) => {
   const classes = useStyles();
   return (
     <Container maxWidth="lg" style={{ marginTop: "100px" }}>
@@ -122,54 +122,27 @@ const Welcome = () => {
           className={classes.item}
         >
           <Grid item container md={10}>
-            <Grid item md={3} sm={6} xs={12} className={classes.gridItem}>
-              <div>
-                <Typography variant="h1" className={classes.number}>
-                  2
-                </Typography>
-              </div>
-              <div>
-                <Typography variant="h4" className={classes.description}>
-                  Năm kinh nghiệm
-                </Typography>
-              </div>
-            </Grid>
-            <Grid item md={3} sm={6} xs={12} className={classes.gridItem}>
-              <div>
-                <Typography variant="h1" className={classes.number}>
-                  11
-                </Typography>
-              </div>
-              <div>
-                <Typography variant="h4" className={classes.description}>
-                  Con số đường đời
-                </Typography>
-              </div>
-            </Grid>
-            <Grid item md={3} sm={6} xs={12} className={classes.gridItem}>
-              <div>
-                <Typography variant="h1" className={classes.number}>
-                  5
-                </Typography>
-              </div>
-              <div>
-                <Typography variant="h4" className={classes.description}>
-                  Nhà tư vấn kinh nghiệm
-                </Typography>
-              </div>
-            </Grid>
-            <Grid item md={3} sm={6} xs={12} className={classes.gridItem}>
-              <div>
-                <Typography variant="h1" className={classes.number}>
-                  500
-                </Typography>
-              </div>
-              <div>
-                <Typography variant="h4" className={classes.description}>
-                  Giờ tư vấn khách hàng
-                </Typography>
-              </div>
-            </Grid>
+            {data.map((item, index) => (
+              <Grid
+                item
+                md={3}
+                sm={6}
+                xs={12}
+                className={classes.gridItem}
+                key={index}
+              >
+                <div>
+                  <Typography variant="h1" className={classes.number}>
+                    {item.quantity}
+                  </Typography>
+                </div>
+                <div>
+                  <Typography variant="h4" className={classes.description}>
+                    {item.content}
+                  </Typography>
+                </div>
+              </Grid>
+            ))}
           </Grid>
         </Grid>
         <Grid

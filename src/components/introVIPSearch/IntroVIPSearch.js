@@ -5,6 +5,7 @@ import NearMeOutlinedIcon from "@material-ui/icons/NearMeOutlined";
 import React from "react";
 import "./IntroVIPSearch.scss";
 
+import Grid from "@material-ui/core/Grid";
 const useStyles = makeStyles((theme) => ({
   root: {
     "& .MuiTextField-root": {
@@ -54,7 +55,8 @@ const listValue = [
     content: "Và còn nhiều điều nữa...",
   },
 ];
-const IntroVIPSearch = () => {
+const IntroVIPSearch = ({ data }) => {
+  const listValue2 = data.details;
   const classes = useStyles();
 
   return (
@@ -62,32 +64,36 @@ const IntroVIPSearch = () => {
       <Typography variant="h3" component="h3" className="titleVIP">
         Giá trị của bản tra cứu VIP
       </Typography>
-      <ul className="listValue">
-        {listValue.map((value) => (
-          <li key={value.id}>
-            <div style={{ fontSize: "1.2rem", margin: "0px" }}>
-              <CheckIcon
-                style={{
-                  paddingTop: "5px",
-                  marginRight: "10px",
-                  color: "#f69320",
-                }}
-              />
-              <span className="content">{value.content}</span>
-            </div>
-          </li>
-        ))}
-      </ul>
-      <Button
-        variant="contained"
-        color="primary"
-        type="submit"
-        className={classes.mtBtn}
-        href="/xem-online"
-        endIcon={<NearMeOutlinedIcon />}
-      >
-        Tra Cứu VIP NGAY
-      </Button>
+      <Grid item md={12} style={{ height: "80%", padding: "12px 8px" }}>
+        <ul className="listValue">
+          {listValue2.map((value, index) => (
+            <li key={index}>
+              <div style={{ fontSize: "1.2rem", margin: "0px" }}>
+                <CheckIcon
+                  style={{
+                    paddingTop: "5px",
+                    marginRight: "10px",
+                    color: "#f69320",
+                  }}
+                />
+                <span className="content">{value}</span>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </Grid>
+      <Grid item md={6} style={{ marginTop: "2rem" }}>
+        <Button
+          variant="contained"
+          color="primary"
+          type="submit"
+          className={classes.mtBtn}
+          href="/xem-online"
+          endIcon={<NearMeOutlinedIcon />}
+        >
+          Tra Cứu VIP NGAY
+        </Button>
+      </Grid>
     </React.Fragment>
   );
 };

@@ -9,8 +9,7 @@ import React, { useState } from "react";
 import demoServiceApi from "../../../api/demoServiceApi";
 import DatePicker from "../../../components/controls/DatePicker";
 import IntroVIPSearch from "../../../components/introVIPSearch/IntroVIPSearch";
-import TitleSection from "../../../components/titleSection/TitleSection";
-import { useHistory } from "react-router-dom";
+
 import BackgroundImage from "../../../images/bg2.jpg";
 import "./DemoService.scss";
 import { Container } from "@material-ui/core";
@@ -57,7 +56,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const DemoService = () => {
+const DemoService = ({ data }) => {
   const classes = useStyles();
 
   // const formatYmd = (date) => date.toISOString().slice(0, 10);
@@ -111,101 +110,108 @@ const DemoService = () => {
   return (
     <Container className={classes.container}>
       <div id="demoServiceBlock" className="block demoServiceBlock">
-        {/* <div className="container-fluid"> */}
-        {/* <TitleSection titleHeader="dịch vụ của chúng tôi" /> */}
-        <Grid item md={12} sm={12} xs={12}>
-          <Typography variant="h1" className={classes.heading}>
-            Dịch vụ của chúng tôi
-          </Typography>
-        </Grid>
+        <Typography variant="h1" className={classes.heading}>
+          Dịch vụ của chúng tôi
+        </Typography>
+
         <div className="demoServiceContent">
           <Grid container spacing={8}>
-            <Grid item container xs={12} sm={6}>
+            <Grid item container md={6} xs={12} sm={6}>
               <Typography variant="h3" component="h3" className="titleVIP">
                 Tra cứu miễn phí
               </Typography>
-              <form className={classes.root} onSubmit={handleSubmit}>
-                <Grid container item spacing={2}>
-                  <Grid item xs={12} className={classes.gridItem}>
-                    <TextField
-                      label="Họ tên"
-                      variant="outlined"
-                      name="fullName"
-                      type="text"
-                      required={true}
-                      value={name}
-                      onChange={(e) => setName(e.target.value)}
-                      fullWidth
-                      autoComplete="off"
-                    />
+              <Grid item md={12} style={{ height: "80%" }}>
+                <form className={classes.root} onSubmit={handleSubmit}>
+                  <Grid container item spacing={2}>
+                    <Grid item xs={12} className={classes.gridItem}>
+                      <TextField
+                        label="Họ tên"
+                        variant="outlined"
+                        name="fullName"
+                        type="text"
+                        required={true}
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        fullWidth
+                        autoComplete="off"
+                      />
+                    </Grid>
+                    <Grid item xs={12} className={classes.gridItem}>
+                      <TextField
+                        label="Email"
+                        variant="outlined"
+                        name="email"
+                        type="email"
+                        required={true}
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        fullWidth
+                        autoComplete="off"
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={6} className={classes.gridItem}>
+                      <DatePicker
+                        label="Ngày sinh"
+                        variant="outlined"
+                        name="birthDay"
+                        value={birthDay}
+                        onChange={(e) => setBirthDay(e.target.value)}
+                        fullWidth
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={6} className={classes.gridItem}>
+                      <TextField
+                        label="Số điện thoại"
+                        variant="outlined"
+                        name="phoneNumber"
+                        type="number"
+                        required={true}
+                        value={phoneNumber}
+                        onChange={(e) => setPhoneNumber(e.target.value)}
+                        fullWidth
+                        autoComplete="off"
+                      />
+                    </Grid>
+                    <Grid item xs={12} className={classes.gridItem}>
+                      <TextField
+                        label="Địa chỉ"
+                        variant="outlined"
+                        name="address"
+                        type="text"
+                        required={true}
+                        value={address}
+                        onChange={(e) => setAddress(e.target.value)}
+                        fullWidth
+                        autoComplete="off"
+                      />
+                    </Grid>
                   </Grid>
-                  <Grid item xs={12} className={classes.gridItem}>
-                    <TextField
-                      label="Email"
-                      variant="outlined"
-                      name="email"
-                      type="email"
-                      required={true}
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      fullWidth
-                      autoComplete="off"
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={6} className={classes.gridItem}>
-                    <DatePicker
-                      label="Ngày sinh"
-                      variant="outlined"
-                      name="birthDay"
-                      value={birthDay}
-                      onChange={(e) => setBirthDay(e.target.value)}
-                      fullWidth
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={6} className={classes.gridItem}>
-                    <TextField
-                      label="Số điện thoại"
-                      variant="outlined"
-                      name="phoneNumber"
-                      type="number"
-                      required={true}
-                      value={phoneNumber}
-                      onChange={(e) => setPhoneNumber(e.target.value)}
-                      fullWidth
-                      autoComplete="off"
-                    />
-                  </Grid>
-                  <Grid item xs={12} className={classes.gridItem}>
-                    <TextField
-                      label="Địa chỉ"
-                      variant="outlined"
-                      name="address"
-                      type="text"
-                      required={true}
-                      value={address}
-                      onChange={(e) => setAddress(e.target.value)}
-                      fullWidth
-                      autoComplete="off"
-                    />
-                  </Grid>
-                </Grid>
 
-                <div style={{ textAlign: "center", marginTop: "4rem" }}>
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    type="submit"
-                    endIcon={<SearchIcon />}
-                    className={classes.mtBtn}
-                  >
-                    Tra Cứu Miễn Phí
-                  </Button>
-                </div>
-              </form>
+                  <div style={{ textAlign: "center", marginTop: "2rem" }}>
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      type="submit"
+                      endIcon={<SearchIcon />}
+                      className={classes.mtBtn}
+                    >
+                      Tra Cứu Miễn Phí
+                    </Button>
+                  </div>
+                </form>
+              </Grid>
             </Grid>
 
-            <Grid container item xs={12} sm={6} style={{ width: "100%" }}>
-              <IntroVIPSearch />
+            <Grid
+              container
+              item
+              md={6}
+              xs={12}
+              sm={6}
+              style={{ width: "100%" }}
+              justifyContent="center"
+            >
+              <IntroVIPSearch data={data} />
             </Grid>
           </Grid>
         </div>
