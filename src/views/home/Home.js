@@ -16,7 +16,7 @@ const AppHome = () => {
     banner: [],
     numberMeaning: [],
     info: [],
-    serviceInfo: [{ details: [] }, { detail: [] }],
+    serviceInfo: [{ details: [] }, { details: [] }],
     services: [],
     bankingInfo: [],
     successStories: [],
@@ -38,7 +38,10 @@ const AppHome = () => {
       <Welcome data={data.info} />
       <DemoService data={data?.serviceInfo[0]} />
       <Prices data={data.services} />
-      <DirectMeetInfo data={data?.serviceInfo[1]} />
+      <DirectMeetInfo
+        data={data?.serviceInfo[1]}
+        bankingData={data.bankingInfo}
+      />
 
       <NewFooter />
     </React.Fragment>
