@@ -52,9 +52,9 @@ const DirectMeetInfo = ({ data, bankingData }) => {
               Thông tin chuyển khoản thanh toán
             </Typography>
             <div className="infoAccount">
-              <p>Ngân hàng {bankingData[0].bank}</p>
-              <p>Số tài khoản: {bankingData[0].number}</p>
-              <p>Chủ tài khoản: {bankingData[0].name}</p>
+              <p>Ngân hàng {bankingData[0]?.bank}</p>
+              <p>Số tài khoản: {bankingData[0]?.number}</p>
+              <p>Chủ tài khoản: {bankingData[0]?.name}</p>
               <p
                 style={{
                   color: "#f69320",

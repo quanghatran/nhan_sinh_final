@@ -11,6 +11,8 @@ import SuccessStories from "./SuccessStories";
 import NumberMeaning from "./numbermeaning/NumberMeaning";
 import NewBanner from "./newBanner/NewBanner";
 import dataApi from "../../api/dataApi";
+import Banners from "./banners/Banners";
+
 const AppHome = () => {
   const [data, setData] = React.useState({
     banner: [],
@@ -42,6 +44,8 @@ const AppHome = () => {
         data={data?.serviceInfo[1]}
         bankingData={data.bankingInfo}
       />
+      <SuccessStories data={data.successStories} />
+      <News />
 
       <NewFooter />
     </React.Fragment>
