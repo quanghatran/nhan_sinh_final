@@ -5,6 +5,7 @@ import "./App.css";
 import NotFound from "./common/notFound/NotFound";
 import MoveTop from "./components/MoveTop";
 import blue from "@material-ui/core/colors/blue";
+import BlogDetail from "./views/blogDetail/BlogDetail";
 
 const AppHome = React.lazy(() => import("./views/home/Home"));
 const Login = React.lazy(() => import("./views/login/Login"));
@@ -165,6 +166,7 @@ function App() {
                 component={Affiliate}
               ></Route>
               <Route exact path="/blog" component={Blog}></Route>
+              <Route exact path="/blog/:id" component={BlogDetail}></Route>
 
               <Route path="*" component={NotFound} />
             </Switch>
