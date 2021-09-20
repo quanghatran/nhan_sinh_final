@@ -259,7 +259,7 @@ const Blog = () => {
                         variant='subtitle1'
                         style={{ color: '#fff', textAlign: 'justify' }}
                       >
-                        {item.content}
+                        {item.subTitle}
                       </Typography>
                     </Grid>
                   </Grid>

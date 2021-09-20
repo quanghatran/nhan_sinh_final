@@ -28,6 +28,9 @@ const useStyle = makeStyles((theme) => ({
   content: {
     textAlign: 'center',
     color: '#fff',
+    '& .image img': {
+      width: '80%',
+    },
   },
   aboutSection: {
     color: '#fff',
